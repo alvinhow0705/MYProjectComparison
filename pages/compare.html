@@ -260,6 +260,10 @@ document.getElementById("waSendBtn")?.addEventListener("click", function () {
     const finderData = JSON.parse(localStorage.getItem("finderData") || "{}");
     const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
+    // Get user journey and UTM
+    const journeySummary = (typeof getJourneySummary === 'function') ? getJourneySummary() : "";
+    const savedUtm = localStorage.getItem("utm_source") || urlParams.get("utm_source") || "Direct";
+
     // Save to Google Sheets via hidden form + iframe
     sendToSheet({
         name: userName,
@@ -274,8 +278,13 @@ document.getElementById("waSendBtn")?.addEventListener("click", function () {
         location: finderData.location || "Direct",
         device: isMobile ? "Mobile" : "Desktop",
         pageurl: window.location.href,
-        utm: urlParams.get("utm_source") || "Direct"
+        utm: savedUtm,
+        journey: journeySummary
     });
+
+    // Track WhatsApp click in journey, then clear for next visitor
+    if (typeof trackJourney === 'function') trackJourney("Sent WhatsApp", selected[0]?.name + " & " + selected[1]?.name);
+    if (typeof clearJourney === 'function') clearJourney();
 
     const msg =
 `Hi MY Property Comparison 👋
