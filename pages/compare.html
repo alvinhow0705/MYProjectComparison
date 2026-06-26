@@ -286,6 +286,16 @@ I'm interested in:
 
 Please send me the floor plans, full price list & any current promos for both projects. Thank you!`;
 
+    if (typeof gtag === 'function') gtag('event', 'whatsapp_lead', {
+        source: 'Compare',
+        lead_name: userName,
+        lead_phone: userPhone,
+        purpose: userPurpose,
+        status: userStatus,
+        project_1: selected[0]?.name || '',
+        project_2: selected[1]?.name || ''
+    });
+
     window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
 });
 </script>

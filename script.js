@@ -73,6 +73,7 @@ function initFilterSort() {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             activeTitle = btn.dataset.filter;
+            if (typeof gtag === 'function') gtag('event', 'filter_title', { filter_value: btn.dataset.filter });
             renderProjects();
         });
     });
@@ -82,6 +83,7 @@ function initFilterSort() {
     if (sortSelect) {
         sortSelect.addEventListener('change', () => {
             activeSort = sortSelect.value;
+            if (typeof gtag === 'function') gtag('event', 'sort_changed', { sort_value: sortSelect.value });
             renderProjects();
         });
     }
@@ -214,6 +216,7 @@ function renderAreaFilter() {
             container.querySelectorAll('.area-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             activeArea = btn.dataset.area;
+            if (typeof gtag === 'function') gtag('event', 'filter_area', { area_value: btn.dataset.area });
             renderProjects();
         });
     });
@@ -422,6 +425,7 @@ function toggleSelect(project, card, btn) {
         selected = selected.filter(p => p.id !== project.id);
         card.classList.remove('selected');
         btn.innerText = "Select";
+        if (typeof gtag === 'function') gtag('event', 'project_deselected', { project_name: project.name, project_location: project.location });
     } else {
         if (selected.length >= 2) {
             alert("You can only select up to 2 projects to compare.\nDeselect one first.");
@@ -430,6 +434,7 @@ function toggleSelect(project, card, btn) {
         selected.push(project);
         card.classList.add('selected');
         btn.innerText = "Deselect";
+        if (typeof gtag === 'function') gtag('event', 'project_selected', { project_name: project.name, project_location: project.location, project_price: project.price });
     }
 
     updateUI();
@@ -480,8 +485,10 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem("finderData");
 
         if (selected.length === 1) {
+            if (typeof gtag === 'function') gtag('event', 'view_project_detail', { project_name: selected[0].name });
             window.location.href = "pages/detail.html";
         } else {
+            if (typeof gtag === 'function') gtag('event', 'compare_projects', { project_1: selected[0].name, project_2: selected[1].name });
             window.location.href = "pages/compare.html";
         }
     });
@@ -583,6 +590,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             budget: budgetVal,
             location: locationVal || "Any"
         }));
+
+        if (typeof gtag === 'function') gtag('event', 'smart_finder_search', { budget: budgetVal, location: locationVal || "Any", results_count: filtered.length });
 
         // Show all matching results inline
         const resultsDiv = document.getElementById("finderResults");
@@ -730,8 +739,10 @@ function showFinderResults(results, container) {
             if (finderSelected.length === 0) return;
             localStorage.setItem("selectedProjects", JSON.stringify(finderSelected));
             if (finderSelected.length === 1) {
+                if (typeof gtag === 'function') gtag('event', 'finder_view_detail', { project_name: finderSelected[0].name });
                 window.location.href = "detail.html";
             } else {
+                if (typeof gtag === 'function') gtag('event', 'finder_compare_projects', { project_1: finderSelected[0].name, project_2: finderSelected[1].name });
                 window.location.href = "compare.html";
             }
         };
@@ -747,6 +758,7 @@ function toggleFinderSelect(project, card, btn) {
         finderSelected = finderSelected.filter(p => p.id !== project.id);
         card.classList.remove('selected');
         btn.innerText = "Select";
+        if (typeof gtag === 'function') gtag('event', 'finder_project_deselected', { project_name: project.name });
     } else {
         if (finderSelected.length >= 2) {
             alert("You can only select up to 2 projects to compare.\nDeselect one first.");
@@ -755,6 +767,7 @@ function toggleFinderSelect(project, card, btn) {
         finderSelected.push(project);
         card.classList.add('selected');
         btn.innerText = "Deselect";
+        if (typeof gtag === 'function') gtag('event', 'finder_project_selected', { project_name: project.name, project_price: project.price });
     }
     updateFinderUI();
 }

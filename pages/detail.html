@@ -245,6 +245,15 @@ I'm interested in:
 
 Please send me the floor plans, full price list & any current promos. Thank you!`;
 
+        if (typeof gtag === 'function') gtag('event', 'whatsapp_lead', {
+            source: 'Detail',
+            lead_name: userName,
+            lead_phone: userPhone,
+            purpose: userPurpose,
+            status: userStatus,
+            project_1: p.name
+        });
+
         window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
     });
 });
