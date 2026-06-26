@@ -282,6 +282,19 @@
     </div>
 
 <script>
+/* Journey Tracking */
+(function() {
+    try {
+        var journey = JSON.parse(localStorage.getItem("userJourney") || "[]");
+        var now = new Date();
+        var time = now.toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', hour12: true });
+        var date = now.toLocaleDateString('en-MY');
+        journey.push({ action: "Visited Calculator", details: "", time: date + " " + time, page: "calculator.html" });
+        if (journey.length > 50) journey.splice(0, journey.length - 50);
+        localStorage.setItem("userJourney", JSON.stringify(journey));
+    } catch(e) {}
+})();
+
 const priceInput = document.getElementById('calcPrice');
 const downSlider = document.getElementById('calcDown');
 const downVal    = document.getElementById('calcDownVal');

@@ -94,6 +94,28 @@
     </div>
 
 <script>
+/* Journey Tracking Functions */
+function trackJourney(action, details) {
+    try {
+        var journey = JSON.parse(localStorage.getItem("userJourney") || "[]");
+        var now = new Date();
+        var time = now.toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', hour12: true });
+        var date = now.toLocaleDateString('en-MY');
+        journey.push({ action: action, details: details || "", time: date + " " + time, page: "detail.html" });
+        if (journey.length > 50) journey.splice(0, journey.length - 50);
+        localStorage.setItem("userJourney", JSON.stringify(journey));
+    } catch(e) {}
+}
+function getJourneySummary() {
+    try {
+        var journey = JSON.parse(localStorage.getItem("userJourney") || "[]");
+        if (journey.length === 0) return "No journey data";
+        return journey.map(function(j) { return "[" + j.time + "] " + j.action + (j.details ? ": " + j.details : ""); }).join(" | ");
+    } catch(e) { return ""; }
+}
+function clearJourney() { localStorage.removeItem("userJourney"); }
+trackJourney("Visited Project Detail");
+
 /* Google Sheets URL */
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbyJ8cKQ0RuzeitTHr17vI19JTdHQ3_SQ-Z1mWmT86L01mukdMe9JnE6vRYoE6luQ6KC/exec";
 

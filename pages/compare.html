@@ -92,6 +92,28 @@
     </div>
 
 <script>
+/* Journey Tracking Functions */
+function trackJourney(action, details) {
+    try {
+        var journey = JSON.parse(localStorage.getItem("userJourney") || "[]");
+        var now = new Date();
+        var time = now.toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', hour12: true });
+        var date = now.toLocaleDateString('en-MY');
+        journey.push({ action: action, details: details || "", time: date + " " + time, page: "compare.html" });
+        if (journey.length > 50) journey.splice(0, journey.length - 50);
+        localStorage.setItem("userJourney", JSON.stringify(journey));
+    } catch(e) {}
+}
+function getJourneySummary() {
+    try {
+        var journey = JSON.parse(localStorage.getItem("userJourney") || "[]");
+        if (journey.length === 0) return "No journey data";
+        return journey.map(function(j) { return "[" + j.time + "] " + j.action + (j.details ? ": " + j.details : ""); }).join(" | ");
+    } catch(e) { return ""; }
+}
+function clearJourney() { localStorage.removeItem("userJourney"); }
+trackJourney("Visited Comparison Page");
+
 const selected = JSON.parse(localStorage.getItem("selectedProjects")) || [];
 const container = document.getElementById("compareContainer");
 const whatsappForm = document.getElementById("whatsappForm");
