@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator – MYProjectComparison</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .calc-wrapper {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .calc-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px 28px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.06);
+        }
+
+        .calc-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .calc-field {
+            margin-bottom: 20px;
+        }
+
+        .calc-field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 8px;
+        }
+
+        .calc-field input[type="number"],
+        .calc-field input[type="text"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #1d1d1f;
+            outline: none;
+            transition: border-color 0.2s;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            -moz-appearance: textfield;
+        }
+
+        .calc-field input::-webkit-outer-spin-button,
+        .calc-field input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .calc-field input:focus {
+            border-color: #1d1d1f;
+        }
+
+        .calc-field .input-hint {
+            font-size: 11px;
+            color: #aeaeb2;
+            margin-top: 4px;
+        }
+
+        .calc-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .calc-slider-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .calc-slider-row input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 4px;
+            border-radius: 2px;
+            background: #e5e5e7;
+            outline: none;
+        }
+
+        .calc-slider-row input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #1d1d1f;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .calc-slider-row input[type="range"]::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #1d1d1f;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .calc-slider-val {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1d1d1f;
+            min-width: 52px;
+            text-align: right;
+        }
+
+        /* Result card */
+        .calc-result {
+            background: #1d1d1f;
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 28px;
+            text-align: center;
+            color: white;
+        }
+
+        .calc-result-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+
+        .calc-result-amount {
+            font-size: 36px;
+            font-weight: 700;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .calc-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 18px;
+        }
+
+        .calc-breakdown-item {
+            text-align: center;
+        }
+
+        .calc-breakdown-item .brk-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+
+        .calc-breakdown-item .brk-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Disclaimer */
+        .calc-disclaimer {
+            font-size: 11px;
+            color: #aeaeb2;
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 480px) {
+            .calc-card { padding: 24px 20px; }
+            .calc-row { grid-template-columns: 1fr; }
+            .calc-result-amount { font-size: 28px; }
+            .calc-breakdown { grid-template-columns: 1fr; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a class="nav-brand" href="../index.html">🏠 MYProjectComparison</a>
+        <div class="nav-links">
+            <a href="../index.html">Projects</a>
+            <a href="find.html">Smart Finder</a>
+            <a href="calculator.html" class="active">Calculator</a>
+        </div>
+    </nav>
+
+    <div class="page">
+        <h1 class="page-title">Loan Calculator</h1>
+        <p class="page-subtitle">Estimate your monthly instalment for any property</p>
+
+        <div class="calc-wrapper">
+            <div class="calc-card">
+                <h2>Enter Loan Details</h2>
+
+                <div class="calc-field">
+                    <label>Property Price (RM)</label>
+                    <input type="text" id="calcPrice" value="500,000" inputmode="numeric">
+                </div>
+
+                <div class="calc-field">
+                    <label>Down Payment</label>
+                    <div class="calc-slider-row">
+                        <input type="range" id="calcDown" min="0" max="50" value="10" step="1">
+                        <span class="calc-slider-val" id="calcDownVal">10%</span>
+                    </div>
+                    <div class="input-hint" id="calcDownAmt">RM 50,000</div>
+                </div>
+
+                <div class="calc-row">
+                    <div class="calc-field">
+                        <label>Interest Rate (%)</label>
+                        <input type="number" id="calcRate" value="3.55" step="0.1" min="0.1" max="15">
+                    </div>
+                    <div class="calc-field">
+                        <label>Loan Tenure (Years)</label>
+                        <input type="number" id="calcTenure" value="35" min="1" max="40">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div class="calc-result" id="calcResult">
+                <div class="calc-result-label">Estimated Monthly Instalment</div>
+                <div class="calc-result-amount" id="calcMonthly">RM 2,097</div>
+                <div class="calc-breakdown">
+                    <div class="calc-breakdown-item">
+                        <div class="brk-label">Loan Amount</div>
+                        <div class="brk-value" id="calcLoan">RM 450,000</div>
+                    </div>
+                    <div class="calc-breakdown-item">
+                        <div class="brk-label">Total Interest</div>
+                        <div class="brk-value" id="calcInterest">RM 430,890</div>
+                    </div>
+                    <div class="calc-breakdown-item">
+                        <div class="brk-label">Total Payment</div>
+                        <div class="brk-value" id="calcTotal">RM 880,890</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="calc-disclaimer">
+                * This is an estimate only. Actual instalment may vary based on your bank's terms, credit score, and other factors.
+            </p>
+
+            <div class="back-row" style="margin-top:28px">
+                <button class="btn-outline" onclick="window.location.href='../index.html'">
+                    ← Browse Projects
+                </button>
+            </div>
+        </div>
+    </div>
+
+<script>
+const priceInput = document.getElementById('calcPrice');
+const downSlider = document.getElementById('calcDown');
+const downVal    = document.getElementById('calcDownVal');
+const downAmt    = document.getElementById('calcDownAmt');
+const rateInput  = document.getElementById('calcRate');
+const tenureInput= document.getElementById('calcTenure');
+
+function formatRM(n) {
+    return 'RM ' + Math.round(n).toLocaleString('en-MY');
+}
+
+function parseFormattedNum(str) {
+    return parseFloat((str || '').replace(/[^0-9.]/g, '')) || 0;
+}
+
+function calculate() {
+    const price   = parseFormattedNum(priceInput.value);
+    const downPct = parseInt(downSlider.value) || 0;
+    const rate    = parseFloat(rateInput.value) || 0;
+    const years   = parseInt(tenureInput.value) || 1;
+
+    const downPayment = price * (downPct / 100);
+    const loanAmount  = price - downPayment;
+    const months      = years * 12;
+    const monthlyRate = rate / 100 / 12;
+
+    downVal.textContent = downPct + '%';
+    downAmt.textContent = formatRM(downPayment);
+
+    let monthly = 0;
+    if (monthlyRate > 0 && months > 0 && loanAmount > 0) {
+        monthly = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, months)
+                  / (Math.pow(1 + monthlyRate, months) - 1);
+    } else if (months > 0 && loanAmount > 0) {
+        monthly = loanAmount / months;
+    }
+
+    const totalPayment  = monthly * months;
+    const totalInterest = totalPayment - loanAmount;
+
+    document.getElementById('calcMonthly').textContent  = formatRM(monthly);
+    document.getElementById('calcLoan').textContent     = formatRM(loanAmount);
+    document.getElementById('calcInterest').textContent = formatRM(totalInterest);
+    document.getElementById('calcTotal').textContent    = formatRM(totalPayment);
+}
+
+// Auto-format price with commas
+priceInput.addEventListener('input', () => {
+    const raw = priceInput.value.replace(/[^0-9]/g, '');
+    if (raw) {
+        const pos = priceInput.selectionStart;
+        const oldLen = priceInput.value.length;
+        priceInput.value = parseInt(raw).toLocaleString('en-MY');
+        const newLen = priceInput.value.length;
+        priceInput.setSelectionRange(pos + (newLen - oldLen), pos + (newLen - oldLen));
+    }
+    calculate();
+});
+
+downSlider.addEventListener('input', calculate);
+rateInput.addEventListener('input', calculate);
+tenureInput.addEventListener('input', calculate);
+
+// Pre-fill from selected project if available
+const selected = JSON.parse(localStorage.getItem("selectedProjects")) || [];
+if (selected.length > 0) {
+    const firstPrice = selected[0].price || '';
+    const num = parseFormattedNum(firstPrice);
+    if (num > 0) {
+        priceInput.value = Math.round(num).toLocaleString('en-MY');
+    }
+}
+
+calculate();
+</script>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-brand">MYProjectComparison</div>
+        <div class="footer-disclaimer">All images are artist's impressions and for illustration purposes only. Actual product may vary.</div>
+        <div class="footer-disclaimer">All images and project information are property of their respective developers and are used for informational purposes only.</div>
+        <div class="footer-copy">&copy; 2025 MYProjectComparison. All rights reserved.</div>
+    </footer>
+
+</body>
+</html>

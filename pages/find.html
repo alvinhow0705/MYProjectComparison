@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Finder – MYProjectComparison</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a class="nav-brand" href="../index.html">🏠 MYProjectComparison</a>
+        <div class="nav-links">
+            <a href="../index.html">Projects</a>
+            <a href="find.html" class="active">Smart Finder</a>
+            <a href="calculator.html">Calculator</a>
+        </div>
+    </nav>
+
+    <div class="page">
+        <h1 class="page-title">🔍 Smart Property Finder</h1>
+        <p class="page-subtitle">Tell us your budget and preferences — we'll find the best matches</p>
+
+        <div class="finder-form">
+            <div class="form-group">
+                <label>Your Budget (RM)</label>
+                <input id="budget" type="text" placeholder="e.g. 500000, 500k, or 50w">
+            </div>
+
+            <div class="form-group">
+                <label>Preferred Location</label>
+                <select id="location">
+                    <option value="Any">Any Location</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Buying Purpose</label>
+                <select id="purpose">
+                    <option value="Own Stay">Own Stay</option>
+                    <option value="Investment">Investment</option>
+                    <option value="Both">Own Stay + Investment</option>
+                </select>
+            </div>
+
+            <button id="findBtn" style="width:100%;">Find Best Projects →</button>
+        </div>
+
+        <!-- Results appear here -->
+        <div id="finderResults"></div>
+
+        <div class="back-row">
+            <button class="btn-outline" onclick="window.location.href='../index.html'">
+                ← Back to All Projects
+            </button>
+        </div>
+    </div>
+
+    <!-- STICKY BOTTOM BAR (hidden until results show) -->
+    <div class="bottom-bar" id="finderBar" style="display:none;">
+        <p id="finderHint">Tip: Select 1 project to view details or 2 to compare</p>
+        <div>
+            <span style="color:#888; font-size:14px; margin-right:14px;">
+                Selected: <strong id="finderCount">0</strong> / 2
+            </span>
+            <button id="finderCompareBtn" disabled>Select a Project</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-brand">MYProjectComparison</div>
+        <div class="footer-disclaimer">All images are artist's impressions and for illustration purposes only. Actual product may vary.</div>
+        <div class="footer-disclaimer">All images and project information are property of their respective developers and are used for informational purposes only.</div>
+        <div class="footer-copy">&copy; 2025 MYProjectComparison. All rights reserved.</div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
