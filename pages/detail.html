@@ -140,7 +140,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     container.innerHTML = `
         <div class="detail-card">
-            <img src="../${p.image}" alt="${p.name}" onerror="this.style.display='none'">
+            <div style="position:relative">
+                <img src="../${p.image}" alt="${p.name}" onerror="this.style.display='none'">
+                ${p.tag ? `<span class="card-img-tag">${p.tag}</span>` : ""}
+            </div>
             <div class="detail-card-body">
                 <h2>${p.name}</h2>
                 ${tagsHtml}

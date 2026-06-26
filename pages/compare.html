@@ -110,7 +110,10 @@ if (!selected || selected.length < 2) {
     container.innerHTML = `
         <div class="compare-grid">
             <div class="compare-card">
-                <img src="../${a.image}" alt="${a.name}" onerror="this.style.display='none'">
+                <div style="position:relative">
+                    <img src="../${a.image}" alt="${a.name}" onerror="this.style.display='none'">
+                    ${a.tag ? `<span class="card-img-tag">${a.tag}</span>` : ""}
+                </div>
                 <div class="compare-card-body">
                     <h2>${a.name}</h2>
                     ${tagsHtml(a.tags)}
@@ -120,7 +123,10 @@ if (!selected || selected.length < 2) {
             <div class="vs">VS</div>
 
             <div class="compare-card">
-                <img src="../${b.image}" alt="${b.name}" onerror="this.style.display='none'">
+                <div style="position:relative">
+                    <img src="../${b.image}" alt="${b.name}" onerror="this.style.display='none'">
+                    ${b.tag ? `<span class="card-img-tag">${b.tag}</span>` : ""}
+                </div>
                 <div class="compare-card-body">
                     <h2>${b.name}</h2>
                     ${tagsHtml(b.tags)}
