@@ -17,6 +17,9 @@
       gtag('js', new Date());
       gtag('config', 'G-EDVF9QYQPZ');
     </script>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="../favicon-192.png">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -313,14 +316,11 @@ document.getElementById("waSendBtn")?.addEventListener("click", function () {
 
 My name is *${userName}*
 
-Buying Purpose: ${userPurpose}
-Interest Level: ${userStatus}
-
 I'm interested in:
 1. *${selected[0]?.name}*
 2. *${selected[1]?.name}*
 
-Please send me the floor plans, full price list & any current promos for both projects. Thank you!`;
+Please send me the e-Brochure. Thank you!`;
 
     if (typeof gtag === 'function') gtag('event', 'whatsapp_lead', {
         source: 'Compare',
