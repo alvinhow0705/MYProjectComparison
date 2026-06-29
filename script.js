@@ -3,6 +3,9 @@ let selected = [];
 let activeArea = "All";
 let activeTitle = "All";
 let activeSort = "default";
+let activePrice = "All";
+let activeType = "All";
+let searchQuery = "";
 
 /* =========================
    USER JOURNEY TRACKING
@@ -134,6 +137,37 @@ function initFilterSort() {
             activeSort = sortSelect.value;
             trackJourney("Sorted", sortSelect.value);
             if (typeof gtag === 'function') gtag('event', 'sort_changed', { sort_value: sortSelect.value });
+            renderProjects();
+        });
+    }
+
+    // Search box
+    const searchBox = document.getElementById('searchBox');
+    if (searchBox) {
+        searchBox.addEventListener('input', () => {
+            searchQuery = searchBox.value.trim().toLowerCase();
+            renderProjects();
+        });
+    }
+
+    // Price range filter
+    const priceSelect = document.getElementById('filterPrice');
+    if (priceSelect) {
+        priceSelect.addEventListener('change', () => {
+            activePrice = priceSelect.value;
+            trackJourney("Filtered Price", priceSelect.options[priceSelect.selectedIndex].text);
+            if (typeof gtag === 'function') gtag('event', 'filter_price', { price_value: priceSelect.value });
+            renderProjects();
+        });
+    }
+
+    // Property type filter
+    const typeSelect = document.getElementById('filterType');
+    if (typeSelect) {
+        typeSelect.addEventListener('change', () => {
+            activeType = typeSelect.value;
+            trackJourney("Filtered Type", typeSelect.value);
+            if (typeof gtag === 'function') gtag('event', 'filter_type', { type_value: typeSelect.value });
             renderProjects();
         });
     }
@@ -331,12 +365,50 @@ function renderProjects() {
         filtered = filtered.filter(p => p.title === activeTitle);
     }
 
+    // Filter by price range
+    if (activePrice !== "All") {
+        const [lo, hi] = activePrice.split('-').map(Number);
+        filtered = filtered.filter(p => {
+            const price = parsePrice(p.price);
+            return price >= lo && price <= hi;
+        });
+    }
+
+    // Filter by property type
+    if (activeType !== "All") {
+        filtered = filtered.filter(p => {
+            if (activeType === "Commercial") return (p.type || "").includes("Commercial");
+            return (p.type || "") === activeType;
+        });
+    }
+
+    // Search by name / area / developer
+    if (searchQuery) {
+        filtered = filtered.filter(p =>
+            (p.name || "").toLowerCase().includes(searchQuery) ||
+            (p.location || "").toLowerCase().includes(searchQuery) ||
+            (p.developer || "").toLowerCase().includes(searchQuery)
+        );
+    }
+
     // Sort
     filtered = sortProjects(filtered);
 
     // Update project count
     const countEl = document.getElementById('projectCount');
     if (countEl) countEl.textContent = `Showing ${filtered.length} project${filtered.length !== 1 ? 's' : ''}`;
+
+    // Empty state
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state" style="grid-column:1/-1; text-align:center; padding:60px 20px; color:#888;">
+                <p style="font-size:40px; margin-bottom:8px;">🔍</p>
+                <p style="font-size:16px; color:#555;">No projects match your filters.</p>
+                <p style="font-size:13px; margin-top:6px;">Try widening your price range, clearing the search, or picking another area.</p>
+            </div>
+        `;
+        return;
+    }
 
     filtered.forEach(project => {
         const card = document.createElement('div');

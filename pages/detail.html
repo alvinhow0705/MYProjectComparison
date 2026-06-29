@@ -150,6 +150,59 @@ function sendToSheet(data) {
     form.remove();
 }
 
+/* Auto-generate Pros & Cons from project data */
+function getProsCons(p) {
+    const pros = [], cons = [];
+    const price = parseInt((p.price || "").replace(/\D/g, "")) || 0;
+    const psf   = parseInt((p.psf || "").replace(/[^\d]/g, "")) || 0;
+    const units = parseInt(String(p["total unit"] || "").replace(/\D/g, "")) || 0;
+    const comp  = (p["completion Year"] || "").toLowerCase();
+    const compYear = parseInt((comp.match(/\d{4}/) || [])[0]) || null;
+    const tagText = ((p.tag || "") + " " + (p.tags ? p.tags.join(" ") : "")).toLowerCase();
+
+    if (p.title === "Freehold") pros.push("Freehold title — you own it forever, usually stronger resale value");
+    else if (p.title === "Leasehold") cons.push("Leasehold title (typically a 99-year lease)");
+
+    if (price && price < 500000) pros.push("Affordable entry price — under RM500,000");
+    if (price && price > 1200000) cons.push("Higher price point — above RM1.2 million");
+
+    if (psf && psf < 750) pros.push("Good value — lower price per sqft than most KL projects");
+    if (psf && psf > 1100) cons.push("Premium price per sqft");
+
+    if (comp.includes("completed")) pros.push("Ready to move in — already completed");
+    else if (compYear && compYear <= 2027) pros.push("Completing soon (" + compYear + ")");
+    else if (compYear && compYear >= 2029) cons.push("Longer wait — completes in " + compYear);
+
+    if (units && units < 500) pros.push("Low-density development — more privacy and exclusivity");
+    if (units && units > 1000) cons.push("High-density development (" + p["total unit"] + " units)");
+
+    if (tagText.includes("lrt") || tagText.includes("mrt")) pros.push("Good public transport access (LRT/MRT nearby)");
+    if (tagText.includes("pet")) pros.push("Pet-friendly development");
+
+    const prime = ["KLCC", "Mont Kiara", "Bangsar", "Bangsar South"];
+    if (prime.includes(p.location)) pros.push("Prestigious, established location — " + p.location);
+
+    if (pros.length === 0) pros.push("Located in " + (p.location || "a sought-after area"));
+    if (cons.length === 0) cons.push("Contact us for the latest unit availability & promotions");
+
+    return { pros, cons };
+}
+
+function prosConsHtml(p) {
+    const { pros, cons } = getProsCons(p);
+    return `
+        <div class="proscons-card">
+            <div class="proscons-col proscons-pros">
+                <h3>👍 Pros</h3>
+                <ul>${pros.map(x => `<li>${x}</li>`).join("")}</ul>
+            </div>
+            <div class="proscons-col proscons-cons">
+                <h3>🤔 Things to Consider</h3>
+                <ul>${cons.map(x => `<li>${x}</li>`).join("")}</ul>
+            </div>
+        </div>`;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById("detailContainer");
     const whatsappForm = document.getElementById("whatsappForm");
@@ -223,6 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
         </div>
+        ${prosConsHtml(p)}
     `;
 
     // Show the WhatsApp form

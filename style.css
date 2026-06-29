@@ -1069,6 +1069,89 @@ button:disabled {
     padding-top: 12px;
 }
 
+/* ========================= SEARCH BOX ========================= */
+.search-box {
+    flex: 1 1 100%;
+    padding: 11px 16px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #1d1d1f;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.search-box:focus {
+    border-color: #111;
+}
+
+.search-box::placeholder {
+    color: #aaa;
+}
+
+/* ========================= PROS & CONS ========================= */
+.proscons-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 600px;
+    margin: 24px auto 0;
+}
+
+.proscons-col {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 22px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.06);
+}
+
+.proscons-pros { border-top: 3px solid #34c759; }
+.proscons-cons { border-top: 3px solid #ff9f0a; }
+
+.proscons-col h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1d1d1f;
+}
+
+.proscons-col ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.proscons-col li {
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.55;
+    margin-bottom: 9px;
+}
+
+.proscons-col li:last-child { margin-bottom: 0; }
+
+/* In comparison page, pros/cons sit under each project column */
+.proscons-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.proscons-compare .proscons-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.proscons-compare h4.proscons-name {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2px;
+    color: #1d1d1f;
+}
+
 /* ========================= RESPONSIVE ========================= */
 @media (max-width: 640px) {
     .compare-grid {
@@ -1080,5 +1163,9 @@ button:disabled {
     nav {
         flex-direction: column;
         gap: 10px;
+    }
+    .proscons-card,
+    .proscons-compare {
+        grid-template-columns: 1fr;
     }
 }
