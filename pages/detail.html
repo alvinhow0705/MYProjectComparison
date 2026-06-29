@@ -160,32 +160,55 @@ function getProsCons(p) {
     const compYear = parseInt((comp.match(/\d{4}/) || [])[0]) || null;
     const tagText = ((p.tag || "") + " " + (p.tags ? p.tags.join(" ") : "")).toLowerCase();
 
-    if (p.title === "Freehold") pros.push("Freehold title — you own it forever, usually stronger resale value");
-    else if (p.title === "Leasehold") cons.push("Leasehold title (typically a 99-year lease)");
+    // Tenure (both framed positively)
+    if (p.title === "Freehold") pros.push("Freehold title — own it forever, with strong long-term resale value");
+    else if (p.title === "Leasehold") pros.push("More affordable entry into this sought-after area");
 
-    if (price && price < 500000) pros.push("Affordable entry price — under RM500,000");
-    if (price && price > 1200000) cons.push("Higher price point — above RM1.2 million");
+    // Price (always a selling point)
+    if (price && price < 500000) pros.push("Attractive entry price — ideal for first-time buyers & investors");
+    else if (price && price > 1200000) pros.push("Premium development in a prestigious, high-demand address");
+    else if (price) pros.push("Competitively priced for its location and offering");
 
-    if (psf && psf < 750) pros.push("Good value — lower price per sqft than most KL projects");
-    if (psf && psf > 1100) cons.push("Premium price per sqft");
+    // PSF
+    if (psf && psf < 750) pros.push("Excellent value — priced below the area average per sqft");
+    else if (psf && psf > 1100) pros.push("Premium build quality & finishes in a prime location");
 
-    if (comp.includes("completed")) pros.push("Ready to move in — already completed");
-    else if (compYear && compYear <= 2027) pros.push("Completing soon (" + compYear + ")");
-    else if (compYear && compYear >= 2029) cons.push("Longer wait — completes in " + compYear);
+    // Completion (all positive)
+    if (comp.includes("completed")) pros.push("Ready to move in — no waiting, view the actual unit");
+    else if (compYear && compYear <= 2027) pros.push("Completing soon — move in without a long wait");
+    else if (compYear && compYear >= 2028) pros.push("Brand-new launch — secure early-bird pricing & best unit choice now");
 
-    if (units && units < 500) pros.push("Low-density development — more privacy and exclusivity");
-    if (units && units > 1000) cons.push("High-density development (" + p["total unit"] + " units)");
+    // Density (both positive)
+    if (units && units < 500) pros.push("Low-density development — more privacy & exclusivity");
+    else if (units && units > 1000) pros.push("Large integrated community with extensive facilities & amenities");
 
-    if (tagText.includes("lrt") || tagText.includes("mrt")) pros.push("Good public transport access (LRT/MRT nearby)");
-    if (tagText.includes("pet")) pros.push("Pet-friendly development");
+    // Transport
+    if (tagText.includes("lrt") || tagText.includes("mrt")) pros.push("Excellent connectivity — LRT/MRT within easy reach");
 
+    // Pet-friendly
+    if (tagText.includes("pet")) pros.push("Pet-friendly — perfect for animal lovers");
+
+    // Prime location
     const prime = ["KLCC", "Mont Kiara", "Bangsar", "Bangsar South"];
-    if (prime.includes(p.location)) pros.push("Prestigious, established location — " + p.location);
+    if (prime.includes(p.location)) pros.push("Prestigious address — strong rental & resale demand");
 
-    if (pros.length === 0) pros.push("Located in " + (p.location || "a sought-after area"));
-    if (cons.length === 0) cons.push("Contact us for the latest unit availability & promotions");
+    // Developer credibility
+    if (p.developer && p.developer !== "—") pros.push("Developed by " + p.developer);
 
-    return { pros, cons };
+    // Always-relevant location pro
+    pros.push("Well-located in " + (p.location || "a growing area") + " with amenities nearby");
+
+    // De-duplicate and keep up to 6 strong pros
+    const seen = new Set();
+    const finalPros = [];
+    for (const x of pros) { if (!seen.has(x)) { seen.add(x); finalPros.push(x); } if (finalPros.length >= 6) break; }
+
+    // "Good to Know" — one gentle, sales-positive note (never a dealbreaker)
+    if (comp.includes("completed")) cons.push("Ready units move fast — check current availability with us");
+    else if (compYear && compYear >= 2028) cons.push("Still under construction — ask us for floor plans & build progress");
+    else cons.push("Limited units & promotions — message us for the latest price list");
+
+    return { pros: finalPros, cons };
 }
 
 function prosConsHtml(p) {
@@ -197,7 +220,7 @@ function prosConsHtml(p) {
                 <ul>${pros.map(x => `<li>${x}</li>`).join("")}</ul>
             </div>
             <div class="proscons-col proscons-cons">
-                <h3>🤔 Things to Consider</h3>
+                <h3>👀 Good to Know</h3>
                 <ul>${cons.map(x => `<li>${x}</li>`).join("")}</ul>
             </div>
         </div>`;

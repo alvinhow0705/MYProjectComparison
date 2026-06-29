@@ -127,32 +127,55 @@ function getProsCons(p) {
     const compYear = parseInt((comp.match(/\d{4}/) || [])[0]) || null;
     const tagText = ((p.tag || "") + " " + (p.tags ? p.tags.join(" ") : "")).toLowerCase();
 
-    if (p.title === "Freehold") pros.push("Freehold — own it forever, stronger resale value");
-    else if (p.title === "Leasehold") cons.push("Leasehold title (typically 99-year lease)");
+    // Tenure (both framed positively)
+    if (p.title === "Freehold") pros.push("Freehold — own it forever, strong resale value");
+    else if (p.title === "Leasehold") pros.push("More affordable entry into the area");
 
-    if (price && price < 500000) pros.push("Affordable — under RM500,000");
-    if (price && price > 1200000) cons.push("Higher price — above RM1.2 million");
+    // Price (always a selling point)
+    if (price && price < 500000) pros.push("Attractive entry price for buyers & investors");
+    else if (price && price > 1200000) pros.push("Premium development in a prestigious address");
+    else if (price) pros.push("Competitively priced for its location");
 
-    if (psf && psf < 750) pros.push("Good value per sqft");
-    if (psf && psf > 1100) cons.push("Premium price per sqft");
+    // PSF
+    if (psf && psf < 750) pros.push("Excellent value — below area average per sqft");
+    else if (psf && psf > 1100) pros.push("Premium build quality & finishes");
 
-    if (comp.includes("completed")) pros.push("Ready to move in");
-    else if (compYear && compYear <= 2027) pros.push("Completing soon (" + compYear + ")");
-    else if (compYear && compYear >= 2029) cons.push("Longer wait — completes " + compYear);
+    // Completion (all positive)
+    if (comp.includes("completed")) pros.push("Ready to move in — no waiting");
+    else if (compYear && compYear <= 2027) pros.push("Completing soon — short wait");
+    else if (compYear && compYear >= 2028) pros.push("Brand-new launch — early-bird pricing now");
 
+    // Density (both positive)
     if (units && units < 500) pros.push("Low-density — more privacy");
-    if (units && units > 1000) cons.push("High-density (" + p["total unit"] + " units)");
+    else if (units && units > 1000) pros.push("Large community with full facilities");
 
-    if (tagText.includes("lrt") || tagText.includes("mrt")) pros.push("Good LRT/MRT access");
-    if (tagText.includes("pet")) pros.push("Pet-friendly");
+    // Transport
+    if (tagText.includes("lrt") || tagText.includes("mrt")) pros.push("Excellent LRT/MRT connectivity");
 
+    // Pet-friendly
+    if (tagText.includes("pet")) pros.push("Pet-friendly development");
+
+    // Prime location
     const prime = ["KLCC", "Mont Kiara", "Bangsar", "Bangsar South"];
-    if (prime.includes(p.location)) pros.push("Prime location — " + p.location);
+    if (prime.includes(p.location)) pros.push("Prestigious address — strong demand");
 
-    if (pros.length === 0) pros.push("Located in " + (p.location || "a sought-after area"));
-    if (cons.length === 0) cons.push("Contact us for latest availability");
+    // Developer credibility
+    if (p.developer && p.developer !== "—") pros.push("Developed by " + p.developer);
 
-    return { pros, cons };
+    // Always-relevant location pro
+    pros.push("Well-located in " + (p.location || "a growing area"));
+
+    // De-duplicate and keep up to 6 strong pros
+    const seen = new Set();
+    const finalPros = [];
+    for (const x of pros) { if (!seen.has(x)) { seen.add(x); finalPros.push(x); } if (finalPros.length >= 6) break; }
+
+    // "Good to Know" — one gentle, sales-positive note
+    if (comp.includes("completed")) cons.push("Ready units move fast — check availability");
+    else if (compYear && compYear >= 2028) cons.push("Under construction — ask for floor plans");
+    else cons.push("Limited units — message us for the price list");
+
+    return { pros: finalPros, cons };
 }
 
 function prosConsStack(p) {
@@ -165,7 +188,7 @@ function prosConsStack(p) {
                 <ul>${pros.map(x => `<li>${x}</li>`).join("")}</ul>
             </div>
             <div class="proscons-col proscons-cons">
-                <h3>🤔 Things to Consider</h3>
+                <h3>👀 Good to Know</h3>
                 <ul>${cons.map(x => `<li>${x}</li>`).join("")}</ul>
             </div>
         </div>`;
