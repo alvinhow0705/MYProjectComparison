@@ -485,6 +485,7 @@ function renderProjects() {
                     </div>
                 </div>
                 <button class="select-btn">Select</button>
+                ${project.hasPage && project.slug ? `<a class="view-page-link" href="/projects/${project.slug}.html">View Full Page →</a>` : ""}
             </div>
         `;
 
@@ -824,6 +825,7 @@ function showFinderResults(results, container) {
                     </div>
                 </div>
                 <button class="select-btn">Select</button>
+                ${project.hasPage && project.slug ? `<a class="view-page-link" href="/projects/${project.slug}.html">View Full Page →</a>` : ""}
             </div>
         `;
 

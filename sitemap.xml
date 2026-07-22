@@ -20,4 +20,24 @@
     <loc>https://mypropertycomparison.com/pages/detail.html</loc>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://mypropertycomparison.com/projects/the-queenswoodz.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mypropertycomparison.com/projects/the-vividz.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mypropertycomparison.com/projects/the-aldenz-central-park-damansara.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mypropertycomparison.com/projects/phoeniz-suites.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mypropertycomparison.com/projects/d-evia.html</loc>
+    <priority>0.9</priority>
+  </url>
 </urlset>

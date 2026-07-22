@@ -18,7 +18,9 @@
       "assets/images/aldenz-3.jpeg",
       "assets/images/aldenz-4.jpeg"
     ],
-    "tag": "PET-FRIENDLY"
+    "tag": "PET-FRIENDLY",
+    "slug": "the-aldenz-central-park-damansara",
+    "hasPage": true
   },
   {
     "id": 2,
@@ -44,7 +46,9 @@
       "assets/images/queenswoodz-7.jpeg",
       "assets/images/queenswoodz-8.jpeg"
     ],
-    "tag": "BEST LRT ACCESS"
+    "tag": "BEST LRT ACCESS",
+    "slug": "the-queenswoodz",
+    "hasPage": true
   },
   {
     "id": 3,
@@ -66,7 +70,9 @@
       "assets/images/vividz-4.jpeg",
       "assets/images/vividz-5.jpeg"
     ],
-    "tag": "MEDICAL TOWNSHIP"
+    "tag": "MEDICAL TOWNSHIP",
+    "slug": "the-vividz",
+    "hasPage": true
   },
   {
     "id": 4,
@@ -90,7 +96,9 @@
       "assets/images/evia-5.jpg",
       "assets/images/evia-6.jpg"
     ],
-    "tag": "BEST MRT ACCESS"
+    "tag": "BEST MRT ACCESS",
+    "slug": "d-evia",
+    "hasPage": true
   },
   {
     "id": 5,
@@ -136,7 +144,9 @@
       "assets/images/phoeniz-4.jpg",
       "assets/images/phoeniz-5.jpg"
     ],
-    "tag": "PREMIUM"
+    "tag": "PREMIUM",
+    "slug": "phoeniz-suites",
+    "hasPage": true
   },
   {
     "id": 7,
@@ -397,7 +407,10 @@
     "price": "From RM700,300",
     "psf": "From 1,100 psf",
     "image": "assets/images/oneseputeh.png",
-    "images": ["assets/images/oneseputeh.png", "assets/images/oneseputeh-1.png"],
+    "images": [
+      "assets/images/oneseputeh.png",
+      "assets/images/oneseputeh-1.png"
+    ],
     "tag": "FREEHOLD"
   },
   {
@@ -413,7 +426,18 @@
     "price": "From RM679,000",
     "psf": "From 841 psf",
     "image": "assets/images/maple.jpg",
-    "images": ["assets/images/maple.jpg", "assets/images/maple.webp", "assets/images/maple-1.png", "assets/images/maple-2.png", "assets/images/maple-3.webp", "assets/images/maple-4.webp", "assets/images/maple-5.gif", "assets/images/maple-6.webp", "assets/images/maple-7.webp", "assets/images/maple-8.webp"],
+    "images": [
+      "assets/images/maple.jpg",
+      "assets/images/maple.webp",
+      "assets/images/maple-1.png",
+      "assets/images/maple-2.png",
+      "assets/images/maple-3.webp",
+      "assets/images/maple-4.webp",
+      "assets/images/maple-5.gif",
+      "assets/images/maple-6.webp",
+      "assets/images/maple-7.webp",
+      "assets/images/maple-8.webp"
+    ],
     "tag": "FREEHOLD"
   },
   {
@@ -429,7 +453,12 @@
     "price": "From RM666,000",
     "psf": "From 783 psf",
     "image": "assets/images/aras.webp",
-    "images": ["assets/images/aras.webp", "assets/images/aras-1.jpeg", "assets/images/aras-2.webp", "assets/images/aras-3.webp"],
+    "images": [
+      "assets/images/aras.webp",
+      "assets/images/aras-1.jpeg",
+      "assets/images/aras-2.webp",
+      "assets/images/aras-3.webp"
+    ],
     "tag": "TOWNSHIP"
   },
   {
@@ -445,7 +474,16 @@
     "price": "From RM665,000",
     "psf": "From 1,450 psf",
     "image": "assets/images/parkside.jpg",
-    "images": ["assets/images/parkside.jpg", "assets/images/parkside-1.jpg", "assets/images/parkside-2.jpg", "assets/images/parkside-3.jpg", "assets/images/parkside-4.jpg", "assets/images/parkside-5.jpg", "assets/images/parkside-6.jpg", "assets/images/parkside-7.jpg"],
+    "images": [
+      "assets/images/parkside.jpg",
+      "assets/images/parkside-1.jpg",
+      "assets/images/parkside-2.jpg",
+      "assets/images/parkside-3.jpg",
+      "assets/images/parkside-4.jpg",
+      "assets/images/parkside-5.jpg",
+      "assets/images/parkside-6.jpg",
+      "assets/images/parkside-7.jpg"
+    ],
     "tag": ""
   },
   {
@@ -461,7 +499,15 @@
     "price": "From RM643,300",
     "psf": "From 675 psf",
     "image": "assets/images/foresthill.jpg",
-    "images": ["assets/images/foresthill.jpg", "assets/images/foresthill-1.jpg", "assets/images/foresthill-2.jpg", "assets/images/foresthill-3.jpg", "assets/images/foresthill-4.jpg", "assets/images/foresthill-5.jpg", "assets/images/foresthill-6.jpg"],
+    "images": [
+      "assets/images/foresthill.jpg",
+      "assets/images/foresthill-1.jpg",
+      "assets/images/foresthill-2.jpg",
+      "assets/images/foresthill-3.jpg",
+      "assets/images/foresthill-4.jpg",
+      "assets/images/foresthill-5.jpg",
+      "assets/images/foresthill-6.jpg"
+    ],
     "tag": "ALMOST READY"
   },
   {
@@ -477,7 +523,13 @@
     "price": "From RM600,000",
     "psf": "From 565 psf",
     "image": "assets/images/alamanda.jpg",
-    "images": ["assets/images/alamanda.jpg", "assets/images/alamanda-0.jpeg", "assets/images/alamanda-1.jpg", "assets/images/alamanda-2.jpg", "assets/images/alamanda-3.jpg"],
+    "images": [
+      "assets/images/alamanda.jpg",
+      "assets/images/alamanda-0.jpeg",
+      "assets/images/alamanda-1.jpg",
+      "assets/images/alamanda-2.jpg",
+      "assets/images/alamanda-3.jpg"
+    ],
     "tag": "FREEHOLD"
   },
   {
@@ -493,7 +545,16 @@
     "price": "From RM593,000",
     "psf": "From 912 psf",
     "image": "assets/images/genstarz.webp",
-    "images": ["assets/images/genstarz.webp", "assets/images/genstarz-1.jpeg", "assets/images/genstarz-2.png", "assets/images/genstarz-3.png", "assets/images/genstarz-4.png", "assets/images/genstarz-5.png", "assets/images/genstarz-6.png", "assets/images/genstarz-7.png"],
+    "images": [
+      "assets/images/genstarz.webp",
+      "assets/images/genstarz-1.jpeg",
+      "assets/images/genstarz-2.png",
+      "assets/images/genstarz-3.png",
+      "assets/images/genstarz-4.png",
+      "assets/images/genstarz-5.png",
+      "assets/images/genstarz-6.png",
+      "assets/images/genstarz-7.png"
+    ],
     "tag": "DOORSTEP MRT"
   },
   {
@@ -509,7 +570,16 @@
     "price": "From RM580,000",
     "psf": "From 734 psf",
     "image": "assets/images/artesolaris.jpg",
-    "images": ["assets/images/artesolaris.jpg", "assets/images/artesolaris-1.jpg", "assets/images/artesolaris-2.jpg", "assets/images/artesolaris-3.jpg", "assets/images/artesolaris-4.jpg", "assets/images/artesolaris-5.jpg", "assets/images/artesolaris-6.jpg", "assets/images/artesolaris-7.jpg"],
+    "images": [
+      "assets/images/artesolaris.jpg",
+      "assets/images/artesolaris-1.jpg",
+      "assets/images/artesolaris-2.jpg",
+      "assets/images/artesolaris-3.jpg",
+      "assets/images/artesolaris-4.jpg",
+      "assets/images/artesolaris-5.jpg",
+      "assets/images/artesolaris-6.jpg",
+      "assets/images/artesolaris-7.jpg"
+    ],
     "tag": ""
   },
   {
@@ -540,7 +610,15 @@
     "price": "From RM554,000",
     "psf": "From 769 psf",
     "image": "assets/images/arra.webp",
-    "images": ["assets/images/arra.webp", "assets/images/arra-1.webp", "assets/images/arra-2.webp", "assets/images/arra-3.webp", "assets/images/arra-4.webp", "assets/images/arra-5.webp", "assets/images/arra-6.webp"],
+    "images": [
+      "assets/images/arra.webp",
+      "assets/images/arra-1.webp",
+      "assets/images/arra-2.webp",
+      "assets/images/arra-3.webp",
+      "assets/images/arra-4.webp",
+      "assets/images/arra-5.webp",
+      "assets/images/arra-6.webp"
+    ],
     "tag": "FREEHOLD"
   },
   {
@@ -556,7 +634,16 @@
     "price": "From RM538,800",
     "psf": "From 762 psf",
     "image": "assets/images/maspira.jpg",
-    "images": ["assets/images/maspira.jpg", "assets/images/maspira-1.jpg", "assets/images/maspira-2.jpg", "assets/images/maspira-3.jpg", "assets/images/maspira-4.jpg", "assets/images/maspira-5.jpg", "assets/images/maspira-6.jpg", "assets/images/maspira-7.jpg"],
+    "images": [
+      "assets/images/maspira.jpg",
+      "assets/images/maspira-1.jpg",
+      "assets/images/maspira-2.jpg",
+      "assets/images/maspira-3.jpg",
+      "assets/images/maspira-4.jpg",
+      "assets/images/maspira-5.jpg",
+      "assets/images/maspira-6.jpg",
+      "assets/images/maspira-7.jpg"
+    ],
     "tag": ""
   },
   {
@@ -572,7 +659,14 @@
     "price": "From RM537,000",
     "psf": "From 584 psf",
     "image": "assets/images/ren.jpg",
-    "images": ["assets/images/ren.jpg", "assets/images/ren-1.jpg", "assets/images/ren-2.jpg", "assets/images/ren-3.jpg", "assets/images/ren-4.jpg", "assets/images/ren-5.jpg"],
+    "images": [
+      "assets/images/ren.jpg",
+      "assets/images/ren-1.jpg",
+      "assets/images/ren-2.jpg",
+      "assets/images/ren-3.jpg",
+      "assets/images/ren-4.jpg",
+      "assets/images/ren-5.jpg"
+    ],
     "tag": ""
   },
   {
@@ -603,7 +697,11 @@
     "price": "From RM516,700",
     "psf": "From 700 psf",
     "image": "assets/images/thewyn.jpeg",
-    "images": ["assets/images/thewyn.jpeg", "assets/images/thewyn-.jpg", "assets/images/thewyn-2.jpg"],
+    "images": [
+      "assets/images/thewyn.jpeg",
+      "assets/images/thewyn-.jpg",
+      "assets/images/thewyn-2.jpg"
+    ],
     "tag": ""
   },
   {
@@ -619,7 +717,11 @@
     "price": "From RM470,800",
     "psf": "From 683 psf",
     "image": "assets/images/alora.jpg",
-    "images": ["assets/images/alora.jpg", "assets/images/alora-1.jpg", "assets/images/alora-2.jpg"],
+    "images": [
+      "assets/images/alora.jpg",
+      "assets/images/alora-1.jpg",
+      "assets/images/alora-2.jpg"
+    ],
     "tag": "PET-FRIENDLY"
   },
   {
@@ -635,7 +737,13 @@
     "price": "From RM448,230",
     "psf": "From 670 psf",
     "image": "assets/images/ambience.jpg",
-    "images": ["assets/images/ambience.jpg", "assets/images/ambience-1.jpg", "assets/images/ambience-2.png", "assets/images/ambience-3.jpg", "assets/images/ambience-4.jpg"],
+    "images": [
+      "assets/images/ambience.jpg",
+      "assets/images/ambience-1.jpg",
+      "assets/images/ambience-2.png",
+      "assets/images/ambience-3.jpg",
+      "assets/images/ambience-4.jpg"
+    ],
     "tag": "LOW DENS"
   },
   {
@@ -681,7 +789,13 @@
     "price": "From RM396,000",
     "psf": "From 752 psf",
     "image": "assets/images/artestar.jpg",
-    "images": ["assets/images/artestar.jpg", "assets/images/artestar-1.jpeg", "assets/images/artestar-2.jpeg", "assets/images/artestar-3.jpg", "assets/images/artestar-4.jpeg"],
+    "images": [
+      "assets/images/artestar.jpg",
+      "assets/images/artestar-1.jpeg",
+      "assets/images/artestar-2.jpeg",
+      "assets/images/artestar-3.jpg",
+      "assets/images/artestar-4.jpeg"
+    ],
     "tag": "3 RAIL LINES"
   },
   {
@@ -697,7 +811,11 @@
     "price": "From RM253,000",
     "psf": "From 800 psf",
     "image": "assets/images/colonial.png",
-    "images": ["assets/images/colonial.png", "assets/images/colonial-1.png", "assets/images/colonial-2.png"],
+    "images": [
+      "assets/images/colonial.png",
+      "assets/images/colonial-1.png",
+      "assets/images/colonial-2.png"
+    ],
     "tag": "STUDENT MARKET"
   }
 ]

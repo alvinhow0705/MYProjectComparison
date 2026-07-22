@@ -1152,6 +1152,49 @@ button:disabled {
     color: #1d1d1f;
 }
 
+/* ========================= PROJECT PAGE GALLERY ========================= */
+.detail-card .gallery-main {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    background: #f0f0f0;
+}
+.detail-card .gallery-thumbs {
+    display: flex;
+    gap: 6px;
+    padding: 8px;
+    overflow-x: auto;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
+.detail-card .gallery-thumbs img {
+    width: 72px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    flex: 0 0 auto;
+    border: 2px solid transparent;
+    transition: border-color 0.15s;
+}
+.detail-card .gallery-thumbs img:hover { border-color: #2563EB; }
+@media (max-width: 480px) {
+    .detail-card .gallery-main { height: 220px; }
+}
+
+/* View full page link on cards */
+.view-page-link {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2563EB;
+    text-decoration: none;
+}
+.view-page-link:hover { text-decoration: underline; }
+
 /* ========================= RESPONSIVE ========================= */
 @media (max-width: 640px) {
     .compare-grid {
