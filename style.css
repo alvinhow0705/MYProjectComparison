@@ -11,6 +11,19 @@ body {
     min-height: 100vh;
 }
 
+/* ========================= STICKY HEADER GROUP (index.html) ========================= */
+/* Wraps nav + area filter + search/filter bar so they stick as ONE unit instead of
+   each fighting for position:sticky;top:0 independently (which caused overlap on scroll). */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+}
+.sticky-header nav {
+    position: static; /* nav's own sticky is redundant/harmful once wrapped */
+}
+
 /* ========================= NAV ========================= */
 nav {
     background: white;
@@ -18,6 +31,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
     border-bottom: 1px solid #e5e5e7;
     position: sticky;
     top: 0;
@@ -76,9 +91,6 @@ nav {
     background: white;
     padding: 10px 24px;
     border-bottom: 1px solid #f0f0f2;
-    position: sticky;
-    top: 0;
-    z-index: 90;
 }
 
 .area-filter-wrap {
@@ -215,9 +227,6 @@ nav {
     padding: 12px 24px;
     border-bottom: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    position: sticky;
-    top: 0;
-    z-index: 89;
 }
 
 .filter-bar-inner {
@@ -1203,12 +1212,136 @@ button:disabled {
     .vs {
         padding-top: 0;
     }
-    nav {
-        flex-direction: column;
-        gap: 10px;
-    }
     .proscons-card,
     .proscons-compare {
         grid-template-columns: 1fr;
+    }
+
+    /* --- Nav: stay compact on one line instead of stacking tall --- */
+    nav {
+        padding: 10px 16px;
+    }
+    .nav-brand {
+        font-size: 13.5px;
+    }
+    .nav-brand img {
+        height: 24px !important;
+        width: 24px !important;
+        margin-right: 6px !important;
+    }
+    .nav-links {
+        gap: 3px;
+    }
+    .nav-links a {
+        padding: 6px 9px;
+        font-size: 12px;
+    }
+
+    /* --- Hero: smaller on phones --- */
+    .hero {
+        padding: 24px 16px 18px;
+    }
+    .hero h1 {
+        font-size: 22px;
+    }
+    .hero p {
+        font-size: 13px;
+    }
+
+    /* --- Area filter bar: hide hover-only scroll arrows, tighten padding --- */
+    .area-filter-bar {
+        padding: 8px 16px;
+    }
+    .area-scroll-btn {
+        display: none;
+    }
+    .area-btn {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+
+    /* --- Filter + sort bar: stack and wrap instead of overflowing --- */
+    .filter-bar {
+        padding: 10px 16px;
+    }
+    .filter-bar-inner {
+        gap: 10px;
+    }
+    .filter-pills {
+        flex-wrap: wrap;
+        row-gap: 6px;
+    }
+    .sort-group {
+        width: 100%;
+        flex-wrap: wrap;
+        row-gap: 8px;
+    }
+    .sort-select {
+        flex: 1 1 auto;
+        min-width: 105px;
+    }
+    .project-count {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* --- Project grid: tighter padding on small screens --- */
+    .projects {
+        padding: 18px 14px;
+        gap: 16px;
+    }
+    .card-img-wrap {
+        height: 170px;
+    }
+    .card-body {
+        padding: 16px 16px 18px;
+    }
+
+    /* --- Bottom bar: stack selection info above full-width button --- */
+    .bottom-bar {
+        padding: 14px 16px;
+    }
+    .bottom-bar > div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .bottom-bar span {
+        margin-right: 0 !important;
+    }
+    .bottom-bar button {
+        width: 100%;
+    }
+
+    /* --- Compare table: smaller text so both columns fit --- */
+    .compare-table th,
+    .compare-table td {
+        padding: 10px 8px;
+        font-size: 12.5px;
+    }
+    .compare-table td:first-child {
+        width: 90px;
+    }
+
+    /* --- Finder / detail page wrappers: less side padding --- */
+    .page {
+        padding: 20px 14px;
+    }
+    .finder-form,
+    .detail-card-body,
+    .compare-card-body {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    .nav-brand span.brand-text {
+        display: none;
+    }
+    .hero h1 {
+        font-size: 19px;
+    }
+    .card-img-wrap {
+        height: 150px;
     }
 }

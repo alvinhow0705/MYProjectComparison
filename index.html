@@ -27,68 +27,71 @@
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <a class="nav-brand" href="index.html"><img src="logo-nav.png" alt="MYPropertyComparison logo" style="height:28px;width:28px;vertical-align:middle;margin-right:8px;border-radius:7px;">MYPropertyComparison</a>
-        <div class="nav-links">
-            <a href="index.html" class="active">Projects</a>
-            <a href="pages/find.html">Smart Finder</a>
-            <a href="pages/calculator.html">Calculator</a>
+    <!-- STICKY HEADER GROUP (nav + area filter + search/filter bar stick together, not separately) -->
+    <div class="sticky-header">
+        <!-- NAV -->
+        <nav>
+            <a class="nav-brand" href="index.html"><img src="logo-nav.png" alt="MYPropertyComparison logo" style="height:28px;width:28px;vertical-align:middle;margin-right:8px;border-radius:7px;"><span class="brand-text">MYPropertyComparison</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Projects</a>
+                <a href="pages/find.html">Smart Finder</a>
+                <a href="pages/calculator.html">Calculator</a>
+            </div>
+        </nav>
+
+        <!-- AREA FILTER BAR -->
+        <div class="area-filter-bar">
+            <div class="area-filter-wrap">
+                <div class="area-fade-left" id="areaFadeL" style="opacity:0"></div>
+                <div class="area-fade-right" id="areaFadeR"></div>
+                <button class="area-scroll-btn left hidden" id="areaScrollL">‹</button>
+                <button class="area-scroll-btn right" id="areaScrollR">›</button>
+                <div class="area-filter-scroll" id="areaFilter"></div>
+            </div>
         </div>
-    </nav>
+
+        <!-- FILTER + SORT BAR -->
+        <div class="filter-bar">
+            <div class="filter-bar-inner">
+                <input type="text" id="searchBox" class="search-box" placeholder="🔍 Search by name, area or developer…">
+                <div class="filter-pills">
+                    <span class="filter-label">FILTER</span>
+                    <button class="filter-btn active" data-filter="All">All</button>
+                    <button class="filter-btn" data-filter="Freehold">Freehold</button>
+                    <button class="filter-btn" data-filter="Leasehold">Leasehold</button>
+                </div>
+                <div class="sort-group">
+                    <select id="filterPrice" class="sort-select">
+                        <option value="All">Any Price</option>
+                        <option value="0-500000">Under RM500k</option>
+                        <option value="500000-800000">RM500k – 800k</option>
+                        <option value="800000-1200000">RM800k – 1.2M</option>
+                        <option value="1200000-9999999999">Above RM1.2M</option>
+                    </select>
+                    <select id="filterType" class="sort-select">
+                        <option value="All">All Types</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Commercial">Commercial</option>
+                    </select>
+                    <select id="sortBy" class="sort-select">
+                        <option value="default">Sort By</option>
+                        <option value="price-asc">Price: Low → High</option>
+                        <option value="price-desc">Price: High → Low</option>
+                        <option value="psf-asc">PSF: Low → High</option>
+                        <option value="completion">Completion: Earliest</option>
+                        <option value="units-asc">Units: Low → High</option>
+                    </select>
+                    <span class="project-count" id="projectCount"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- HERO -->
     <header class="hero">
         <h1>Compare Property Projects in Malaysia</h1>
         <p>New launch projects in KL & Selangor — select 1 to view details, or 2 to compare side-by-side</p>
     </header>
-
-    <!-- AREA FILTER BAR -->
-    <div class="area-filter-bar">
-        <div class="area-filter-wrap">
-            <div class="area-fade-left" id="areaFadeL" style="opacity:0"></div>
-            <div class="area-fade-right" id="areaFadeR"></div>
-            <button class="area-scroll-btn left hidden" id="areaScrollL">‹</button>
-            <button class="area-scroll-btn right" id="areaScrollR">›</button>
-            <div class="area-filter-scroll" id="areaFilter"></div>
-        </div>
-    </div>
-
-    <!-- FILTER + SORT BAR -->
-    <div class="filter-bar">
-        <div class="filter-bar-inner">
-            <input type="text" id="searchBox" class="search-box" placeholder="🔍 Search by name, area or developer…">
-            <div class="filter-pills">
-                <span class="filter-label">FILTER</span>
-                <button class="filter-btn active" data-filter="All">All</button>
-                <button class="filter-btn" data-filter="Freehold">Freehold</button>
-                <button class="filter-btn" data-filter="Leasehold">Leasehold</button>
-            </div>
-            <div class="sort-group">
-                <select id="filterPrice" class="sort-select">
-                    <option value="All">Any Price</option>
-                    <option value="0-500000">Under RM500k</option>
-                    <option value="500000-800000">RM500k – 800k</option>
-                    <option value="800000-1200000">RM800k – 1.2M</option>
-                    <option value="1200000-9999999999">Above RM1.2M</option>
-                </select>
-                <select id="filterType" class="sort-select">
-                    <option value="All">All Types</option>
-                    <option value="Residential">Residential</option>
-                    <option value="Commercial">Commercial</option>
-                </select>
-                <select id="sortBy" class="sort-select">
-                    <option value="default">Sort By</option>
-                    <option value="price-asc">Price: Low → High</option>
-                    <option value="price-desc">Price: High → Low</option>
-                    <option value="psf-asc">PSF: Low → High</option>
-                    <option value="completion">Completion: Earliest</option>
-                    <option value="units-asc">Units: Low → High</option>
-                </select>
-                <span class="project-count" id="projectCount"></span>
-            </div>
-        </div>
-    </div>
 
     <!-- PROJECT LIST -->
     <section class="projects" id="projectList"></section>
