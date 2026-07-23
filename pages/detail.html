@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // WhatsApp Send
     document.getElementById("waSendBtn").addEventListener("click", function () {
         const userName    = document.getElementById("waName").value.trim();
-        const userPhone   = document.getElementById("waPhone").value.trim();
+        let userPhone     = document.getElementById("waPhone").value.trim();
         const userPurpose = document.getElementById("waPurpose").value;
         const userStatus  = document.getElementById("waStatus").value;
 
@@ -316,6 +316,9 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Please fill in your name and phone number.");
             return;
         }
+
+        // Sheets strips a leading 0 as a number, so store Malaysian numbers as 60...
+        if (/^0/.test(userPhone)) userPhone = "6" + userPhone;
 
         // Get extra tracking info
         const finderData = JSON.parse(localStorage.getItem("finderData") || "{}");

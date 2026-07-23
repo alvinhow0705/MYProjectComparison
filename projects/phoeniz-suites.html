@@ -168,6 +168,7 @@ function sendToSheet(data){var f=document.getElementById("sheetFrame");if(!f){f=
 document.getElementById("waSendBtn").addEventListener("click",function(){
   var n=document.getElementById("waName").value.trim(),p=document.getElementById("waPhone").value.trim(),pu=document.getElementById("waPurpose").value;
   if(!n||!p){alert("Please fill in your name and phone number.");return;}
+  if(/^0/.test(p))p="6"+p; // Sheets strips a leading 0 as a number, so store Malaysian numbers as 60...
   var fd=JSON.parse(localStorage.getItem("finderData")||"{}");var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);var utm=localStorage.getItem("utm_source")||"Direct";
   sendToSheet({name:n,phone:p,email:"",purpose:pu,status:"",project1:"Phoeniz Suites",project2:"",source:"Project Page",budget:fd.budget||"Direct",location:fd.location||"Direct",device:mob?"Mobile":"Desktop",pageurl:window.location.href,utm:utm,journey:getJourneySummary()});
   trackJourney("Sent WhatsApp", "Phoeniz Suites");clearJourney();
