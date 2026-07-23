@@ -196,7 +196,7 @@ function parseCompletion(str) {
 }
 
 /* Priority developers — these always appear first in default order */
-const PRIORITY_DEVS = ["Mightprop - Exsim", "Exsim", "Malton Group", "Berjaya Group", "Chin Hin Group", "UOA", "SPC", "Paramount Property"];
+const PRIORITY_DEVS = ["Mightprop - Exsim", "Exsim", "EXSIM & Bedi Group", "Malton Group", "Berjaya Group", "Chin Hin Group", "UOA", "SPC", "Paramount Property"];
 
 function sortProjects(list) {
     const sorted = [...list];
