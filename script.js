@@ -1,3 +1,17 @@
+/* =========================
+   UTM SOURCE CAPTURE
+   Captures ?utm_source= from the URL (e.g. from a Google Ads link) and
+   persists it so lead submissions record where the visitor actually came from,
+   instead of always falling back to "Direct".
+========================= */
+(function () {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const utm = params.get('utm_source');
+        if (utm) localStorage.setItem('utm_source', utm);
+    } catch (e) {}
+})();
+
 let projects = [];
 let selected = [];
 let activeArea = "All";
