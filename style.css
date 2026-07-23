@@ -1217,15 +1217,15 @@ button:disabled {
         grid-template-columns: 1fr;
     }
 
-    /* --- Only the compact nav stays pinned on mobile; area/filter bars scroll
-       away with the page once browsing starts, so cards get the screen space --- */
+    /* --- Whole header (nav + area chips + filters) slides away when the user
+       scrolls down to browse, and slides back the moment they scroll up.
+       JS (script.js) toggles the .header-hidden class based on scroll direction. --- */
     .sticky-header {
-        position: static;
+        transition: transform 0.25s ease;
+        will-change: transform;
     }
-    .sticky-header nav {
-        position: sticky;
-        top: 0;
-        z-index: 100;
+    .sticky-header.header-hidden {
+        transform: translateY(-100%);
     }
 
     /* --- Nav: stay compact on one line instead of stacking tall --- */
@@ -1308,9 +1308,15 @@ button:disabled {
         padding: 16px 16px 18px;
     }
 
-    /* --- Bottom bar: stack selection info above full-width button --- */
+    /* --- Bottom bar: hidden until the user actually selects a project, then
+       slides up. JS (script.js) adds/removes .visible in updateUI(). --- */
     .bottom-bar {
         padding: 14px 16px;
+        transform: translateY(100%);
+        transition: transform 0.25s ease;
+    }
+    .bottom-bar.visible {
+        transform: translateY(0);
     }
     .bottom-bar > div {
         display: flex;

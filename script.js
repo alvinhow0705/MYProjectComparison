@@ -594,7 +594,46 @@ function updateUI() {
         if (selected.length === 1) hint.innerText = "1 project selected — click to view full details";
         if (selected.length === 2) hint.innerText = "2 projects selected — ready to compare!";
     }
+
+    // Mobile: only pop the bottom bar into view once something's actually selected
+    // (no-op on desktop since .bottom-bar has no transform there)
+    const bottomBar = document.querySelector('.bottom-bar');
+    if (bottomBar) {
+        bottomBar.classList.toggle('visible', selected.length > 0);
+    }
 }
+
+/* =========================
+   MOBILE: HIDE HEADER ON SCROLL DOWN, SHOW ON SCROLL UP
+   (no-op on desktop since .sticky-header has no transform there)
+========================= */
+(function () {
+    const header = document.querySelector('.sticky-header');
+    if (!header) return;
+
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+        const y = window.scrollY;
+        if (y < 80) {
+            header.classList.remove('header-hidden');
+        } else if (y > lastY + 5) {
+            header.classList.add('header-hidden');
+        } else if (y < lastY - 5) {
+            header.classList.remove('header-hidden');
+        }
+        lastY = y;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(onScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+})();
 
 /* =========================
    COMPARE / DETAIL ROUTING
