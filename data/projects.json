@@ -211,6 +211,32 @@
     "hasPage": true
   },
   {
+    "id": 42,
+    "name": "Times Square 2",
+    "location": "Kuala Lumpur",
+    "developer": "Berjaya Group",
+    "completion Year": "TBA",
+    "title": "Freehold",
+    "type": "Commercial Under HDA",
+    "total unit": "629",
+    "unit size": "488-1,038 sqft",
+    "price": "From RM688,000",
+    "psf": "From RM1,410 psf",
+    "image": "assets/images/timessquare2.webp",
+    "images": [
+      "assets/images/timessquare2.webp",
+      "assets/images/timessquare2-1.webp",
+      "assets/images/timessquare2-2.webp",
+      "assets/images/timessquare2-3.webp",
+      "assets/images/timessquare2-4.webp",
+      "assets/images/timessquare2-5.webp",
+      "assets/images/timessquare2-6.webp"
+    ],
+    "tag": "WALKING DISTANCE TO PAVILION",
+    "slug": "times-square-2",
+    "hasPage": true
+  },
+  {
     "id": 7,
     "name": "Park Green",
     "location": "Bukit Jalil",
