@@ -361,7 +361,14 @@ document.getElementById("waSendBtn")?.addEventListener("click", function () {
     const userStatus  = document.getElementById("waStatus").value;
 
     if (!userName || !userPhone) {
-        alert("Please fill in your name and phone number.");
+        // No details given — still send them to WhatsApp rather than lose the lead
+        if (typeof gtag === 'function') gtag('event', 'whatsapp_click_no_info', {
+            source: 'Compare',
+            project_1: selected[0]?.name || '',
+            project_2: selected[1]?.name || ''
+        });
+        const quickMsg = `Hi MY Property Comparison 👋\n\nI'm interested in:\n1. *${selected[0]?.name || ''}*\n2. *${selected[1]?.name || ''}*\n\nPlease send me the e-Brochure. Thank you!`;
+        window.open("https://wa.me/60162171839?text=" + encodeURIComponent(quickMsg), "_blank");
         return;
     }
 

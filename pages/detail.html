@@ -316,7 +316,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const userStatus  = document.getElementById("waStatus").value;
 
         if (!userName || !userPhone) {
-            alert("Please fill in your name and phone number.");
+            // No details given — still send them to WhatsApp rather than lose the lead
+            if (typeof gtag === 'function') gtag('event', 'whatsapp_click_no_info', {
+                source: 'Detail',
+                project_1: p.name
+            });
+            const quickMsg = `Hi MY Property Comparison 👋\n\nI'm interested in *${p.name}*\n\nPlease send me the e-Brochure. Thank you!`;
+            window.open("https://wa.me/60162171839?text=" + encodeURIComponent(quickMsg), "_blank");
             return;
         }
 
