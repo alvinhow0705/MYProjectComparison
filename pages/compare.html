@@ -418,6 +418,11 @@ Please send me the e-Brochure. Thank you!`;
         project_1: selected[0]?.name || '',
         project_2: selected[1]?.name || ''
     });
+    if (typeof gtag === 'function') gtag('event', 'conversion', {
+        'send_to': 'AW-18344712116/Cs7QCPikrdUcELSvuKtE',
+        'value': 1.0,
+        'currency': 'MYR'
+    });
 
     window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
 });

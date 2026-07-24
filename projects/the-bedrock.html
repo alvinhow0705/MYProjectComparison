@@ -39,7 +39,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 .hero .price{margin-top:24px;font-size:15px;letter-spacing:.06em}.hero .price b{font-weight:600}
 .btn-gold{display:inline-block;margin-top:24px;background:var(--gold);color:#fff;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:15px 30px;border-radius:2px;transition:.25s;border:none;cursor:pointer}
 .btn-gold:hover{background:var(--gold-dk)}
-.intro{text-align:center;padding:110px 0 90px}
+.intro{text-align:center;padding-top:110px;padding-bottom:90px}
 .intro .tag{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:26px}
 .intro h2{font-size:clamp(30px,4.4vw,52px);max-width:820px;margin:0 auto 26px}
 .intro p{max-width:640px;margin:0 auto;color:var(--muted);font-weight:300;font-size:16.5px}
@@ -51,13 +51,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 .feature .cap{position:relative;z-index:2;color:#fff;padding:0 24px}
 .feature .cap .tag{font-size:12px;letter-spacing:.28em;text-transform:uppercase;opacity:.85;margin-bottom:16px}
 .feature .cap h2{font-size:clamp(30px,5vw,58px);color:#fff;max-width:820px}
-.highlights{padding:100px 0}.highlights .head{text-align:center;margin-bottom:52px}
+.highlights{padding-top:100px;padding-bottom:100px}.highlights .head{text-align:center;margin-bottom:52px}
 .highlights .head .tag{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .highlights .head h2{font-size:clamp(28px,4vw,46px)}
 .hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;max-width:900px;margin:0 auto}
 .hl{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
 .hl .mark{color:var(--gold);font-size:18px;flex:0 0 auto}.hl p{font-size:16px;font-weight:300}
-.gallery{padding:0 0 20px}.gallery .tag{text-align:center;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.gallery{padding-bottom:20px}.gallery .tag{text-align:center;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 .gallery h2{text-align:center;font-size:clamp(28px,4vw,46px);margin-bottom:44px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .grid a{overflow:hidden;aspect-ratio:4/3}.grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
@@ -82,7 +82,7 @@ nav{padding:12px 16px}
 .hero h1{font-size:clamp(30px,9vw,44px)}
 .hero .sub{font-size:14.5px}
 .wrap{padding:0 20px}
-.intro{padding:64px 0 54px}
+.intro{padding-top:64px;padding-bottom:54px}
 .intro h2{font-size:clamp(24px,6.5vw,32px)}
 .intro p{font-size:15px}
 .feature .cap h2{font-size:clamp(22px,6.5vw,34px)}
@@ -175,6 +175,7 @@ document.getElementById("waSendBtn").addEventListener("click",function(){
   trackJourney("Sent WhatsApp", "The Bedrock");clearJourney();
   var msg="Hi MY Property Comparison 👋\n\nMy name is *"+n+"*\n\nI'm interested in *The Bedrock*\n\nPlease send me the e-Brochure. Thank you!";
   if(typeof gtag==='function')gtag('event','whatsapp_lead',{source:'Project Page',lead_name:n,lead_phone:p,purpose:pu,project_1:"The Bedrock"});
+  if(typeof gtag==='function')gtag('event','conversion',{'send_to':'AW-18344712116/Cs7QCPikrdUcELSvuKtE','value':1.0,'currency':'MYR'});
   window.open("https://wa.me/60162171839?text="+encodeURIComponent(msg),"_blank");
 });
 </script>
