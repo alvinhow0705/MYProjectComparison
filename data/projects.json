@@ -1,5 +1,27 @@
 [
   {
+    "id": 44,
+    "name": "MABA Suites",
+    "location": "Kuala Lumpur",
+    "developer": "Exsim",
+    "completion Year": "2031",
+    "title": "Leasehold",
+    "type": "Commercial Under HDA",
+    "total unit": "1,300",
+    "unit size": "484-657 sqft",
+    "price": "Est. From RM871,200",
+    "psf": "Est. RM1,800-2,200 psf",
+    "image": "assets/images/maba.jpg",
+    "images": [
+      "assets/images/maba.jpg",
+      "assets/images/maba-1.png",
+      "assets/images/maba-2.png"
+    ],
+    "tag": "OPPOSITE MERDEKA 118",
+    "slug": "maba-suites",
+    "hasPage": true
+  },
+  {
     "id": 1,
     "name": "The Aldenz @ Central Park Damansara",
     "location": "Petaling Jaya",
@@ -907,27 +929,5 @@
       "assets/images/colonial-2.png"
     ],
     "tag": "STUDENT MARKET"
-  },
-  {
-    "id": 44,
-    "name": "MABA Suites",
-    "location": "Kuala Lumpur",
-    "developer": "Exsim",
-    "completion Year": "2031",
-    "title": "Leasehold",
-    "type": "Commercial Under HDA",
-    "total unit": "1,300",
-    "unit size": "484-657 sqft",
-    "price": "Est. From RM871,200",
-    "psf": "Est. RM1,800-2,200 psf",
-    "image": "assets/images/maba.jpg",
-    "images": [
-      "assets/images/maba.jpg",
-      "assets/images/maba-1.png",
-      "assets/images/maba-2.png"
-    ],
-    "tag": "OPPOSITE MERDEKA 118",
-    "slug": "maba-suites",
-    "hasPage": true
   }
 ]
