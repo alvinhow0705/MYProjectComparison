@@ -547,7 +547,9 @@
       "assets/images/aras-2.webp",
       "assets/images/aras-3.webp"
     ],
-    "tag": "TOWNSHIP"
+    "tag": "TOWNSHIP",
+    "slug": "aras-residences",
+    "hasPage": true
   },
   {
     "id": 23,
@@ -905,28 +907,5 @@
       "assets/images/colonial-2.png"
     ],
     "tag": "STUDENT MARKET"
-  },
-  {
-    "id": 43,
-    "name": "Aras Residences",
-    "location": "Kuala Lumpur",
-    "developer": "WCT",
-    "completion Year": "TBA",
-    "title": "TBA",
-    "type": "Residential",
-    "total unit": "TBA",
-    "unit size": "850-1,062 sqft",
-    "price": "Register for Pricing",
-    "psf": "Register for Pricing",
-    "image": "assets/images/aras.webp",
-    "images": [
-      "assets/images/aras.webp",
-      "assets/images/aras-1.jpeg",
-      "assets/images/aras-2.webp",
-      "assets/images/aras-3.webp"
-    ],
-    "tag": "ZEN-INSPIRED LIVING",
-    "slug": "aras-residences",
-    "hasPage": true
   }
 ]
