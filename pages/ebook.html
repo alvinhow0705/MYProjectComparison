@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free eBook — 100 New Launch Property Projects in Malaysia | MYPropertyComparison</title>
+    <meta name="description" content="Get your free guide to 100 new launch property projects in Malaysia — prices, PSF, developers and more, sent straight to your WhatsApp.">
+    <meta property="og:title" content="Free eBook — 100 New Launch Property Projects in Malaysia">
+    <meta property="og:description" content="Get your free guide to 100 new launch property projects in Malaysia, sent straight to your WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mypropertycomparison.com/pages/ebook.html">
+    <meta name="robots" content="noindex">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EDVF9QYQPZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EDVF9QYQPZ');
+      gtag('config', 'AW-18344712116');
+    </script>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="../favicon-192.png">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .ebook-wrap { max-width: 460px; margin: 0 auto; text-align: center; }
+        .ebook-badge { width: 150px; margin: 0 auto 18px; display: block; }
+        .ebook-bullets { text-align: left; margin: 0 auto 24px; max-width: 360px; }
+        .ebook-bullets p { font-size: 14.5px; color: #444; margin: 0 0 10px; line-height: 1.5; }
+        .ebook-bullets p .ic { color: #1a7a3e; margin-right: 8px; font-weight: 700; }
+        .ebook-form { text-align: left; }
+        .ebook-trust { font-size: 12px; color: #999; margin-top: 14px; }
+        .ebook-nav { display: flex; justify-content: center; padding: 18px 16px; }
+    </style>
+</head>
+<body>
+<script>(function(){try{var p=new URLSearchParams(window.location.search);var u=p.get('utm_source');if(u)localStorage.setItem('utm_source',u);}catch(e){}})();</script>
+
+    <!-- MINIMAL NAV: logo only, no distracting links -->
+    <div class="ebook-nav">
+        <a href="../index.html" style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:#111;">
+            <img src="../logo-nav.png" alt="MYPropertyComparison logo" style="height:28px;width:28px;border-radius:7px;">
+            MYPropertyComparison
+        </a>
+    </div>
+
+    <div class="page" style="padding-top:10px;">
+        <div class="ebook-wrap">
+            <img class="ebook-badge" src="../assets/images/free-ebook-badge.png" alt="Free eBook">
+            <h1 class="page-title" style="font-size:24px;">Get Your FREE Guide to 100 New Launch Projects</h1>
+            <p class="page-subtitle" style="margin-bottom:24px;">Malaysia's new-launch market, simplified — prices, PSF and developers for 100 projects in one guide.</p>
+
+            <div class="ebook-bullets">
+                <p><span class="ic">&#10003;</span>Compare prices &amp; PSF across top developers at a glance</p>
+                <p><span class="ic">&#10003;</span>Spot the best-value projects before everyone else does</p>
+                <p><span class="ic">&#10003;</span>Free — sent straight to your WhatsApp, no strings attached</p>
+            </div>
+
+            <div class="lead-form ebook-form" id="ebookForm">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input id="ebName" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input id="ebPhone" placeholder="Phone Number" type="tel">
+                </div>
+                <button id="ebSendBtn" style="width:100%; margin-top:8px;">
+                    Send Me the FREE eBook
+                </button>
+                <p class="ebook-trust">We'll only use this to send your eBook and occasional project updates. No spam.</p>
+            </div>
+        </div>
+
+        <div class="back-row" style="margin-top:24px;">
+            <button class="btn-outline" onclick="window.location.href='../index.html'">
+                ← Back to Projects
+            </button>
+        </div>
+    </div>
+
+<script>
+function trackJourney(a,d){try{var j=JSON.parse(localStorage.getItem("userJourney")||"[]");var n=new Date();var t=n.toLocaleTimeString('en-MY',{hour:'2-digit',minute:'2-digit',hour12:true});var dt=n.toLocaleDateString('en-MY');j.push({action:a,details:d||"",time:dt+" "+t,page:"ebook.html"});if(j.length>50)j.splice(0,j.length-50);localStorage.setItem("userJourney",JSON.stringify(j));}catch(e){}}
+function getJourneySummary(){try{var j=JSON.parse(localStorage.getItem("userJourney")||"[]");if(j.length===0)return "No journey data";return j.map(function(x){return "["+x.time+"] "+x.action+(x.details?": "+x.details:"");}).join(" | ");}catch(e){return "";}}
+function clearJourney(){localStorage.removeItem("userJourney");}
+trackJourney("Visited eBook Page");
+
+var SHEET_URL = "https://script.google.com/macros/s/AKfycbzSWt_8ceLD172O_RX2PXrqrZpbB0GGtLN7KGX0HbybfOlL6PCztv_zYCQPU0cCH682bg/exec";
+
+function sendToSheet(data) {
+    var iframe = document.getElementById("sheetFrame");
+    if (!iframe) {
+        iframe = document.createElement("iframe");
+        iframe.id = "sheetFrame";
+        iframe.name = "sheetFrame";
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
+    }
+    var form = document.createElement("form");
+    form.method = "POST";
+    form.action = SHEET_URL;
+    form.target = "sheetFrame";
+    for (var key in data) {
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = data[key];
+        form.appendChild(input);
+    }
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
+}
+
+document.getElementById("ebSendBtn").addEventListener("click", function () {
+    var name = document.getElementById("ebName").value.trim();
+    var phone = document.getElementById("ebPhone").value.trim();
+
+    if (!name || !phone) {
+        alert("Please fill in your name and phone number so we can send your eBook.");
+        return;
+    }
+
+    if (/^0/.test(phone)) phone = "6" + phone;
+
+    var finderData = JSON.parse(localStorage.getItem("finderData") || "{}");
+    var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+    var savedUtm = localStorage.getItem("utm_source") || "Direct";
+    var journeySummary = getJourneySummary();
+
+    sendToSheet({
+        name: name,
+        phone: phone,
+        email: "",
+        purpose: "",
+        status: "",
+        project1: "",
+        project2: "",
+        source: "eBook Page",
+        budget: finderData.budget || "Direct",
+        location: finderData.location || "Direct",
+        device: isMobile ? "Mobile" : "Desktop",
+        pageurl: window.location.href,
+        utm: savedUtm,
+        journey: journeySummary
+    });
+
+    trackJourney("Sent eBook Request", name);
+    clearJourney();
+
+    var msg = "Hi MY Property Comparison 👋\n\nMy name is *" + name + "*\n\nPlease send me the FREE 100 Projects eBook. Thank you!";
+
+    if (typeof gtag === 'function') gtag('event', 'ebook_lead', {
+        source: 'eBook Page',
+        lead_name: name,
+        lead_phone: phone
+    });
+    if (typeof gtag === 'function') gtag('event', 'conversion', {
+        'send_to': 'AW-18344712116/Cs7QCPikrdUcELSvuKtE',
+        'value': 1.0,
+        'currency': 'MYR'
+    });
+
+    window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
+});
+</script>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-brand">MYPropertyComparison</div>
+        <div class="footer-disclaimer">All images are artist's impressions and for illustration purposes only. Actual product may vary.</div>
+        <div class="footer-disclaimer">All images and project information are property of their respective developers and are used for informational purposes only.</div>
+        <div class="footer-copy">&copy; 2026 MYPropertyComparison. All rights reserved.</div>
+    </footer>
+
+</body>
+</html>
