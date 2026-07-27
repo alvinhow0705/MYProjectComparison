@@ -729,6 +729,38 @@ nav {
     margin-bottom: 10px;
 }
 
+/* ========================= FLOATING WHATSAPP BUTTON ========================= */
+.floating-wa {
+    position: fixed;
+    right: 22px;
+    bottom: 26px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+    z-index: 60;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-wa:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+}
+
+.floating-wa svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Sits higher on pages that also have the sticky Select/Compare bar, so the two never overlap */
+.floating-wa.with-bottom-bar {
+    bottom: 100px;
+}
+
 /* ========================= BUTTONS ========================= */
 button, .btn {
     background: #111;
@@ -1328,6 +1360,22 @@ button:disabled {
     }
     .bottom-bar button {
         width: 100%;
+    }
+
+    /* --- Floating WhatsApp button: smaller, and sits higher above the
+       taller (stacked) mobile bottom-bar so it never gets covered --- */
+    .floating-wa {
+        width: 50px;
+        height: 50px;
+        right: 16px;
+        bottom: 20px;
+    }
+    .floating-wa svg {
+        width: 25px;
+        height: 25px;
+    }
+    .floating-wa.with-bottom-bar {
+        bottom: 130px;
     }
 
     /* --- Compare table: smaller text so both columns fit --- */
