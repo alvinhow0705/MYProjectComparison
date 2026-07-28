@@ -530,53 +530,120 @@ var SocialProof = (function(){
         if (hideTimer) clearTimeout(hideTimer);
         hideTimer=setTimeout(function(){ toast.classList.remove('show'); }, 5200);
     }
+    /* Real claimants pulled from the Google Sheet (see liveStats below).
+       When we have them we show those; otherwise we fall back to the seeds so
+       the page never looks dead on a quiet day. */
+    var liveRecent = [], liveIdx = 0;
+
     function showSeed(){
         if (document.visibilityState==='visible'){
-            if (idx>=order.length) shuffle();
-            render(SEEDS[order[idx++]]+'**', (1+Math.floor(Math.random()*19))+' min ago');
-            bumpCounter();
+            var shownOne = false;
+            if (liveRecent.length){
+                if (liveIdx >= liveRecent.length) liveIdx = 0;
+                var r = liveRecent[liveIdx++];
+                render(r.n + '**', r.m <= 0 ? 'just now' : r.m + ' min ago');
+                shownOne = true;
+            }
+            if (!shownOne){
+                if (idx>=order.length) shuffle();
+                render(SEEDS[order[idx++]]+'**', (1+Math.floor(Math.random()*19))+' min ago');
+            }
         }
         schedule();
     }
     function schedule(){ setTimeout(showSeed, 16000+Math.random()*20000); }
     setTimeout(showSeed, 6000+Math.random()*4000);
 
-    /* claim counter: grows hour-by-hour (deterministic — every visitor sees the
-       same number at the same time), and keeps ticking up live while you watch */
-    var el=document.getElementById('claimCount');
-    var LAUNCH=new Date('2026-07-01').getTime();
-    function hourInc(h){ var x=Math.sin(h*127.1)*43758.5453; return (x-Math.floor(x))<0.62?1:0; }
+    /* ---------- claim counter ----------
+       Derived purely from the clock, so it is IDENTICAL on every device at any
+       given moment — laptop, phone and a visitor in another state all show the
+       same number. Nothing is stored per-browser (that's what used to make two
+       devices disagree). It rises on its own through the day, faster during
+       waking hours and slower overnight, and never goes backwards.
+       Tune START / PER_DAY to change the story it tells.                     */
+    var el      = document.getElementById('claimCount');
+    var LAUNCH  = Date.UTC(2026, 6, 15);  /* the date the count starts from */
+    var START   = 840;                    /* count on that date */
+    var PER_DAY = 120;                    /* average claims added per day */
+
+    /* claims allotted to a given hour-of-day in Malaysia — quiet at night,
+       busiest in the evening. Sums to 24 units, scaled by PER_DAY/24.       */
+    var SHAPE = [2,1,1,1,1,2,4,7,9,10,11,11,12,12,11,11,12,14,16,17,16,12,8,5];
+    var SHAPE_SUM = SHAPE.reduce(function(a,b){ return a+b; }, 0);
+
+    function claimsInHour(hourOfDay){ return PER_DAY * SHAPE[hourOfDay] / SHAPE_SUM; }
+
     function countAt(ts){
-        var hours=Math.max(0, Math.floor((ts-LAUNCH)/3600000));
-        var total=2064;
-        for(var h=0;h<hours;h++) total+=hourInc(h);
-        return total;
+        var elapsed = Math.max(0, ts - LAUNCH);
+        var fullDays = Math.floor(elapsed / 86400000);
+        var total = START + fullDays * PER_DAY;
+        /* add the hours completed so far today, plus the part-hour we're in */
+        var msToday = elapsed % 86400000;
+        var hoursToday = Math.floor(msToday / 3600000);
+        for (var h = 0; h < hoursToday; h++) total += claimsInHour(h);
+        total += claimsInHour(hoursToday) * ((msToday % 3600000) / 3600000);
+        return Math.floor(total);
     }
-    var base=countAt(Date.now())+parseInt(localStorage.getItem('claimBump')||'0');
+
+    var shown = countAt(Date.now());
+    var liveCount = null;          /* set once the Sheet answers */
     function renderCount(pulse){
-        el.textContent=base.toLocaleString('en-MY');
+        el.textContent = shown.toLocaleString('en-MY');
         if(pulse){ el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
     }
-    function bumpCounter(){ if(Math.random()<.6){ base++; var b=parseInt(localStorage.getItem('claimBump')||'0'); localStorage.setItem('claimBump', b+1); renderCount(true); } }
     renderCount(false);
-    /* live drip: +1 every 35–110s while the page is open, with a green pulse */
-    (function drip(){
-        setTimeout(function(){
-            if(document.visibilityState==='visible'){ base++; renderCount(true); }
-            drip();
-        }, 35000+Math.random()*75000);
-    })();
+
+    /* Tick towards the target: the real Sheet figure when we have it, otherwise
+       the clock-based one. Rising one at a time keeps the pulse animation. */
+    setInterval(function(){
+        if (document.visibilityState !== 'visible') return;
+        var target = (liveCount !== null) ? liveCount : countAt(Date.now());
+        if (target > shown){ shown++; renderCount(true); }
+        else if (liveCount !== null && target < shown){ shown = target; renderCount(false); }
+    }, 4000);
+
+    /* fed by the live poll below */
+    function applyLive(data){
+        if (typeof data.count === 'number') liveCount = data.count;
+        if (data.recent && data.recent.length){
+            liveRecent = data.recent;
+            liveIdx = 0;
+        }
+    }
+
+    function bumpCounter(){}
 
     /* called when THIS visitor submits — their own masked name pops up instantly */
     function announce(fullName){
         var clean=(fullName||'').replace(/[^A-Za-z]/g,'');
         var masked=(clean.substring(0,3)||'You')+'**';
         masked=masked.charAt(0).toUpperCase()+masked.slice(1).toLowerCase().replace('**','')+'**';
-        render(masked, '0 min ago');
-        base++; renderCount(true);
+        render(masked, 'just now');
+        /* optimistic: show their own claim immediately, the next poll confirms it */
+        if (liveCount !== null) liveCount++;
+        shown++; renderCount(true);
+        setTimeout(pollStats, 2500);
     }
-    return { announce: announce };
+    return { announce: announce, applyLive: applyLive };
 })();
+
+/* ==========================================================
+   LIVE STATS POLL
+   Reads the same Apps Script that receives the leads, so the count and the
+   recent claimants are REAL and shared by everyone on the page right now:
+   when one visitor submits, others see the number rise and their masked
+   name appear within about half a minute.
+   If the request fails (offline, script not redeployed, quota) the page
+   silently keeps the clock-based figure — it never shows an error.
+========================================================== */
+function pollStats(){
+    fetch(SHEET_URL + '?stats=1&t=' + Date.now(), { method: 'GET' })
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(d){ if (d && typeof d.count === 'number') SocialProof.applyLive(d); })
+        .catch(function(){ /* keep the fallback figure */ });
+}
+pollStats();
+setInterval(function(){ if (document.visibilityState === 'visible') pollStats(); }, 25000);
 
 /* ---------- floating book tilt ---------- */
 (function(){
