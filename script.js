@@ -456,7 +456,9 @@ function renderProjects() {
     container.appendChild(makeEbookTile('et-wide'));
 
     filtered.forEach(project => {
-        if (TILE_SLOTS.indexOf(rendered) > -1) container.appendChild(makeEbookTile('et-wide'));
+        /* in-grid tiles sit in a single column so they read as one of the project
+           cards — only the leading tile spans the full width */
+        if (TILE_SLOTS.indexOf(rendered) > -1) container.appendChild(makeEbookTile());
 
         const card = document.createElement('div');
         card.className = 'card';

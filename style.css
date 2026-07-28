@@ -723,6 +723,9 @@ nav {
     box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
     position: sticky;
     bottom: 0;
+    /* sits above the project grid — the eBook tiles create their own stacking
+       context, so without this they'd bleed through the bar */
+    z-index: 50;
 }
 
 .bottom-bar p {
