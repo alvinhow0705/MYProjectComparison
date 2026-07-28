@@ -711,7 +711,7 @@
     "unit size": "630-1,230 sqft",
     "price": "From RM574,200",
     "psf": "From 912 psf",
-    "image": "assets/images/.jpg",
+    "image": "assets/images/amara.jpg",
     "tag": "FREEHOLD"
   },
   {
@@ -934,5 +934,50 @@
       "assets/images/colonial-2.png"
     ],
     "tag": "STUDENT MARKET"
+  },
+  {
+    "id": 47,
+    "name": "Khaya Residence",
+    "location": "Bangsar",
+    "developer": "Melati Ehsan Group",
+    "completion Year": "2029",
+    "title": "Leasehold",
+    "type": "Commercial Under HDA",
+    "total unit": "795",
+    "unit size": "630-1,321 sqft",
+    "price": "From RM893,000",
+    "psf": "From 1,157 psf",
+    "image": "assets/images/khaya.png",
+    "tag": "HIGH RENTAL DEMAND"
+  },
+  {
+    "id": 46,
+    "name": "Sunway Cochrane",
+    "location": "Maluri",
+    "developer": "Shang Height Realty",
+    "completion Year": "2029",
+    "title": "Freehold",
+    "type": "Commercial Under HDA",
+    "total unit": "1,296",
+    "unit size": "650-1,001 sqft",
+    "price": "From RM850,000",
+    "psf": "From 1,308 psf",
+    "image": "assets/images/sunwaycochrone.jpg",
+    "tag": "DOORSTEP MRT"
+  },
+  {
+    "id": 45,
+    "name": "The Shang Residence",
+    "location": "Old Klang Road",
+    "developer": "Shang Height Realty",
+    "completion Year": "2029",
+    "title": "Leasehold",
+    "type": "Residential",
+    "total unit": "449",
+    "unit size": "893-1,130 sqft",
+    "price": "From RM580,000",
+    "psf": "From 650 psf",
+    "image": "assets/images/shang.webp",
+    "tag": "BEST MRT ACCESS"
   }
 ]

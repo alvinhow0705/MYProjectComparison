@@ -1,0 +1,7 @@
+# Local-only admin tool — never publish this to the live site
+admin/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
