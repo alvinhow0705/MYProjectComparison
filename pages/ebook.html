@@ -174,6 +174,21 @@
         <button class="promo-x" id="promoX" aria-label="Dismiss">&times;</button>
     </div>
 
+    <!-- PAYMENT MODAL (DuitNow QR) -->
+    <div id="payOverlay" style="display:none; position:fixed; inset:0; z-index:130; background:rgba(4,6,12,.8); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:20px;">
+        <div style="position:relative; max-width:400px; width:100%; background:#0b1020; border:1px solid rgba(255,255,255,.14); border-radius:20px; padding:34px 28px; text-align:center; box-shadow:0 40px 100px rgba(0,0,0,.7);">
+            <button id="payClose" aria-label="Close" style="position:absolute; top:12px; right:14px; background:none; border:none; color:#8b95ab; font-size:22px; cursor:pointer;">&times;</button>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:20px; color:#fff; margin-bottom:4px;">Pay <span id="payAmt" style="color:#ffc65c;">RM20</span> &middot; Instant</h3>
+            <p style="font-size:13px; color:#8b95ab; margin-bottom:18px;">Scan with any Malaysian banking app or e-wallet</p>
+            <div style="background:#fff; border-radius:14px; padding:14px; max-width:230px; margin:0 auto 14px;">
+                <img src="../assets/images/duitnow-qr.png" alt="DuitNow QR" style="width:100%; display:block;" onerror="this.parentNode.innerHTML='<div style=&quot;color:#666;font-size:12px;padding:34px 8px;&quot;>DuitNow QR<br>coming soon —<br>use WhatsApp below</div>'">
+            </div>
+            <p style="font-size:12px; color:#8b95ab; margin-bottom:18px;">After paying, send us your receipt and we'll deliver the eBook to your WhatsApp immediately.</p>
+            <button id="payDone" style="width:100%; background:linear-gradient(90deg,#2ee06f,#17b354); color:#04240f; border:none; border-radius:12px; padding:15px; font-family:'Space Grotesk',sans-serif; font-size:14.5px; font-weight:800; cursor:pointer; margin-bottom:8px;">&#9989; I've Paid — Send Receipt on WhatsApp</button>
+            <button id="payHelp" style="width:100%; background:transparent; color:#8b95ab; border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:13px; font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; cursor:pointer;">Can't scan? Pay via WhatsApp instead</button>
+        </div>
+    </div>
+
     <!-- STAGE-2 DOWNSELL MODAL -->
     <div id="dsOverlay" style="display:none; position:fixed; inset:0; z-index:120; background:rgba(4,6,12,.78); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:20px;">
         <div style="position:relative; max-width:420px; width:100%; background:#0b1020; border:1px solid rgba(255,255,255,.14); border-radius:20px; padding:36px 30px; text-align:center; box-shadow:0 40px 100px rgba(0,0,0,.7);">
@@ -369,10 +384,9 @@ document.getElementById('dsFree').addEventListener('click', function(){
 });
 document.getElementById('dsBuy').addEventListener('click', function(){
     document.getElementById('dsOverlay').style.display='none';
-    if (typeof gtag==='function') gtag('event','ebook_buy_click',{ price:'RM20' });
+    if (typeof gtag==='function') gtag('event','ebook_buy_click',{ price:'RM20', method:'duitnow' });
     trackJourney('Clicked Buy eBook','RM20 downsell');
-    var msg = "Hi MY Property Comparison 👋\n\nI'd like to purchase the New Launch Projects eBook (RM20 offer). How do I pay?";
-    window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
+    PAY.open('RM20');
 });
 
 /* ==========================================================
@@ -459,15 +473,43 @@ var SocialProof = (function(){
     }
 })();
 
+/* ---------- payment modal (DuitNow QR) ---------- */
+var PAY = (function(){
+    var overlay=document.getElementById('payOverlay'), amtEl=document.getElementById('payAmt');
+    var currentAmt='RM20';
+    function open(price){
+        currentAmt=price;
+        amtEl.textContent=price;
+        overlay.style.display='flex';
+        if (typeof gtag==='function') gtag('event','ebook_pay_modal_shown',{ price: price });
+        trackJourney('Opened Payment QR', price);
+    }
+    document.getElementById('payClose').addEventListener('click', function(){ overlay.style.display='none'; });
+    overlay.addEventListener('click', function(e){ if(e.target===this) this.style.display='none'; });
+    document.getElementById('payDone').addEventListener('click', function(){
+        overlay.style.display='none';
+        if (typeof gtag==='function') gtag('event','ebook_paid_receipt_click',{ price: currentAmt });
+        trackJourney('Sent Payment Receipt', currentAmt);
+        var msg = "Hi MY Property Comparison 👋\n\nI've paid " + currentAmt + " for the New Launch Projects eBook via DuitNow ✅\n\nHere's my receipt:";
+        window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
+    });
+    document.getElementById('payHelp').addEventListener('click', function(){
+        overlay.style.display='none';
+        if (typeof gtag==='function') gtag('event','ebook_buy_click',{ price: currentAmt, method: 'whatsapp' });
+        var msg = "Hi MY Property Comparison 👋\n\nI'd like to purchase the New Launch Projects eBook (" + currentAmt + "). How do I pay?";
+        window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
+    });
+    return { open: open };
+})();
+
 /* ---------- pay button (stage-aware) ---------- */
 document.getElementById('payBtn').addEventListener('click', function(){
     /* If they're about to pay full RM100, reward them with the downsell instead */
     if (!OFFER.isStage2()){ OFFER.goStage2(true); return; }
     var price = OFFER.currentPrice();
-    if (typeof gtag === 'function') gtag('event', 'ebook_buy_click', { price: price });
+    if (typeof gtag === 'function') gtag('event', 'ebook_buy_click', { price: price, method: 'duitnow' });
     trackJourney('Clicked Buy eBook', price);
-    var msg = "Hi MY Property Comparison 👋\n\nI'd like to purchase the New Launch Projects eBook (" + price + "). How do I pay?";
-    window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
+    PAY.open(price);
 });
 
 /* ---------- free lead flow (same as live page) ---------- */
