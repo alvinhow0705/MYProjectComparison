@@ -424,10 +424,38 @@ function renderProjects() {
         return;
     }
 
+    /* eBook promo tile injected into the feed — on mobile the bottom bar (and its
+       eBook button) stays hidden until a project is selected, so browsers would
+       otherwise never see the offer. This catches them mid-scroll instead. */
+    function makeEbookTile(variant) {
+        const tile = document.createElement('div');
+        tile.className = 'ebook-tile' + (variant ? ' ' + variant : '');
+        tile.innerHTML = `
+            <img class="et-cover" src="assets/images/ebook-cover.jpg" alt="Property eBook">
+            <div class="et-body">
+                <span class="et-badge">FREE &middot; WORTH RM500</span>
+                <h3>Every New Launch in Malaysia, in One Guide</h3>
+                <p>Prices, PSF, developers &amp; tenure for all ${projects.length} projects — sent to your WhatsApp.</p>
+                <span class="et-btn">Get My Free Copy &rarr;</span>
+            </div>`;
+        tile.addEventListener('click', () => {
+            if (typeof gtag === 'function') gtag('event', 'ebook_cta_click', { page: 'index.html', placement: 'feed_tile' });
+            if (typeof trackJourney === 'function') trackJourney('Clicked Free eBook CTA', 'Feed tile');
+            window.location.href = 'pages/ebook.html';
+        });
+        return tile;
+    }
+
+    let rendered = 0;
+    const tileAfter = 5;   /* slot the promo in after the 6th project */
+
     filtered.forEach(project => {
+        if (rendered === tileAfter) container.appendChild(makeEbookTile());
+
         const card = document.createElement('div');
         card.className = 'card';
         card.dataset.id = project.id;
+        rendered++;
 
         const titleClass = project.title === "Freehold" ? "freehold" : "leasehold";
         const titleLabel = project.title || "—";
@@ -532,6 +560,10 @@ function renderProjects() {
 
         container.appendChild(card);
     });
+
+    /* end-of-list tile: catches anyone who scrolled the whole way without acting.
+       (skipped when the list is short enough that the mid-feed tile is still on screen) */
+    if (rendered > tileAfter + 3) container.appendChild(makeEbookTile('et-wide'));
 
     // Scroll reveal animation with stagger
     revealCards();
