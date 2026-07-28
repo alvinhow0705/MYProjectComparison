@@ -435,7 +435,7 @@ function renderProjects() {
             <div class="et-body">
                 <span class="et-badge">FREE &middot; WORTH RM500</span>
                 <h3>Every New Launch in Malaysia, in One Guide</h3>
-                <p>Prices, PSF, developers &amp; tenure for all ${projects.length} projects — sent to your WhatsApp.</p>
+                <p>Prices, PSF, developers &amp; tenure — sent straight to your WhatsApp.</p>
                 <span class="et-btn">Get My Free Copy &rarr;</span>
             </div>`;
         tile.addEventListener('click', () => {
@@ -447,10 +447,16 @@ function renderProjects() {
     }
 
     let rendered = 0;
-    const tileAfter = 5;   /* slot the promo in after the 6th project */
+
+    /* eBook tile positions: leading the list, then spaced through the scroll so
+       the offer reappears as people browse deeper (mobile's bottom-bar CTA stays
+       hidden until a project is selected, so the feed is the only reliable slot) */
+    const TILE_SLOTS = [5, 15, 30];
+
+    container.appendChild(makeEbookTile('et-wide'));
 
     filtered.forEach(project => {
-        if (rendered === tileAfter) container.appendChild(makeEbookTile());
+        if (TILE_SLOTS.indexOf(rendered) > -1) container.appendChild(makeEbookTile('et-wide'));
 
         const card = document.createElement('div');
         card.className = 'card';
@@ -561,9 +567,6 @@ function renderProjects() {
         container.appendChild(card);
     });
 
-    /* end-of-list tile: catches anyone who scrolled the whole way without acting.
-       (skipped when the list is short enough that the mid-feed tile is still on screen) */
-    if (rendered > tileAfter + 3) container.appendChild(makeEbookTile('et-wide'));
 
     // Scroll reveal animation with stagger
     revealCards();
