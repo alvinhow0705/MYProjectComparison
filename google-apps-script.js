@@ -25,23 +25,26 @@
  */
 
 /* ---- Public claim counter -------------------------------------------------
-   Shown on the eBook page. Two parts added together:
-     1. a baseline that drifts upward with the clock, so the figure keeps
+   Shown on the eBook page as "<n> claimed this month". Two parts added:
+     1. a baseline that drifts upward through the month, so the figure keeps
         moving on quiet days;
-     2. every genuine lead in this sheet.
-   Because the server works it out, every visitor sees the same number at the
-   same moment, and a real claim makes it jump immediately.
+     2. every genuine lead recorded in this sheet during the current month.
+   The server works it out, so every visitor sees the same number at the same
+   moment, and a real claim makes it jump immediately.
+   It resets on the 1st of each month, which is why it can run fast without
+   ever reaching an implausible total.
    Set CLAIM_DRIFT_PER_DAY to 0 to show only genuine claims.               */
-var CLAIM_START_DATE  = new Date(2026, 6, 15).getTime();  /* 15 July 2026 */
-var CLAIM_START_VALUE = 840;    /* baseline on that date */
-var CLAIM_DRIFT_PER_DAY = 120;  /* ≈ 1 every 12 minutes */
+var CLAIM_MONTH_BASE    = 800;  /* figure on the 1st */
+var CLAIM_DRIFT_PER_DAY = 295;  /* ≈ 1 every 5 minutes → stays under 10k */
 
 /* How many recent claimants the eBook page may show in its toasts. */
 var RECENT_LIMIT = 12;
 
 function driftedBaseline() {
-    var mins = Math.max(0, (new Date().getTime() - CLAIM_START_DATE) / 60000);
-    return CLAIM_START_VALUE + Math.floor(mins * CLAIM_DRIFT_PER_DAY / 1440);
+    var now = new Date();
+    var startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+    var mins = Math.max(0, (now.getTime() - startOfMonth) / 60000);
+    return CLAIM_MONTH_BASE + Math.floor(mins * CLAIM_DRIFT_PER_DAY / 1440);
 }
 
 
@@ -91,10 +94,24 @@ function doGet(e) {
     try {
         var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
         var lastRow = sheet.getLastRow();
-        var leads = Math.max(0, lastRow - 1);          // minus the header row
-        payload.count = driftedBaseline() + leads;     // drift + real claims
+        var totalLeads = Math.max(0, lastRow - 1);     // minus the header row
 
-        var take = Math.min(RECENT_LIMIT, leads);
+        /* count only leads from the current month, so the figure matches the
+           "claimed this month" label and resets cleanly on the 1st */
+        var now = new Date();
+        var monthStart = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+        var thisMonth = 0;
+        var scan = Math.min(500, totalLeads);          // recent rows are enough
+        if (scan > 0) {
+            var times = sheet.getRange(lastRow - scan + 1, 1, scan, 1).getValues();
+            for (var t = 0; t < times.length; t++) {
+                var when = times[t][0];
+                if (when && when.getTime && when.getTime() >= monthStart) thisMonth++;
+            }
+        }
+        payload.count = driftedBaseline() + thisMonth; // drift + real claims
+
+        var take = Math.min(RECENT_LIMIT, totalLeads);
         if (take > 0) {
             /* columns A (time) and B (name) for the most recent rows */
             var rows = sheet.getRange(lastRow - take + 1, 1, take, 2).getValues();
@@ -114,8 +131,9 @@ function doGet(e) {
         /* fall through with the baseline so the page still renders */
     }
 
-    /* cache briefly so a burst of visitors doesn't hammer the spreadsheet */
-    cache.put('claimStats', JSON.stringify(payload), 30);
+    /* cache briefly so a burst of visitors doesn't hammer the spreadsheet.
+       Kept short so the drifting figure stays current between refreshes. */
+    cache.put('claimStats', JSON.stringify(payload), 20);
     return jsonOut(payload);
 }
 

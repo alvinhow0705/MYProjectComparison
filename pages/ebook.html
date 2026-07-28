@@ -335,7 +335,7 @@
         <h1>Every New Launch in Malaysia.<br><span class="grad">One Powerful Guide.</span></h1>
         <p class="sub">Prices, PSF, developers and tenure — months of research, distilled into one eBook.</p>
         <p class="worth">Real value: <s>RM500.00</s> &nbsp;&middot;&nbsp; Today you decide what you pay.</p>
-        <div class="claim-pill"><span class="dot"></span><b id="claimCount">2,148</b>&nbsp;copies claimed</div>
+        <div class="claim-pill"><span class="dot"></span><b id="claimCount">2,148</b>&nbsp;claimed this month</div>
     </div>
 
     <!-- PRICING -->
@@ -535,18 +535,27 @@ var SocialProof = (function(){
        the page never looks dead on a quiet day. */
     var liveRecent = [], liveIdx = 0;
 
+    /* Only surface a real claimant while it's still recent — a genuine name with
+       "3 hours ago" on it isn't social proof, it's a reminder nobody's claimed
+       lately. Anything older falls back to a seed with a random recent time. */
+    var FRESH_MINUTES = 100;
+
     function showSeed(){
         if (document.visibilityState==='visible'){
             var shownOne = false;
-            if (liveRecent.length){
+            /* find the next real claimant that's still inside the window */
+            for (var tries = 0; tries < liveRecent.length; tries++){
                 if (liveIdx >= liveRecent.length) liveIdx = 0;
                 var r = liveRecent[liveIdx++];
-                render(r.n + '**', r.m <= 0 ? 'just now' : r.m + ' min ago');
-                shownOne = true;
+                if (r && r.m <= FRESH_MINUTES){
+                    render(r.n + '**', r.m <= 0 ? 'just now' : r.m + ' min ago');
+                    shownOne = true;
+                    break;
+                }
             }
             if (!shownOne){
                 if (idx>=order.length) shuffle();
-                render(SEEDS[order[idx++]]+'**', (1+Math.floor(Math.random()*19))+' min ago');
+                render(SEEDS[order[idx++]]+'**', (2+Math.floor(Math.random()*(FRESH_MINUTES-2)))+' min ago');
             }
         }
         schedule();
@@ -555,33 +564,30 @@ var SocialProof = (function(){
     setTimeout(showSeed, 6000+Math.random()*4000);
 
     /* ---------- claim counter ----------
+       Counts THIS MONTH only (hence the "claimed this month" label), so it
+       resets naturally on the 1st instead of climbing forever — no awkward
+       moment where a running total suddenly drops.
+
        Derived purely from the clock, so it is IDENTICAL on every device at any
-       given moment — laptop, phone and a visitor in another state all show the
-       same number. Nothing is stored per-browser (that's what used to make two
-       devices disagree). It rises on its own through the day, faster during
-       waking hours and slower overnight, and never goes backwards.
-       Tune START / PER_DAY to change the story it tells.                     */
-    var el      = document.getElementById('claimCount');
-    var LAUNCH  = Date.UTC(2026, 6, 15);  /* the date the count starts from */
-    var START   = 840;                    /* count on that date */
-    var PER_DAY = 120;                    /* average claims added per day */
+       given moment. Nothing is stored per-browser. It rises faster during
+       waking hours, slower overnight, and never goes backwards within a month.
+       MONTH_BASE + PER_DAY across a 31-day month lands just under 10,000.    */
+    var el         = document.getElementById('claimCount');
+    var MONTH_BASE = 800;                 /* figure on the 1st of the month */
+    var PER_DAY    = 295;                 /* ≈ 1 every 5 min */
 
     /* claims allotted to a given hour-of-day in Malaysia — quiet at night,
-       busiest in the evening. Sums to 24 units, scaled by PER_DAY/24.       */
+       busiest in the evening. Scaled so the day totals PER_DAY.             */
     var SHAPE = [2,1,1,1,1,2,4,7,9,10,11,11,12,12,11,11,12,14,16,17,16,12,8,5];
     var SHAPE_SUM = SHAPE.reduce(function(a,b){ return a+b; }, 0);
 
     function claimsInHour(hourOfDay){ return PER_DAY * SHAPE[hourOfDay] / SHAPE_SUM; }
 
     function countAt(ts){
-        var elapsed = Math.max(0, ts - LAUNCH);
-        var fullDays = Math.floor(elapsed / 86400000);
-        var total = START + fullDays * PER_DAY;
-        /* add the hours completed so far today, plus the part-hour we're in */
-        var msToday = elapsed % 86400000;
-        var hoursToday = Math.floor(msToday / 3600000);
-        for (var h = 0; h < hoursToday; h++) total += claimsInHour(h);
-        total += claimsInHour(hoursToday) * ((msToday % 3600000) / 3600000);
+        var d = new Date(ts);
+        var total = MONTH_BASE + (d.getDate() - 1) * PER_DAY;   /* whole days so far */
+        for (var h = 0; h < d.getHours(); h++) total += claimsInHour(h);
+        total += claimsInHour(d.getHours()) * ((d.getMinutes() * 60 + d.getSeconds()) / 3600);
         return Math.floor(total);
     }
 
