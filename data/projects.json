@@ -471,7 +471,12 @@
     "unit size": "549-1,216 sqft",
     "price": "From RM1,548,800",
     "psf": "From 2,900 psf",
-    "image": "assets/images/.jpg",
+    "image": "assets/images/clouthaus.webp",
+    "images": [
+      "assets/images/clouthaus.webp",
+      "assets/images/clouthaus-1.webp",
+      "assets/images/clouthaus-2.jpg"
+    ],
     "tag": "PREMIUM"
   },
   {
