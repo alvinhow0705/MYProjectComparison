@@ -236,13 +236,15 @@ nav {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 12px 16px;
 }
 
+/* search on the left, everything else pushed right on one line */
 .filter-pills {
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-left: auto;
 }
 
 .filter-label {
@@ -1248,8 +1250,12 @@ button:disabled {
 }
 
 /* ========================= SEARCH BOX ========================= */
+/* Sits on the same row as the filters (roughly half width) so the bar is
+   one line instead of two. Drops to full width on mobile via the media query. */
 .search-box {
-    flex: 1 1 100%;
+    flex: 1 1 42%;
+    min-width: 240px;
+    max-width: 520px;
     padding: 11px 16px;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -1447,9 +1453,16 @@ button:disabled {
     .filter-bar-inner {
         gap: 10px;
     }
+    /* phones: search reclaims its own full-width line */
+    .search-box {
+        flex: 1 1 100%;
+        max-width: none;
+        min-width: 0;
+    }
     .filter-pills {
         flex-wrap: wrap;
         row-gap: 6px;
+        margin-left: 0;
     }
     .sort-group {
         width: 100%;
