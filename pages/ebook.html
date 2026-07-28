@@ -143,8 +143,8 @@
         .pay-steps i { width:12px; height:1px; background:rgba(255,255,255,.18); }
 
         .pay-order { display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:12px; margin-bottom:10px; }
-        .po-thumb { flex:0 0 44px; height:44px; background:rgba(255,255,255,.06); border-radius:10px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-        .po-thumb img { width:34px; }
+        .po-thumb { flex:0 0 44px; height:62px; background:rgba(255,255,255,.06); border-radius:6px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,.5), inset -1px 0 0 rgba(255,255,255,.14); }
+        .po-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
         .po-info { flex:1; min-width:0; text-align:left; }
         .po-name { font-size:13.5px; font-weight:600; color:#fff; line-height:1.3; }
         .po-meta { font-size:11px; color:#6b7590; margin-top:2px; }
@@ -161,8 +161,10 @@
         .qr-inner img { width:100%; height:100%; object-fit:contain; }
         .qr-fallback { display:none; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
         .qr-fallback.show { display:flex; }
-        .qr-dn { font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:700; color:#ed1c24; letter-spacing:-.01em; }
-        .qr-msg { font-size:10.5px; color:#7a8396; line-height:1.5; text-align:center; }
+        .qr-warn { font-size:22px; line-height:1; margin-bottom:2px; }
+        .qr-dn { font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:#ed1c24; letter-spacing:-.01em; }
+        .qr-msg { font-size:10.5px; color:#7a8396; line-height:1.55; text-align:center; padding:0 6px; }
+        .qr-msg b { color:#3d4553; font-size:11px; }
         .qr-frame .c { position:absolute; width:20px; height:20px; border:2.5px solid #2ee06f; }
         .qr-frame .tl { top:6px; left:6px; border-right:0; border-bottom:0; border-radius:5px 0 0 0; }
         .qr-frame .tr { top:6px; right:6px; border-left:0; border-bottom:0; border-radius:0 5px 0 0; }
@@ -170,6 +172,8 @@
         .qr-frame .br { bottom:6px; right:6px; border-left:0; border-top:0; border-radius:0 0 5px 0; }
         .scanline { position:absolute; left:8px; right:8px; height:2px; background:linear-gradient(90deg,transparent,#2ee06f,transparent); box-shadow:0 0 12px 2px rgba(46,224,111,.6); animation:scanMove 2.6s ease-in-out infinite; }
         @keyframes scanMove { 0%,100%{ top:14px; opacity:0 } 15%{opacity:1} 50%{ top:170px; opacity:1 } 85%{opacity:1} }
+        .qr-frame.qr-off .scanline { display:none; }
+        .qr-frame.qr-off .c { border-color:#c9ced9; }
         .qr-cap { font-size:12px; color:#8b95ab; margin-top:12px; }
         .qr-cap b { color:#fff; }
 
@@ -178,6 +182,9 @@
 
         .pay-cta { width:100%; background:linear-gradient(90deg,#25D366,#17b354); color:#04240f; border:none; border-radius:14px; padding:16px; font-family:'Space Grotesk',sans-serif; font-size:14.5px; font-weight:800; cursor:pointer; transition:.2s; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 10px 30px rgba(37,211,102,.25); }
         .pay-cta:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(37,211,102,.35); }
+        /* disabled = payment channel closed; stays visible as the primary slot but inert */
+        .pay-cta:disabled { background:rgba(255,255,255,.06); color:#6b7590; border:1px solid rgba(255,255,255,.1); box-shadow:none; cursor:not-allowed; font-weight:600; }
+        .pay-cta:disabled:hover { transform:none; box-shadow:none; }
         .pay-alt { width:100%; margin-top:9px; background:transparent; color:#8b95ab; border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:13px; font-family:'Inter',sans-serif; font-size:12.5px; font-weight:500; cursor:pointer; transition:.2s; }
         .pay-alt:hover { color:#fff; border-color:rgba(255,255,255,.3); }
 
@@ -251,10 +258,10 @@
 
             <!-- order summary -->
             <div class="pay-order">
-                <div class="po-thumb"><img src="../assets/images/free-ebook-badge.png" alt=""></div>
+                <div class="po-thumb"><img src="../assets/images/ebook-cover.jpg" alt="eBook cover"></div>
                 <div class="po-info">
                     <div class="po-name">New Launch Projects eBook</div>
-                    <div class="po-meta">Digital download &middot; 13 pages &middot; 2026 edition</div>
+                    <div class="po-meta">Digital download &middot; 246 pages &middot; 2026 edition</div>
                 </div>
                 <div class="po-price">
                     <span class="po-was" id="payWas">RM500</span>
@@ -274,8 +281,9 @@
                     <div class="qr-inner">
                         <img id="qrImg" src="../assets/images/duitnow-qr.png" alt="DuitNow QR code">
                         <div id="qrFallback" class="qr-fallback">
+                            <div class="qr-warn">&#9888;</div>
                             <div class="qr-dn">DuitNow</div>
-                            <div class="qr-msg">QR loading&hellip;<br>Use the WhatsApp option below</div>
+                            <div class="qr-msg"><b>Payment gateway busy</b><br>Too many requests right now.<br>Please use WhatsApp below.</div>
                         </div>
                     </div>
                     <span class="scanline"></span>
@@ -288,7 +296,7 @@
                 <span>Maybank</span><span>CIMB</span><span>Public Bank</span><span>TNG eWallet</span><span>GrabPay</span><span>Boost</span>
             </div>
 
-            <button id="payDone" class="pay-cta">I've Paid &mdash; Send Receipt <span class="wa-ic">&#128241;</span></button>
+            <button id="payDone" class="pay-cta" disabled>Temporarily Out of Service</button>
             <button id="payHelp" class="pay-alt">Can't scan? Pay via WhatsApp instead</button>
 
             <div class="pay-foot">
@@ -591,7 +599,14 @@ var PAY = (function(){
     /* show the branded fallback if the QR image isn't in place yet */
     (function(){
         var img=document.getElementById('qrImg'), fb=document.getElementById('qrFallback');
-        function fail(){ img.style.display='none'; fb.classList.add('show'); }
+        function fail(){
+            img.style.display='none';
+            fb.classList.add('show');
+            /* stop the scanner animation + green brackets when there's nothing to scan,
+               so the state reads as "gateway unavailable" rather than a broken page */
+            var frame=fb.closest('.qr-frame');
+            if(frame){ frame.classList.add('qr-off'); }
+        }
         img.addEventListener('error', fail);
         if (img.complete && img.naturalWidth===0) fail();
     })();
