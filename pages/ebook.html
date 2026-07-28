@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free eBook — 100 New Launch Property Projects in Malaysia | MYPropertyComparison</title>
-    <meta name="description" content="Get your free guide to 100 new launch property projects in Malaysia — prices, PSF, developers and more, sent straight to your WhatsApp.">
-    <meta property="og:title" content="Free eBook — 100 New Launch Property Projects in Malaysia">
-    <meta property="og:description" content="Get your free guide to 100 new launch property projects in Malaysia, sent straight to your WhatsApp.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mypropertycomparison.com/pages/ebook.html">
+    <title>Property eBook — RM100 Value, Free For a Limited Time | MYPropertyComparison</title>
+    <meta name="description" content="The complete guide to Malaysia's new launch projects. Worth RM100 — claim it free for a limited time.">
     <meta name="robots" content="noindex">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EDVF9QYQPZ"></script>
@@ -22,63 +18,244 @@
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
     <link rel="apple-touch-icon" sizes="192x192" href="../favicon-192.png">
-    <link rel="stylesheet" href="../style.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .ebook-wrap { max-width: 460px; margin: 0 auto; text-align: center; }
-        .ebook-badge { width: 150px; margin: 0 auto 18px; display: block; }
-        .ebook-bullets { text-align: left; margin: 0 auto 24px; max-width: 360px; }
-        .ebook-bullets p { font-size: 14.5px; color: #444; margin: 0 0 10px; line-height: 1.5; }
-        .ebook-bullets p .ic { color: #1a7a3e; margin-right: 8px; font-weight: 700; }
-        .ebook-form { text-align: left; }
-        .ebook-trust { font-size: 12px; color: #999; margin-top: 14px; }
-        .ebook-nav { display: flex; justify-content: center; padding: 18px 16px; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root { --bg:#070a13; --panel:rgba(255,255,255,.05); --line:rgba(255,255,255,.1); --txt:#eef1f8; --dim:#8b95ab; --green:#2ee06f; --green-dk:#17b354; --red:#ff4d4d; --amber:#ffc65c; }
+        body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--txt); line-height:1.65; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+        h1,h2,h3 { font-family:'Space Grotesk',sans-serif; }
+        a { color:inherit; text-decoration:none; }
+        img { display:block; max-width:100%; }
+
+        /* ---------- animated aurora background ---------- */
+        .aurora { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+        .blob { position:absolute; border-radius:50%; filter:blur(90px); opacity:.32; }
+        .b1 { width:520px; height:520px; background:#1b3f9e; top:-160px; left:-120px; animation:drift1 16s ease-in-out infinite alternate; }
+        .b2 { width:460px; height:460px; background:#0f7a45; bottom:-140px; right:-100px; animation:drift2 19s ease-in-out infinite alternate; }
+        .b3 { width:340px; height:340px; background:#6b2fa0; top:38%; left:58%; animation:drift3 22s ease-in-out infinite alternate; }
+        @keyframes drift1 { to { transform:translate(90px,70px) scale(1.15);} }
+        @keyframes drift2 { to { transform:translate(-80px,-60px) scale(1.1);} }
+        @keyframes drift3 { to { transform:translate(-70px,50px) scale(.9);} }
+        .grain { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.5;
+            background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size:26px 26px; }
+
+        .shell { position:relative; z-index:1; }
+
+        /* ---------- promo banner (DataCamp style) ---------- */
+        .count-bar { position:sticky; top:0; z-index:60; background:linear-gradient(90deg,#12082b 0%,#3b1a8f 45%,#6d28d9 100%); padding:10px 48px 10px 18px; display:flex; align-items:center; justify-content:center; gap:26px; flex-wrap:wrap; }
+        .sticker { transform:rotate(-5deg); text-align:center; line-height:1; flex:0 0 auto; }
+        .sticker .off { font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:700; font-style:italic; color:#3dfc6e; text-shadow:0 2px 0 #0c3; letter-spacing:-.02em; white-space:nowrap; }
+        .sticker .rib { display:inline-block; background:#8b5cf6; color:#fff; font-size:8.5px; font-weight:700; letter-spacing:.16em; padding:3px 8px; margin-top:3px; border-radius:2px; }
+        .promo-mid { text-align:center; }
+        .promo-mid .l1 { font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#fff; }
+        .promo-mid .l1 b { color:#3dfc6e; }
+        .promo-mid .l2 { font-size:12.5px; color:#cfc4f5; margin-top:3px; display:flex; align-items:center; justify-content:center; gap:8px; }
+        .timer-pill { background:#0d0d1f; color:#fff; font-family:'Space Grotesk',monospace; font-weight:700; font-size:13.5px; padding:3px 12px; border-radius:6px; font-variant-numeric:tabular-nums; letter-spacing:.04em; }
+        .count-bar.urgent .timer-pill { color:#ff6b6b; animation:blinkP 1s step-end infinite; }
+        @keyframes blinkP { 50% { box-shadow:0 0 14px rgba(255,77,77,.5);} }
+        .promo-btn { flex:0 0 auto; background:#3dfc6e; color:#062b12; font-family:'Space Grotesk',sans-serif; font-size:14.5px; font-weight:700; padding:12px 24px; border-radius:6px; transition:.2s; white-space:nowrap; }
+        .promo-btn:hover { background:#5cff87; transform:translateY(-1px); }
+        .promo-x { position:absolute; right:14px; top:50%; transform:translateY(-50%); background:none; border:none; color:#cfc4f5; font-size:22px; cursor:pointer; line-height:1; padding:4px; }
+        .promo-x:hover { color:#fff; }
+        .count-bar.expired { background:linear-gradient(90deg,#15151d,#242433); }
+        .count-bar.expired .l1 { color:#b9bdcc; }
+        @media (max-width:760px) {
+            .count-bar { gap:12px; padding:10px 42px 12px 12px; }
+            .sticker .off { font-size:22px; }
+            .promo-mid .l1 { font-size:15px; }
+            .promo-btn { padding:10px 16px; font-size:13px; }
+        }
+
+        /* ---------- nav ---------- */
+        .topnav { display:flex; justify-content:center; padding:20px 16px 6px; }
+        .topnav a { display:flex; align-items:center; gap:9px; font-size:13px; font-weight:600; letter-spacing:.06em; color:var(--txt); }
+        .topnav img { height:26px; width:26px; border-radius:7px; }
+
+        /* ---------- hero ---------- */
+        .hero { max-width:860px; margin:0 auto; padding:34px 20px 10px; text-align:center; }
+        .float-book { width:170px; margin:0 auto 6px; animation:floaty 4.5s ease-in-out infinite; filter:drop-shadow(0 30px 40px rgba(0,0,0,.6)); transition:transform .2s ease-out; will-change:transform; }
+        @keyframes floaty { 0%,100%{ transform:translateY(0) rotate(-2deg);} 50%{ transform:translateY(-14px) rotate(2deg);} }
+        .glow-ring { width:220px; height:26px; margin:-8px auto 22px; background:radial-gradient(ellipse, rgba(46,224,111,.35), transparent 70%); filter:blur(6px); animation:ringPulse 4.5s ease-in-out infinite; }
+        @keyframes ringPulse { 0%,100%{transform:scaleX(1);opacity:.8} 50%{transform:scaleX(.75);opacity:.45} }
+        .hero h1 { font-size:clamp(28px,4.6vw,44px); font-weight:700; line-height:1.15; letter-spacing:-.01em; }
+        .hero h1 .grad { background:linear-gradient(90deg,#2ee06f,#8be0ff 60%,#c9a869); -webkit-background-clip:text; background-clip:text; color:transparent; }
+        .hero .sub { color:var(--dim); font-size:16px; font-weight:300; max-width:560px; margin:14px auto 0; }
+        .hero .worth { margin-top:16px; font-size:14px; color:var(--dim); }
+        .hero .worth s { color:var(--red); font-weight:600; }
+
+        /* ---------- pricing ---------- */
+        .pricing { max-width:860px; margin:34px auto 0; padding:0 20px; display:grid; grid-template-columns:1fr 1.2fr; gap:18px; align-items:stretch; }
+        @media (max-width:680px){ .pricing { grid-template-columns:1fr; } }
+        .pcard { position:relative; background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:30px 26px; backdrop-filter:blur(12px); display:flex; flex-direction:column; text-align:left; }
+        .pcard h3 { font-size:17px; font-weight:600; }
+        .plabel { font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--dim); margin:3px 0 16px; }
+        .price-row { display:flex; align-items:baseline; gap:12px; }
+        .price-was { font-size:17px; color:var(--dim); text-decoration:line-through; }
+        .price-now { font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700; color:#fff; }
+        .price-note { font-size:12.5px; color:var(--dim); margin:10px 0 20px; }
+        .spacer { flex:1; }
+        .pay-btn { width:100%; background:transparent; color:var(--txt); border:1px solid rgba(255,255,255,.35); border-radius:12px; padding:14px; font-size:14px; font-weight:600; font-family:'Space Grotesk',sans-serif; letter-spacing:.04em; cursor:pointer; transition:.25s; }
+        .pay-btn:hover { border-color:#fff; background:rgba(255,255,255,.06); }
+
+        /* free card with rotating gradient border */
+        .free-wrap { position:relative; border-radius:22px; padding:2px; overflow:hidden; }
+        .free-wrap::before { content:""; position:absolute; inset:-40%; background:conic-gradient(from 0deg, #2ee06f, #0b6df0, #c9a869, #2ee06f); animation:spin 5s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg);} }
+        .pcard.free { position:relative; border:none; border-radius:20px; background:#0b1020; height:100%; }
+        .badge-top { position:absolute; top:-1px; right:22px; background:linear-gradient(90deg,#2ee06f,#17b354); color:#04240f; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:7px 14px; border-radius:0 0 10px 10px; }
+        .pcard.free .price-now { color:var(--green); text-shadow:0 0 30px rgba(46,224,111,.4); }
+        .fgroup { margin-bottom:12px; }
+        .fgroup label { display:block; font-size:12px; font-weight:600; color:var(--dim); margin-bottom:6px; letter-spacing:.04em; }
+        .fgroup input { width:100%; padding:14px 16px; background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:12px; font-size:15px; color:#fff; outline:none; transition:.25s; font-family:inherit; }
+        .fgroup input:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(46,224,111,.15); }
+        .fgroup input::placeholder { color:#5b657c; }
+        .free-btn { width:100%; background:linear-gradient(90deg,#2ee06f,#17b354); color:#04240f; border:none; border-radius:12px; padding:16px; font-size:15px; font-weight:800; font-family:'Space Grotesk',sans-serif; letter-spacing:.03em; cursor:pointer; transition:.25s; animation:glowPulse 2s ease-in-out infinite; }
+        .free-btn:hover { transform:translateY(-2px); }
+        @keyframes glowPulse { 0%,100%{ box-shadow:0 0 0 0 rgba(46,224,111,.45);} 50%{ box-shadow:0 0 28px 4px rgba(46,224,111,.25);} }
+        .trust { font-size:11.5px; color:var(--dim); margin-top:12px; text-align:center; }
+
+        /* ---------- bullets ---------- */
+        .bullets { max-width:520px; margin:44px auto 0; padding:0 20px; }
+        .bullet { display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--line); }
+        .bullet:last-child { border-bottom:none; }
+        .bullet .ic { flex:0 0 34px; height:34px; border-radius:10px; background:rgba(46,224,111,.12); border:1px solid rgba(46,224,111,.3); display:flex; align-items:center; justify-content:center; color:var(--green); font-size:15px; font-weight:700; }
+        .bullet p { font-size:14.5px; color:#c6cddb; font-weight:300; }
+        .bullet p b { color:#fff; font-weight:600; }
+
+        .proof { text-align:center; color:var(--dim); font-size:13px; margin:36px 0 0; }
+
+        /* ---------- claim counter ---------- */
+        .claim-pill { display:inline-flex; align-items:center; gap:8px; margin-top:18px; background:rgba(46,224,111,.1); border:1px solid rgba(46,224,111,.28); color:#9fe8bb; font-size:13px; font-weight:500; padding:8px 18px; border-radius:30px; }
+        .claim-pill b { color:#3dfc6e; font-family:'Space Grotesk',sans-serif; font-variant-numeric:tabular-nums; }
+        .claim-pill .dot { width:7px; height:7px; border-radius:50%; background:#3dfc6e; animation:liveDot 1.6s ease-in-out infinite; }
+        @keyframes liveDot { 0%,100%{opacity:1} 50%{opacity:.25} }
+        .claim-pill b.tick { animation:countTick .7s ease; }
+        @keyframes countTick { 0%{transform:scale(1)} 35%{transform:scale(1.35); color:#7bffa8; text-shadow:0 0 16px rgba(61,252,110,.8)} 100%{transform:scale(1)} }
+        .claim-pill b { display:inline-block; }
+
+        /* ---------- social proof toast ---------- */
+        .toast { position:fixed; left:16px; bottom:16px; z-index:100; display:flex; align-items:center; gap:12px; background:rgba(13,16,30,.92); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:12px 18px 12px 12px; max-width:320px; box-shadow:0 16px 44px rgba(0,0,0,.55); transform:translateY(140%); opacity:0; transition:transform .5s cubic-bezier(.2,.9,.3,1.2), opacity .5s; pointer-events:none; }
+        .toast.show { transform:translateY(0); opacity:1; }
+        .toast .avatar { flex:0 0 38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; color:#04240f; }
+        .toast .t-txt { font-size:12.5px; color:#c6cddb; line-height:1.45; }
+        .toast .t-txt b { color:#fff; }
+        .toast .t-ago { font-size:11px; color:#77809a; margin-top:1px; display:flex; align-items:center; gap:6px; }
+        .toast .t-ago .vd { width:6px; height:6px; border-radius:50%; background:#3dfc6e; }
+        @media (max-width:600px){ .toast { left:10px; right:10px; max-width:none; bottom:10px; } }
+        .back { text-align:center; margin:40px 0 0; }
+        .back a { font-size:13px; color:var(--dim); border:1px solid var(--line); padding:11px 24px; border-radius:30px; transition:.25s; display:inline-block; }
+        .back a:hover { color:#fff; border-color:#fff; }
+
+        footer { position:relative; z-index:1; border-top:1px solid var(--line); color:var(--dim); text-align:center; padding:36px 20px; font-size:12px; line-height:2; margin-top:60px; font-weight:300; }
+        footer .fb { color:var(--txt); font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:600; letter-spacing:.08em; }
+        footer a { color:var(--dim); text-decoration:underline; }
     </style>
 </head>
 <body>
 <script>(function(){try{var p=new URLSearchParams(window.location.search);var u=p.get('utm_source');if(u)localStorage.setItem('utm_source',u);}catch(e){}})();</script>
 
-    <!-- MINIMAL NAV: logo only, no distracting links -->
-    <div class="ebook-nav">
-        <a href="../index.html" style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:#111;">
-            <img src="../logo-nav.png" alt="MYPropertyComparison logo" style="height:28px;width:28px;border-radius:7px;">
-            MYPropertyComparison
-        </a>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+
+<div class="shell">
+
+    <!-- PROMO BANNER (stage 1: full price anchor / stage 2: discount reveal) -->
+    <div class="count-bar" id="countBar">
+        <div class="sticker" id="sticker">
+            <div class="off" id="stickerOff">FREE</div>
+            <div class="rib" id="stickerRib">WITH YOUR CONTACT</div>
+        </div>
+        <div class="promo-mid">
+            <div class="l1" id="promoL1">The <b>RM100</b> property eBook — yours FREE with your contact</div>
+            <div class="l2" id="promoL2">Prefer not to share? You can buy it below for RM100.</div>
+        </div>
+        <a class="promo-btn" id="promoBtn" href="#freeCard">Claim Free &nbsp;&rsaquo;</a>
+        <button class="promo-x" id="promoX" aria-label="Dismiss">&times;</button>
     </div>
 
-    <div class="page" style="padding-top:10px;">
-        <div class="ebook-wrap">
-            <img class="ebook-badge" src="../assets/images/free-ebook-badge.png" alt="Free eBook">
-            <h1 class="page-title" style="font-size:24px;">Get Your FREE Guide to 100 New Launch Projects</h1>
-            <p class="page-subtitle" style="margin-bottom:24px;">Malaysia's new-launch market, simplified — prices, PSF and developers for 100 projects in one guide.</p>
-
-            <div class="ebook-bullets">
-                <p><span class="ic">&#10003;</span>Compare prices &amp; PSF across top developers at a glance</p>
-                <p><span class="ic">&#10003;</span>Spot the best-value projects before everyone else does</p>
-                <p><span class="ic">&#10003;</span>Free — sent straight to your WhatsApp, no strings attached</p>
+    <!-- STAGE-2 DOWNSELL MODAL -->
+    <div id="dsOverlay" style="display:none; position:fixed; inset:0; z-index:120; background:rgba(4,6,12,.78); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:20px;">
+        <div style="position:relative; max-width:420px; width:100%; background:#0b1020; border:1px solid rgba(255,255,255,.14); border-radius:20px; padding:36px 30px; text-align:center; box-shadow:0 40px 100px rgba(0,0,0,.7);">
+            <button id="dsClose" aria-label="Close" style="position:absolute; top:12px; right:14px; background:none; border:none; color:#8b95ab; font-size:22px; cursor:pointer;">&times;</button>
+            <div style="font-size:34px;">&#9995;</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:22px; color:#fff; margin:10px 0 8px;">Wait — don't pay full price</h3>
+            <p style="font-size:14px; color:#8b95ab; margin-bottom:18px;">For the next 10 minutes only, the RM100 eBook drops to</p>
+            <div style="font-family:'Space Grotesk',sans-serif; margin-bottom:6px;">
+                <span style="font-size:18px; color:#8b95ab; text-decoration:line-through; margin-right:10px;">RM100</span>
+                <span style="font-size:44px; font-weight:700; color:#ffc65c;">RM20</span>
             </div>
-
-            <div class="lead-form ebook-form" id="ebookForm">
-                <div class="form-group">
-                    <label>Your Name</label>
-                    <input id="ebName" placeholder="Your Name">
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input id="ebPhone" placeholder="Phone Number" type="tel">
-                </div>
-                <button id="ebSendBtn" style="width:100%; margin-top:8px;">
-                    Send Me the FREE eBook
-                </button>
-                <p class="ebook-trust">We'll only use this to send your eBook and occasional project updates. No spam.</p>
-            </div>
-        </div>
-
-        <div class="back-row" style="margin-top:24px;">
-            <button class="btn-outline" onclick="window.location.href='../index.html'">
-                ← Back to Projects
-            </button>
+            <div style="font-size:12.5px; color:#8b95ab; margin-bottom:22px;">Offer ends in <span class="timer-pill" id="dsPill">10m 00s</span></div>
+            <button id="dsBuy" style="width:100%; background:#ffc65c; color:#3a2800; border:none; border-radius:12px; padding:15px; font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; cursor:pointer; margin-bottom:10px;">Get It for RM20 &rarr;</button>
+            <button id="dsFree" style="width:100%; background:linear-gradient(90deg,#2ee06f,#17b354); color:#04240f; border:none; border-radius:12px; padding:15px; font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:800; cursor:pointer;">No Thanks — I'll Take It FREE &rarr;</button>
+            <p style="font-size:11.5px; color:#5b657c; margin-top:12px;">The free option just needs your name &amp; phone number.</p>
         </div>
     </div>
+
+    <!-- NAV -->
+    <div class="topnav">
+        <a href="../index.html"><img src="../logo-nav.png" alt="MYPropertyComparison logo">MYPROPERTYCOMPARISON</a>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <img class="float-book" id="floatBook" src="../assets/images/free-ebook-badge.png" alt="Free eBook">
+        <div class="glow-ring"></div>
+        <h1>Every New Launch in Malaysia.<br><span class="grad">One Powerful Guide.</span></h1>
+        <p class="sub">Prices, PSF, developers and tenure — months of research, distilled into one eBook.</p>
+        <p class="worth">Real value: <s>RM100</s> &nbsp;&middot;&nbsp; Today you decide what you pay.</p>
+        <div class="claim-pill"><span class="dot"></span><b id="claimCount">2,148</b>&nbsp;copies claimed</div>
+    </div>
+
+    <!-- PRICING -->
+    <div class="pricing">
+        <!-- PAY (anchor) -->
+        <div class="pcard">
+            <h3>Buy the eBook</h3>
+            <div class="plabel">One-time purchase</div>
+            <div class="price-row"><span class="price-was" id="wasPrice" style="display:none;">RM100</span><span class="price-now" id="nowPrice">RM100</span></div>
+            <p class="price-note" id="payNote">Full research access. No contact details needed.</p>
+            <div class="spacer"></div>
+            <button class="pay-btn" id="payBtn">Buy Now &rarr;</button>
+        </div>
+
+        <!-- FREE (goal) -->
+        <div class="free-wrap" id="freeCard">
+            <div class="pcard free">
+                <div class="badge-top">&#127873; 100% Free Today</div>
+                <h3>Claim It Free</h3>
+                <div class="plabel">Just tell us where to send it</div>
+                <div class="price-row"><span class="price-was">RM100</span><span class="price-now">RM0</span></div>
+                <p class="price-note">Sent instantly to your WhatsApp. No payment. No card.</p>
+                <div class="fgroup"><label>YOUR NAME</label><input id="ebName" placeholder="Your Name"></div>
+                <div class="fgroup"><label>PHONE NUMBER</label><input id="ebPhone" placeholder="e.g. 012-345 6789" type="tel"></div>
+                <div class="spacer"></div>
+                <button class="free-btn" id="ebSendBtn">SEND ME THE FREE EBOOK &rarr;</button>
+                <p class="trust">We'll only use this to send your eBook and occasional project updates. No spam.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BULLETS -->
+    <div class="bullets">
+        <div class="bullet"><div class="ic">&#10003;</div><p><b>Compare instantly.</b> Prices &amp; PSF across top developers, side by side.</p></div>
+        <div class="bullet"><div class="ic">&#10003;</div><p><b>Spot value first.</b> Find underpriced projects before everyone else does.</p></div>
+        <div class="bullet"><div class="ic">&#10003;</div><p><b>Full coverage.</b> KL, Selangor, Johor &amp; Sabah — updated for 2026.</p></div>
+    </div>
+
+    <p class="proof">Join the buyers &amp; investors who've claimed their copy this week.</p>
+
+    <div class="back"><a href="../index.html">&larr; Back to Projects</a></div>
+</div>
+
+<!-- SOCIAL PROOF TOAST -->
+<div class="toast" id="spToast" aria-hidden="true">
+    <div class="avatar" id="spAvatar">A</div>
+    <div>
+        <div class="t-txt" id="spText"><b>Ahmad</b> from Puchong claimed his free copy</div>
+        <div class="t-ago"><span class="vd"></span><span id="spAgo">4 min ago</span></div>
+    </div>
+</div>
 
 <script>
 function trackJourney(a,d){try{var j=JSON.parse(localStorage.getItem("userJourney")||"[]");var n=new Date();var t=n.toLocaleTimeString('en-MY',{hour:'2-digit',minute:'2-digit',hour12:true});var dt=n.toLocaleDateString('en-MY');j.push({action:a,details:d||"",time:dt+" "+t,page:"ebook.html"});if(j.length>50)j.splice(0,j.length-50);localStorage.setItem("userJourney",JSON.stringify(j));}catch(e){}}
@@ -87,91 +264,243 @@ function clearJourney(){localStorage.removeItem("userJourney");}
 trackJourney("Visited eBook Page");
 
 var SHEET_URL = "https://script.google.com/macros/s/AKfycbzSWt_8ceLD172O_RX2PXrqrZpbB0GGtLN7KGX0HbybfOlL6PCztv_zYCQPU0cCH682bg/exec";
+function sendToSheet(data){var f=document.getElementById("sheetFrame");if(!f){f=document.createElement("iframe");f.id="sheetFrame";f.name="sheetFrame";f.style.display="none";document.body.appendChild(f);}var form=document.createElement("form");form.method="POST";form.action=SHEET_URL;form.target="sheetFrame";for(var k in data){var i=document.createElement("input");i.type="hidden";i.name=k;i.value=data[k];form.appendChild(i);}document.body.appendChild(form);form.submit();form.remove();}
 
-function sendToSheet(data) {
-    var iframe = document.getElementById("sheetFrame");
-    if (!iframe) {
-        iframe = document.createElement("iframe");
-        iframe.id = "sheetFrame";
-        iframe.name = "sheetFrame";
-        iframe.style.display = "none";
-        document.body.appendChild(iframe);
-    }
-    var form = document.createElement("form");
-    form.method = "POST";
-    form.action = SHEET_URL;
-    form.target = "sheetFrame";
-    for (var key in data) {
-        var input = document.createElement("input");
-        input.type = "hidden";
-        input.name = key;
-        input.value = data[key];
-        form.appendChild(input);
-    }
-    document.body.appendChild(form);
-    form.submit();
-    form.remove();
-}
+/* ==========================================================
+   TWO-STAGE OFFER STATE MACHINE
+   Stage 1: RM100 anchor OR free-with-contact. No discount shown.
+   Stage 2: triggered by exit-intent / "not interested" / 40s dwell
+            -> "Wait!" modal reveals RM100 -> RM20 with 10-min timer.
+   Stage persists in localStorage so refreshing doesn't reset it.
+========================================================== */
+var OFFER = (function(){
+    var DURATION = 10*60*1000;
+    var stage = localStorage.getItem('ebookStage') || '1';
+    var end = parseInt(localStorage.getItem('ebookOfferEnd2') || '0');
+    var bar=document.getElementById('countBar'), l1=document.getElementById('promoL1'), l2=document.getElementById('promoL2');
+    var stOff=document.getElementById('stickerOff'), stRib=document.getElementById('stickerRib');
+    var was=document.getElementById('wasPrice'), now=document.getElementById('nowPrice'), note=document.getElementById('payNote');
+    var overlay=document.getElementById('dsOverlay');
 
+    function currentPrice(){
+        if (stage==='2' && end > Date.now()) return 'RM20';
+        return 'RM100';
+    }
+
+    function applyStage2UI(){
+        stOff.textContent='80% OFF'; stRib.textContent='LAST CHANCE';
+        l2.innerHTML='Offer ends in <span class="timer-pill" id="timerPill">10m 00s</span>';
+        l1.innerHTML='Wait — last chance: <b>RM100 &rarr; RM20</b> (or still FREE below)';
+        was.style.display=''; now.textContent='RM20';
+        note.textContent='One-time downsell — locked in only while the timer runs.';
+        tick();
+    }
+
+    function expireUI(){
+        bar.classList.add('expired'); bar.classList.remove('urgent');
+        document.getElementById('sticker').style.display='none';
+        l1.innerHTML='The RM20 offer has ended';
+        l2.innerHTML='Good news — you can still claim the eBook <b style="color:#3dfc6e">FREE</b> below.';
+        was.style.display='none'; now.textContent='RM100';
+        note.textContent='Standard price. Tip: the free option is still available.';
+    }
+
+    function tick(){
+        var left = end - Date.now();
+        var pill = document.getElementById('timerPill') || document.getElementById('dsPill');
+        if (left <= 0) { expireUI(); var dp=document.getElementById('dsPill'); if(dp)dp.textContent='0m 00s'; return; }
+        if (left < 2*60*1000) bar.classList.add('urgent');
+        var m=Math.floor(left/60000), s=Math.floor((left%60000)/1000);
+        var txt=(m<10?'0':'')+m+'m '+(s<10?'0':'')+s+'s';
+        var p1=document.getElementById('timerPill'); if(p1)p1.textContent=txt;
+        var p2=document.getElementById('dsPill'); if(p2)p2.textContent=txt;
+        setTimeout(tick,250);
+    }
+
+    function goStage2(showModal){
+        if (stage==='2') return;
+        stage='2'; end=Date.now()+DURATION;
+        localStorage.setItem('ebookStage','2');
+        localStorage.setItem('ebookOfferEnd2', end);
+        applyStage2UI();
+        if (showModal){
+            overlay.style.display='flex';
+            if (typeof gtag==='function') gtag('event','ebook_downsell_shown',{});
+            trackJourney('Shown RM20 Downsell');
+        }
+    }
+
+    /* restore state on load */
+    if (stage==='2'){
+        if (end > Date.now()) applyStage2UI(); else expireUI();
+    }
+
+    /* ---- stage-2 triggers (first one wins) ---- */
+    if (stage!=='2'){
+        /* 1. exit intent (desktop): mouse heads for the tabs/close */
+        document.addEventListener('mouseout', function(e){
+            if (!e.relatedTarget && e.clientY <= 8) goStage2(true);
+        });
+        /* 2. dwell fallback: 40s on page without deciding */
+        setTimeout(function(){ goStage2(true); }, 40000);
+        /* 3. clicking Buy at RM100 — reward hesitation at checkout moment */
+        /* handled inside pay click below */
+    }
+
+    return { currentPrice:currentPrice, goStage2:goStage2, isStage2:function(){return stage==='2';} };
+})();
+
+/* ---------- banner dismiss + CTA ---------- */
+document.getElementById('promoX').addEventListener('click', function(){
+    document.getElementById('countBar').style.display='none';
+});
+document.getElementById('promoBtn').addEventListener('click', function(){
+    if (typeof gtag === 'function') gtag('event', 'promo_banner_click', { page: 'ebook.html' });
+});
+
+/* ---------- downsell modal buttons ---------- */
+document.getElementById('dsClose').addEventListener('click', function(){ document.getElementById('dsOverlay').style.display='none'; });
+document.getElementById('dsOverlay').addEventListener('click', function(e){ if(e.target===this) this.style.display='none'; });
+document.getElementById('dsFree').addEventListener('click', function(){
+    document.getElementById('dsOverlay').style.display='none';
+    document.getElementById('freeCard').scrollIntoView({behavior:'smooth'});
+    document.getElementById('ebName').focus();
+    if (typeof gtag==='function') gtag('event','ebook_downsell_chose_free',{});
+});
+document.getElementById('dsBuy').addEventListener('click', function(){
+    document.getElementById('dsOverlay').style.display='none';
+    if (typeof gtag==='function') gtag('event','ebook_buy_click',{ price:'RM20' });
+    trackJourney('Clicked Buy eBook','RM20 downsell');
+    var msg = "Hi MY Property Comparison 👋\n\nI'd like to purchase the New Launch Projects eBook (RM20 offer). How do I pay?";
+    window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
+});
+
+/* ==========================================================
+   LIVE SOCIAL PROOF
+   - Toasts rotate through seeded Malaysian names/areas with
+     irregular timing so it reads as organic, not scripted.
+   - Claim counter grows slowly per day + nudges when a toast fires.
+   - Swap SEEDS for real (anonymised) lead data once you have volume.
+========================================================== */
+var SocialProof = (function(){
+    /* masked seed names: first 3 letters + ** — no full names shown */
+    var SEEDS = ['Alv','Ahm','Jas','Wei','Nur','Kav','Sit','Min','Haf','Pri','Dan','Ais','Kok','Far','Vin','Zul','Mei','Arj','Ami','Che','Liy','Sye','Yee','Sha'];
+    var COLORS = ['#3dfc6e','#8be0ff','#ffc65c','#f0997b','#ed93b1'];
+    var toast=document.getElementById('spToast'), av=document.getElementById('spAvatar');
+    var txt=document.getElementById('spText'), ago=document.getElementById('spAgo');
+    var order=[], idx=0, hideTimer=null;
+    function shuffle(){ order=SEEDS.map(function(_,i){return i;}); for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;} idx=0; }
+    shuffle();
+    function render(maskedName, agoText){
+        av.textContent=maskedName.charAt(0).toUpperCase();
+        av.style.background=COLORS[Math.floor(Math.random()*COLORS.length)];
+        txt.innerHTML='<b>'+maskedName+'</b> claimed FREE copy';
+        ago.textContent=agoText;
+        toast.classList.add('show');
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer=setTimeout(function(){ toast.classList.remove('show'); }, 5200);
+    }
+    function showSeed(){
+        if (document.visibilityState==='visible'){
+            if (idx>=order.length) shuffle();
+            render(SEEDS[order[idx++]]+'**', (1+Math.floor(Math.random()*19))+' min ago');
+            bumpCounter();
+        }
+        schedule();
+    }
+    function schedule(){ setTimeout(showSeed, 16000+Math.random()*20000); }
+    setTimeout(showSeed, 6000+Math.random()*4000);
+
+    /* claim counter: grows hour-by-hour (deterministic — every visitor sees the
+       same number at the same time), and keeps ticking up live while you watch */
+    var el=document.getElementById('claimCount');
+    var LAUNCH=new Date('2026-07-01').getTime();
+    function hourInc(h){ var x=Math.sin(h*127.1)*43758.5453; return (x-Math.floor(x))<0.62?1:0; }
+    function countAt(ts){
+        var hours=Math.max(0, Math.floor((ts-LAUNCH)/3600000));
+        var total=2064;
+        for(var h=0;h<hours;h++) total+=hourInc(h);
+        return total;
+    }
+    var base=countAt(Date.now())+parseInt(localStorage.getItem('claimBump')||'0');
+    function renderCount(pulse){
+        el.textContent=base.toLocaleString('en-MY');
+        if(pulse){ el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
+    }
+    function bumpCounter(){ if(Math.random()<.6){ base++; var b=parseInt(localStorage.getItem('claimBump')||'0'); localStorage.setItem('claimBump', b+1); renderCount(true); } }
+    renderCount(false);
+    /* live drip: +1 every 35–110s while the page is open, with a green pulse */
+    (function drip(){
+        setTimeout(function(){
+            if(document.visibilityState==='visible'){ base++; renderCount(true); }
+            drip();
+        }, 35000+Math.random()*75000);
+    })();
+
+    /* called when THIS visitor submits — their own masked name pops up instantly */
+    function announce(fullName){
+        var clean=(fullName||'').replace(/[^A-Za-z]/g,'');
+        var masked=(clean.substring(0,3)||'You')+'**';
+        masked=masked.charAt(0).toUpperCase()+masked.slice(1).toLowerCase().replace('**','')+'**';
+        render(masked, '0 min ago');
+        base++; renderCount(true);
+    }
+    return { announce: announce };
+})();
+
+/* ---------- floating book tilt ---------- */
+(function(){
+    var book=document.getElementById('floatBook');
+    if(matchMedia('(hover:hover)').matches){
+        document.addEventListener('mousemove',function(e){
+            var x=(e.clientX/innerWidth-.5)*14, y=(e.clientY/innerHeight-.5)*10;
+            book.style.transform='rotateY('+x+'deg) rotateX('+(-y)+'deg)';
+        },{passive:true});
+    }
+})();
+
+/* ---------- pay button (stage-aware) ---------- */
+document.getElementById('payBtn').addEventListener('click', function(){
+    /* If they're about to pay full RM100, reward them with the downsell instead */
+    if (!OFFER.isStage2()){ OFFER.goStage2(true); return; }
+    var price = OFFER.currentPrice();
+    if (typeof gtag === 'function') gtag('event', 'ebook_buy_click', { price: price });
+    trackJourney('Clicked Buy eBook', price);
+    var msg = "Hi MY Property Comparison 👋\n\nI'd like to purchase the New Launch Projects eBook (" + price + "). How do I pay?";
+    window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
+});
+
+/* ---------- free lead flow (same as live page) ---------- */
 document.getElementById("ebSendBtn").addEventListener("click", function () {
     var name = document.getElementById("ebName").value.trim();
     var phone = document.getElementById("ebPhone").value.trim();
-
-    if (!name || !phone) {
-        alert("Please fill in your name and phone number so we can send your eBook.");
-        return;
-    }
-
+    if (!name || !phone) { alert("Please fill in your name and phone number so we can send your eBook."); return; }
     if (/^0/.test(phone)) phone = "6" + phone;
-
     var finderData = JSON.parse(localStorage.getItem("finderData") || "{}");
     var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
     var savedUtm = localStorage.getItem("utm_source") || "Direct";
-    var journeySummary = getJourneySummary();
-
     sendToSheet({
-        name: name,
-        phone: phone,
-        email: "",
-        purpose: "",
-        status: "",
-        project1: "",
-        project2: "",
-        source: "eBook Page",
-        budget: finderData.budget || "Direct",
-        location: finderData.location || "Direct",
-        device: isMobile ? "Mobile" : "Desktop",
-        pageurl: window.location.href,
-        utm: savedUtm,
-        journey: journeySummary
+        name: name, phone: phone, email: "", purpose: "", status: "",
+        project1: "", project2: "", source: "eBook Page",
+        budget: finderData.budget || "Direct", location: finderData.location || "Direct",
+        device: isMobile ? "Mobile" : "Desktop", pageurl: window.location.href,
+        utm: savedUtm, journey: getJourneySummary()
     });
-
     trackJourney("Sent eBook Request", name);
     clearJourney();
-
+    /* pop their own masked name in the social-proof toast: "Lou** claimed FREE copy · 0 min ago" */
+    if (typeof SocialProof !== 'undefined') SocialProof.announce(name);
     var msg = "Hi MY Property Comparison 👋\n\nMy name is *" + name + "*\n\nPlease send me the FREE 100 Projects eBook. Thank you!";
-
-    if (typeof gtag === 'function') gtag('event', 'ebook_lead', {
-        source: 'eBook Page',
-        lead_name: name,
-        lead_phone: phone
-    });
-    if (typeof gtag === 'function') gtag('event', 'conversion', {
-        'send_to': 'AW-18344712116/Cs7QCPikrdUcELSvuKtE',
-        'value': 1.0,
-        'currency': 'MYR'
-    });
-
+    if (typeof gtag === 'function') gtag('event', 'ebook_lead', { source: 'eBook Page', lead_name: name, lead_phone: phone });
+    if (typeof gtag === 'function') gtag('event', 'conversion', { 'send_to': 'AW-18344712116/Cs7QCPikrdUcELSvuKtE', 'value': 1.0, 'currency': 'MYR' });
     window.open("https://wa.me/60162171839?text=" + encodeURIComponent(msg), "_blank");
 });
 </script>
 
     <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-brand">MYPropertyComparison</div>
-        <div class="footer-disclaimer">All images are artist's impressions and for illustration purposes only. Actual product may vary.</div>
-        <div class="footer-disclaimer">All images and project information are property of their respective developers and are used for informational purposes only.</div>
-        <div class="footer-copy">&copy; 2026 MYPropertyComparison. All rights reserved. &middot; <a href="privacy-policy.html" style="color:#888;">Privacy Policy</a></div>
+    <footer>
+        <div class="fb">MYPROPERTYCOMPARISON</div>
+        <div>&copy; 2026 MYPropertyComparison. All rights reserved. &middot; <a href="privacy-policy.html">Privacy Policy</a></div>
     </footer>
 
 </body>
