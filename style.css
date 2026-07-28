@@ -230,21 +230,40 @@ nav {
 }
 
 .filter-bar-inner {
-    max-width: 1100px;
+    max-width: 1240px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 12px 16px;
+    gap: 12px 14px;
+}
+
+/* Desktop: force the whole control set onto a single row.
+   Everything is allowed to shrink so nothing wraps to a second line. */
+@media (min-width: 1000px) {
+    .filter-bar-inner { flex-wrap: nowrap; }
+    .filter-bar-inner > * { min-width: 0; }
 }
 
 /* search on the left, everything else pushed right on one line */
 .filter-pills {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     margin-left: auto;
+    flex-shrink: 0;
+}
+
+.sort-group { flex-shrink: 0; }
+
+/* reclaim horizontal space so the row fits on one line at laptop widths */
+@media (min-width: 1000px) and (max-width: 1300px) {
+    .filter-label { display: none; }          /* "FILTER" is self-evident */
+    .filter-btn { padding: 6px 12px; font-size: 12.5px; }
+    .sort-select { padding: 7px 8px; font-size: 12.5px; }
+    .sort-group { gap: 8px; }
+    .project-count { font-size: 12px; white-space: nowrap; }
 }
 
 .filter-label {
@@ -1256,9 +1275,9 @@ button:disabled {
 /* Sits on the same row as the filters (roughly half width) so the bar is
    one line instead of two. Drops to full width on mobile via the media query. */
 .search-box {
-    flex: 1 1 42%;
-    min-width: 240px;
-    max-width: 520px;
+    flex: 1 1 200px;
+    min-width: 150px;
+    max-width: 420px;
     padding: 11px 16px;
     border: 1px solid #ddd;
     border-radius: 12px;
