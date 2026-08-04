@@ -312,10 +312,13 @@ document.getElementById("waSendBtn").addEventListener("click",function(){
   var fd=JSON.parse(localStorage.getItem("finderData")||"{}");var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);var utm=localStorage.getItem("utm_source")||"Direct";
   sendToSheet({name:n,phone:p,email:"",purpose:pu,status:"",project1:"The Celestz @ Kehub Teh",project2:"",source:"Project Page",budget:fd.budget||"Direct",location:fd.location||"Direct",device:mob?"Mobile":"Desktop",pageurl:window.location.href,utm:utm,journey:getJourneySummary()});
   trackJourney("Sent WhatsApp","The Celestz @ Kehub Teh");clearJourney();
-  var msg="Hi MY Property Comparison 👋\n\nMy name is *"+n+"*\n\nI'm interested in *The Celestz @ Kehub Teh*\n\nPlease send me the e-Brochure. Thank you!";
+  /* The trailing Ref code is what the WhatsApp auto-reply tool routes on.
+     Deliberately numeric — a word like "CELESTZ" would also appear inside the
+     project name on the compare page and trigger the wrong flow. */
+  var msg="Hi MY Property Comparison 👋\n\nMy name is *"+n+"*\n\nI'm interested in *The Celestz @ Kehub Teh*\n\nPlease send me the e-Brochure. Thank you!\n\nRef: MPC-101";
   if(typeof gtag==='function')gtag('event','whatsapp_lead',{source:'Project Page',lead_name:n,lead_phone:p,purpose:pu,project_1:"The Celestz @ Kehub Teh"});
   if(typeof gtag==='function')gtag('event','conversion',{'send_to':'AW-18344712116/Cs7QCPikrdUcELSvuKtE','value':1.0,'currency':'MYR'});
-  window.open("https://wa.me/60162171839?text="+encodeURIComponent(msg),"_blank");
+  window.open("https://wa.me/60189137567?text="+encodeURIComponent(msg),"_blank");
 });
 document.querySelectorAll('a[href="#enquiry"]').forEach(function(el){el.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','cta_click',{cta_location:el.classList.contains('nav-cta')?'nav':'body',project_1:"The Celestz @ Kehub Teh"});});});
 
@@ -428,7 +431,7 @@ document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el);})
 (function(){
     var THIS_PROJECT = "The Celestz @ Kehub Teh";
     var THIS_AREA    = "Johor Bahru";
-    var WA           = "60162171839";
+    var WA           = "60189137567";
     var track = document.getElementById('sTrack');
 
     fetch('../data/projects.json?t=' + Date.now())
@@ -457,7 +460,7 @@ document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el);})
                         project_1: name, source_page: THIS_PROJECT
                     });
                     trackJourney('Clicked Surrounding Project', name);
-                    var msg = "Hi MY Property Comparison 👋\n\nI'm interested in *" + name + "*\n\nPlease send me the price list and e-Brochure. Thank you!";
+                    var msg = "Hi MY Property Comparison 👋\n\nI'm interested in *" + name + "*\n\nPlease send me the price list and e-Brochure. Thank you!\n\nRef: MPC-102";
                     window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
                 });
             });

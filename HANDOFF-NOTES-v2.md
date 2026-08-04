@@ -12,7 +12,7 @@ A Malaysian property comparison website. Visitors browse new-launch property pro
 - **Deploy flow:** edit files → GitHub Desktop → Commit → Push → live in ~1 min. Hard-refresh each page with Ctrl+Shift+R (every page caches separately in the browser).
 - **Google Analytics ID:** G-EDVF9QYQPZ. `whatsapp_lead` is set as a Key event.
 - **Google Sheets lead endpoint (SHEET_URL):** `https://script.google.com/macros/s/AKfycbzSWt_8ceLD172O_RX2PXrqrZpbB0GGtLN7KGX0HbybfOlL6PCztv_zYCQPU0cCH682bg/exec`
-- **WhatsApp lead number:** 60162171839
+- **WhatsApp lead number:** 60189137567
 - **Brand name:** MYPropertyComparison (renamed from "MYProjectComparison" to match the .com domain).
 
 ## CRITICAL RULE (do not break)
