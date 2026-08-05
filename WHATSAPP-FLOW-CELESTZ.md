@@ -1,7 +1,7 @@
 # WhatsApp Auto-Reply Flow — The Celestz @ Kebun Teh
 
 For the ads campaign pointing at
-`mypropertycomparison.com/projects/the-celestz-kehub-teh.html`
+`mypropertycomparison.com/projects/the-celestz-kebun-teh.html`
 
 ---
 

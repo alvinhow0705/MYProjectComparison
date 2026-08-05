@@ -42,7 +42,7 @@ Self-contained HTML with embedded CSS. Fonts: `Cormorant Garamond` (serif headin
 
 ## Pending / to-do
 1. **The Bedrock** — page + data built but NOT deployed; needs its 10 photos processed (files never came through) and its **completion year**. On file: Kota Kinabalu, Sabah; developer EXSIM and Bedi Group; Leasehold; Commercial; 1,111 units; 351–700 sqft; From RM508,000 (up to ~RM973,100); From 1,447 psf; tag "SHORT-TERM INVESTMENT". 10 images in upload order (cover = aerial marina shot) → name bedrock.jpg, bedrock-1.jpg … bedrock-9.jpg. Add to projects.json + sitemap + build luxury page once photos are in.
-2. **3 more new projects** to add (need details + photos): Causewayz Square, Keeperz Suites, The Celestz @ Kehub Teh.
+2. **3 more new projects** to add (need details + photos): Causewayz Square, Keeperz Suites, The Celestz @ Kebun Teh.
 3. **Missing photos** for existing listings **CloutHaus** (id 17) and **Amara Residence** (id 28) — currently placeholder `assets/images/.jpg`.
 4. **Roll the luxury project-page style out to the remaining projects** (only 5 done so far).
 5. Owner may supply **custom pros/taglines** per project to replace the auto-generated copy.
