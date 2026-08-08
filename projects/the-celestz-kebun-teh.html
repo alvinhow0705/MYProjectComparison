@@ -133,6 +133,8 @@ nav.solid{background:rgba(7,11,20,.9);backdrop-filter:blur(12px);border-bottom:1
 .s-card:hover{transform:translateY(-6px)}
 .s-card .s-img{height:190px;overflow:hidden;background:#0d1220}
 .s-card .s-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.s-card .s-img.s-img-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#141b2b 0%,#1e2740 55%,#2a2010 100%)}
+.s-card .s-img.s-img-ph span{font-family:'Marcellus',serif;font-size:44px;letter-spacing:.06em;color:#c9a869;opacity:.85}
 .s-card:hover .s-img img{transform:scale(1.06)}
 .s-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
 .s-body h3{font-family:'Marcellus',serif;font-size:20px;color:#12171f;line-height:1.25}
@@ -424,62 +426,75 @@ document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el);})
 
 /* ==========================================================
    SURROUNDING PROJECTS
-   Reads data/projects.json, puts same-area projects first, and
-   gives every card its own WhatsApp CTA naming that project —
-   so the carousel is a lead source, not just decoration.
+   Fixed list of 5 nearby JB / CIQ-RTS projects. Every card has its
+   own WhatsApp CTA naming that project — so the carousel is a lead
+   source, not just decoration.
 ========================================================== */
 (function(){
     var THIS_PROJECT = "The Celestz @ Kebun Teh";
-    var THIS_AREA    = "Johor Bahru";
     var WA           = "60189137567";
     var track = document.getElementById('sTrack');
 
-    fetch('../data/projects.json?t=' + Date.now())
-        .then(function(r){ return r.json(); })
-        .then(function(all){
-            var list = all.filter(function(p){ return p.name !== THIS_PROJECT && p.image && p.image !== 'assets/images/.jpg'; });
-            /* same area first, then everything else */
-            list.sort(function(a,b){
-                var av = a.location === THIS_AREA ? 0 : 1, bv = b.location === THIS_AREA ? 0 : 1;
-                return av - bv;
+    var LIST = [
+        { name:"R&F Princess Cove - Phase 3", location:"Johor Bahru",
+          image:"assets/images/rfprincesscove_p3.jpg",
+          facts:["RM1.1k psf","1.5km to CIQ with linked bridge"] },
+        { name:"Causewayz Square", location:"Johor Bahru",
+          image:"assets/images/causewayz.jpg",
+          facts:["RM1.4k psf","600m to CIQ with linked bridge"] },
+        { name:"Gensphere", location:"Johor Bahru",
+          image:"assets/images/gensphere.jpeg",
+          facts:["RM1.2k psf","400m to CIQ with linked bridge"] },
+        { name:"Coronation Square", location:"Johor Bahru",
+          image:"assets/images/coronation_square.jpg",
+          facts:["RM1.6k &ndash; RM1.7k psf","210m to RTS with linked bridge","250m to CIQ with linked bridge"] },
+        { name:"Aethera Residence", location:"Johor Bahru",
+          image:"assets/images/aethera_residence.jpeg",
+          facts:["RM1.2k psf","400m to RTS with linked bridge"] }
+    ];
+
+    if(!track){ return; }
+
+    var html = LIST.map(card).join('');
+    /* duplicated twice so the short list still fills the marquee and loops at -50% */
+    track.innerHTML = html + html + html + html;
+    track.style.animationDuration = (LIST.length * 2 * 5.5) + 's';
+
+    track.querySelectorAll('.s-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+            var name = btn.dataset.name;
+            if (typeof gtag === 'function') gtag('event', 'surrounding_project_click', {
+                project_1: name, source_page: THIS_PROJECT
             });
-            list = list.slice(0, 12);
-            if(!list.length){ document.getElementById('surround').style.display='none'; return; }
+            trackJourney('Clicked Surrounding Project', name);
+            var msg = "Hi MY Property Comparison 👋\n\nI'm interested in *" + name + "*\n\nPlease send me the price list and e-Brochure. Thank you!\n\nRef: MPC-102";
+            window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
+        });
+    });
 
-            var html = list.map(card).join('');
-            /* duplicated once so the marquee loops seamlessly at -50% */
-            track.innerHTML = html + html;
-
-            /* pace the scroll to the number of cards so it always feels the same speed */
-            track.style.animationDuration = (list.length * 5.5) + 's';
-
-            track.querySelectorAll('.s-btn').forEach(function(btn){
-                btn.addEventListener('click', function(){
-                    var name = btn.dataset.name;
-                    if (typeof gtag === 'function') gtag('event', 'surrounding_project_click', {
-                        project_1: name, source_page: THIS_PROJECT
-                    });
-                    trackJourney('Clicked Surrounding Project', name);
-                    var msg = "Hi MY Property Comparison 👋\n\nI'm interested in *" + name + "*\n\nPlease send me the price list and e-Brochure. Thank you!\n\nRef: MPC-102";
-                    window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
-                });
-            });
-        })
-        .catch(function(){ document.getElementById('surround').style.display='none'; });
+    /* graceful fallback until the project photos are uploaded */
+    track.querySelectorAll('.s-img img').forEach(function(img){
+        img.addEventListener('error', function(){
+            var box = img.parentNode;
+            box.classList.add('s-img-ph');
+            box.innerHTML = '<span>' + esc(img.dataset.initials || '') + '</span>';
+        });
+    });
 
     function esc(s){ return String(s||'').replace(/[<>&"]/g, function(c){ return ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'})[c]; }); }
 
+    function initials(n){
+        return n.replace(/[^A-Za-z0-9& ]/g,' ').split(/\s+/).filter(Boolean)
+                .slice(0,2).map(function(w){ return w[0].toUpperCase(); }).join('');
+    }
+
     function card(p){
-        var facts = [];
-        if (p['unit size'])       facts.push(esc(p['unit size'].trim()));
-        if (p.price)              facts.push(esc(p.price));
-        if (p['completion Year']) facts.push(/^\d{4}$/.test(p['completion Year']) ? 'Completion in ' + p['completion Year'] : esc(p['completion Year']));
         return '<div class="s-card">' +
-            '<div class="s-img"><img src="../' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy"></div>' +
+            '<div class="s-img"><img src="../' + esc(p.image) + '" alt="' + esc(p.name) + '" data-initials="' + esc(initials(p.name)) + '" loading="lazy"></div>' +
             '<div class="s-body">' +
                 '<h3>' + esc(p.name) + '</h3>' +
-                '<div class="s-loc">' + esc(p.location) + (p.developer ? ' &middot; ' + esc(p.developer) : '') + '</div>' +
-                '<ul class="s-facts">' + facts.map(function(f){ return '<li>' + f + '</li>'; }).join('') + '</ul>' +
+                '<div class="s-loc">' + esc(p.location) + '</div>' +
+                '<ul class="s-facts">' + p.facts.map(function(f){ return '<li>' + f + '</li>'; }).join('') + '</ul>' +
                 '<button class="s-btn" data-name="' + esc(p.name) + '">More Info</button>' +
             '</div></div>';
     }
