@@ -143,7 +143,9 @@
       "assets/images/nuri-4.jpeg",
       "assets/images/nuri-5.jpeg"
     ],
-    "tag": "BEST MRT ACCESS"
+    "tag": "BEST MRT ACCESS",
+    "slug": "dnuri",
+    "hasPage": true
   },
   {
     "id": 6,
@@ -279,7 +281,9 @@
       "assets/images/parkgreen-4.png",
       "assets/images/parkgreen-5.png"
     ],
-    "tag": "PREMIUM"
+    "tag": "PREMIUM",
+    "slug": "park-green",
+    "hasPage": true
   },
   {
     "id": 8,
@@ -302,7 +306,9 @@
       "assets/images/riverpark-4.png",
       "assets/images/riverpark-5.png"
     ],
-    "tag": ""
+    "tag": "",
+    "slug": "river-park",
+    "hasPage": true
   },
   {
     "id": 9,
@@ -325,7 +331,9 @@
       "assets/images/oaka-4.png",
       "assets/images/oaka-5.png"
     ],
-    "tag": "PET-FRIENDLY"
+    "tag": "PET-FRIENDLY",
+    "slug": "oaka-residences",
+    "hasPage": true
   },
   {
     "id": 10,
@@ -352,7 +360,9 @@
       "assets/images/aricia-8.jpg",
       "assets/images/aricia-9.jpg"
     ],
-    "tag": ""
+    "tag": "",
+    "slug": "aricia",
+    "hasPage": true
   },
   {
     "id": 11,
@@ -367,7 +377,9 @@
     "price": "From RM664,000",
     "psf": "From 761 psf",
     "image": "assets/images/avantro.jpg",
-    "tag": "BEST LRT ACCESS"
+    "tag": "BEST LRT ACCESS",
+    "slug": "avantro",
+    "hasPage": true
   },
   {
     "id": 12,
@@ -382,7 +394,9 @@
     "price": "From RM753,000",
     "psf": "From 639 psf",
     "image": "assets/images/ayanna.webp",
-    "tag": ""
+    "tag": "",
+    "slug": "ayanna",
+    "hasPage": true
   },
   {
     "id": 13,
@@ -397,7 +411,9 @@
     "price": "From RM555,000",
     "psf": "From 525 psf",
     "image": "assets/images/quaver.jpg",
-    "tag": ""
+    "tag": "",
+    "slug": "quaver",
+    "hasPage": true
   },
   {
     "id": 14,
@@ -412,7 +428,9 @@
     "price": "From RM500,000",
     "psf": "From 647 psf",
     "image": "assets/images/asterhill.jpg",
-    "tag": ""
+    "tag": "",
+    "slug": "aster-hill",
+    "hasPage": true
   },
   {
     "id": 15,
@@ -434,7 +452,9 @@
       "assets/images/kensho-3.png",
       "assets/images/kensho-4.png"
     ],
-    "tag": "READY LOW DENS"
+    "tag": "READY LOW DENS",
+    "slug": "kensho-residence",
+    "hasPage": true
   },
   {
     "id": 16,
@@ -457,7 +477,9 @@
       "assets/images/atera-4.png",
       "assets/images/atera-5.png"
     ],
-    "tag": "BEST LRT ACCESS"
+    "tag": "BEST LRT ACCESS",
+    "slug": "the-atera",
+    "hasPage": true
   },
   {
     "id": 17,
@@ -477,7 +499,9 @@
       "assets/images/clouthaus-1.webp",
       "assets/images/clouthaus-2.jpg"
     ],
-    "tag": "PREMIUM"
+    "tag": "PREMIUM",
+    "slug": "clouthaus",
+    "hasPage": true
   },
   {
     "id": 18,
@@ -492,7 +516,9 @@
     "price": "From RM780,000",
     "psf": "From 863 psf",
     "image": "assets/images/mahogany.avif",
-    "tag": "LOW DENS"
+    "tag": "LOW DENS",
+    "slug": "mahogany-residence",
+    "hasPage": true
   },
   {
     "id": 19,
@@ -507,7 +533,9 @@
     "price": "From RM736,800",
     "psf": "From 820 psf",
     "image": "assets/images/tria.png",
-    "tag": ""
+    "tag": "",
+    "slug": "tria-seputeh-residences",
+    "hasPage": true
   },
   {
     "id": 20,
@@ -526,7 +554,9 @@
       "assets/images/oneseputeh.png",
       "assets/images/oneseputeh-1.png"
     ],
-    "tag": "FREEHOLD"
+    "tag": "FREEHOLD",
+    "slug": "one-seputeh",
+    "hasPage": true
   },
   {
     "id": 21,
@@ -553,7 +583,9 @@
       "assets/images/maple-7.webp",
       "assets/images/maple-8.webp"
     ],
-    "tag": "FREEHOLD"
+    "tag": "FREEHOLD",
+    "slug": "maple-residences",
+    "hasPage": true
   },
   {
     "id": 22,
@@ -601,7 +633,9 @@
       "assets/images/parkside-6.jpg",
       "assets/images/parkside-7.jpg"
     ],
-    "tag": ""
+    "tag": "",
+    "slug": "parkside-residence",
+    "hasPage": true
   },
   {
     "id": 24,
@@ -625,7 +659,9 @@
       "assets/images/foresthill-5.jpg",
       "assets/images/foresthill-6.jpg"
     ],
-    "tag": "ALMOST READY"
+    "tag": "ALMOST READY",
+    "slug": "forest-hill",
+    "hasPage": true
   },
   {
     "id": 25,
@@ -647,7 +683,9 @@
       "assets/images/alamanda-2.jpg",
       "assets/images/alamanda-3.jpg"
     ],
-    "tag": "FREEHOLD"
+    "tag": "FREEHOLD",
+    "slug": "alamanda-height",
+    "hasPage": true
   },
   {
     "id": 26,
@@ -672,7 +710,9 @@
       "assets/images/genstarz-6.png",
       "assets/images/genstarz-7.png"
     ],
-    "tag": "DOORSTEP MRT"
+    "tag": "DOORSTEP MRT",
+    "slug": "gen-starz",
+    "hasPage": true
   },
   {
     "id": 27,
@@ -697,7 +737,9 @@
       "assets/images/artesolaris-6.jpg",
       "assets/images/artesolaris-7.jpg"
     ],
-    "tag": ""
+    "tag": "",
+    "slug": "arte-solaris",
+    "hasPage": true
   },
   {
     "id": 28,
@@ -712,7 +754,9 @@
     "price": "From RM574,200",
     "psf": "From 912 psf",
     "image": "assets/images/amara.jpg",
-    "tag": "FREEHOLD"
+    "tag": "FREEHOLD",
+    "slug": "amara-residence",
+    "hasPage": true
   },
   {
     "id": 29,
@@ -736,7 +780,9 @@
       "assets/images/arra-5.webp",
       "assets/images/arra-6.webp"
     ],
-    "tag": "FREEHOLD"
+    "tag": "FREEHOLD",
+    "slug": "arra-residence",
+    "hasPage": true
   },
   {
     "id": 30,
@@ -761,7 +807,9 @@
       "assets/images/maspira-6.jpg",
       "assets/images/maspira-7.jpg"
     ],
-    "tag": ""
+    "tag": "",
+    "slug": "m-aspira",
+    "hasPage": true
   },
   {
     "id": 31,
@@ -784,7 +832,9 @@
       "assets/images/ren-4.jpg",
       "assets/images/ren-5.jpg"
     ],
-    "tag": ""
+    "tag": "",
+    "slug": "ren-residence",
+    "hasPage": true
   },
   {
     "id": 32,
@@ -799,7 +849,9 @@
     "price": "From RM529,000",
     "psf": "From 822 psf",
     "image": "assets/images/est8.png",
-    "tag": ""
+    "tag": "",
+    "slug": "est8",
+    "hasPage": true
   },
   {
     "id": 33,
@@ -819,7 +871,9 @@
       "assets/images/thewyn-.jpg",
       "assets/images/thewyn-2.jpg"
     ],
-    "tag": ""
+    "tag": "",
+    "slug": "the-wyn",
+    "hasPage": true
   },
   {
     "id": 34,
@@ -839,7 +893,9 @@
       "assets/images/alora-1.jpg",
       "assets/images/alora-2.jpg"
     ],
-    "tag": "PET-FRIENDLY"
+    "tag": "PET-FRIENDLY",
+    "slug": "alora",
+    "hasPage": true
   },
   {
     "id": 35,
@@ -861,7 +917,9 @@
       "assets/images/ambience-3.jpg",
       "assets/images/ambience-4.jpg"
     ],
-    "tag": "LOW DENS"
+    "tag": "LOW DENS",
+    "slug": "ambience",
+    "hasPage": true
   },
   {
     "id": 36,
@@ -876,7 +934,9 @@
     "price": "From RM430,000",
     "psf": "From 540 psf",
     "image": "assets/images/riverville.avif",
-    "tag": "FREEHOLD"
+    "tag": "FREEHOLD",
+    "slug": "riverville-2",
+    "hasPage": true
   },
   {
     "id": 37,
@@ -891,7 +951,9 @@
     "price": "From RM417,515",
     "psf": "From 793 psf",
     "image": "assets/images/aurum.webp",
-    "tag": "FREEHOLD"
+    "tag": "FREEHOLD",
+    "slug": "aurum-2",
+    "hasPage": true
   },
   {
     "id": 38,
@@ -913,7 +975,9 @@
       "assets/images/artestar-3.jpg",
       "assets/images/artestar-4.jpeg"
     ],
-    "tag": "3 RAIL LINES"
+    "tag": "3 RAIL LINES",
+    "slug": "arte-star",
+    "hasPage": true
   },
   {
     "id": 39,
@@ -933,7 +997,9 @@
       "assets/images/colonial-1.png",
       "assets/images/colonial-2.png"
     ],
-    "tag": "STUDENT MARKET"
+    "tag": "STUDENT MARKET",
+    "slug": "colonial-infinite",
+    "hasPage": true
   },
   {
     "id": 47,
@@ -948,7 +1014,9 @@
     "price": "From RM893,000",
     "psf": "From 1,157 psf",
     "image": "assets/images/khaya.png",
-    "tag": "HIGH RENTAL DEMAND"
+    "tag": "HIGH RENTAL DEMAND",
+    "slug": "khaya-residence",
+    "hasPage": true
   },
   {
     "id": 46,
@@ -963,7 +1031,9 @@
     "price": "From RM850,000",
     "psf": "From 1,308 psf",
     "image": "assets/images/sunwaycochrone.jpg",
-    "tag": "DOORSTEP MRT"
+    "tag": "DOORSTEP MRT",
+    "slug": "sunway-cochrane",
+    "hasPage": true
   },
   {
     "id": 45,
@@ -978,6 +1048,8 @@
     "price": "From RM580,000",
     "psf": "From 650 psf",
     "image": "assets/images/shang.webp",
-    "tag": "BEST MRT ACCESS"
+    "tag": "BEST MRT ACCESS",
+    "slug": "the-shang-residence",
+    "hasPage": true
   }
 ]
