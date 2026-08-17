@@ -16,6 +16,7 @@
  * L: Device
  * M: Page URL
  * N: UTM Source
+ * O: Journey
  *
  * Deploy as Web App → Execute as: Me → Access: Anyone
  *
@@ -67,7 +68,8 @@ function doPost(e) {
         data.location  || "Direct",     // K: Location Preference
         data.device    || "",           // L: Device (Mobile / Desktop)
         data.pageurl   || "",           // M: Page URL
-        data.utm       || "Direct"      // N: UTM Source
+        data.utm       || "Direct",     // N: UTM Source
+        data.journey   || ""            // O: Journey (what the visitor clicked, in order)
     ]);
 
     /* a new lead invalidates the cached stats so other visitors see it quickly */
