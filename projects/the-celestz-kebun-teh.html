@@ -320,7 +320,7 @@ document.getElementById("waSendBtn").addEventListener("click",function(){
   var msg="Hi MY Property Comparison 👋\n\nMy name is *"+n+"*\n\nI'm interested in *The Celestz @ Kebun Teh*\n\nPlease send me the e-Brochure. Thank you!\n\nRef: MPC-101";
   if(typeof gtag==='function')gtag('event','whatsapp_lead',{source:'Project Page',lead_name:n,lead_phone:p,purpose:pu,project_1:"The Celestz @ Kebun Teh"});
   if(typeof gtag==='function')gtag('event','conversion',{'send_to':'AW-18344712116/Cs7QCPikrdUcELSvuKtE','value':1.0,'currency':'MYR'});
-  window.open("https://wa.me/60189137567?text="+encodeURIComponent(msg),"_blank");
+  window.open("https://wa.me/60176015957?text="+encodeURIComponent(msg),"_blank");
 });
 document.querySelectorAll('a[href="#enquiry"]').forEach(function(el){el.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','cta_click',{cta_location:el.classList.contains('nav-cta')?'nav':'body',project_1:"The Celestz @ Kebun Teh"});});});
 
@@ -432,7 +432,7 @@ document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el);})
 ========================================================== */
 (function(){
     var THIS_PROJECT = "The Celestz @ Kebun Teh";
-    var WA           = "60189137567";
+    var WA           = "60176015957";
     var track = document.getElementById('sTrack');
 
     var LIST = [
@@ -468,6 +468,7 @@ document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el);})
             });
             trackJourney('Clicked Surrounding Project', name);
             var msg = "Hi MY Property Comparison 👋\n\nI'm interested in *" + name + "*\n\nPlease send me the price list and e-Brochure. Thank you!\n\nRef: MPC-102";
+            if (typeof waLog === 'function') waLog({ source: 'MPC-102 surrounding project', project: name });
             window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
         });
     });
@@ -513,5 +514,6 @@ document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el);})
   });
 })();
 </script>
+<script src="../assets/wa-track.js?v=1" data-ref="MPC-102" data-project="The Celestz @ Kebun Teh"></script>
 </body>
 </html>
