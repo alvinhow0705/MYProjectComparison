@@ -12,7 +12,7 @@
  *      so the click can be matched against the WhatsApp message that follows.
  *
  * Usage — on each page, before </body>:
- *   <script src="assets/wa-track.js" data-ref="MPC-HOME"></script>
+ *   <script src="assets/wa-track.js" data-ref="MPC-201"></script>
  * Optionally add data-project="Project Name" for single-project pages.
  *
  * For WhatsApp opened from JavaScript (window.open) rather than a link, call
@@ -22,7 +22,7 @@
     var SHEET_URL = "https://script.google.com/macros/s/AKfycbzSWt_8ceLD172O_RX2PXrqrZpbB0GGtLN7KGX0HbybfOlL6PCztv_zYCQPU0cCH682bg/exec";
 
     var me = document.currentScript;
-    var REF = (me && me.dataset.ref) || "MPC-WEB";
+    var REF = (me && me.dataset.ref) || "MPC-209";
     var PAGE_PROJECT = (me && me.dataset.project) || "";
 
     function journeySummary() {

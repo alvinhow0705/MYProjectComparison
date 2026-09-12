@@ -702,15 +702,15 @@ var PAY = (function(){
         close();
         if (typeof gtag==='function') gtag('event','ebook_paid_receipt_click',{ price: currentAmt });
         trackJourney('Sent Payment Receipt', currentAmt);
-        var msg = "Hi MY Property Comparison 👋\n\nI've paid " + currentAmt + " for the New Launch Projects eBook via DuitNow ✅\n\nHere's my receipt:\n\nRef: MPC-EBOOK-PAID";
-        if (typeof waLog === 'function') waLog({ source: 'MPC-EBOOK paid receipt', project: 'eBook ' + currentAmt });
+        var msg = "Hi MY Property Comparison 👋\n\nI've paid " + currentAmt + " for the New Launch Projects eBook via DuitNow ✅\n\nHere's my receipt:\n\nRef: MPC-303";
+        if (typeof waLog === 'function') waLog({ source: 'MPC-301 paid receipt', project: 'eBook ' + currentAmt });
         window.open("https://wa.me/60175240726?text=" + encodeURIComponent(msg), "_blank");
     });
     document.getElementById('payHelp').addEventListener('click', function(){
         close();
         if (typeof gtag==='function') gtag('event','ebook_buy_click',{ price: currentAmt, method: 'whatsapp' });
-        var msg = "Hi MY Property Comparison 👋\n\nI'd like to purchase the New Launch Projects eBook (" + currentAmt + "). How do I pay?\n\nRef: MPC-EBOOK-PAYHELP";
-        if (typeof waLog === 'function') waLog({ source: 'MPC-EBOOK payment help', project: 'eBook ' + currentAmt });
+        var msg = "Hi MY Property Comparison 👋\n\nI'd like to purchase the New Launch Projects eBook (" + currentAmt + "). How do I pay?\n\nRef: MPC-302";
+        if (typeof waLog === 'function') waLog({ source: 'MPC-301 payment help', project: 'eBook ' + currentAmt });
         window.open("https://wa.me/60175240726?text=" + encodeURIComponent(msg), "_blank");
     });
     return { open: open };
@@ -761,6 +761,6 @@ document.getElementById("ebSendBtn").addEventListener("click", function () {
         <div class="fcopy">&copy; 2026 MYPropertyComparison. All rights reserved. &middot; <a href="privacy-policy.html">Privacy Policy</a></div>
     </footer>
 
-<script src="../assets/wa-track.js?v=1" data-ref="MPC-EBOOK"></script>
+<script src="../assets/wa-track.js?v=1" data-ref="MPC-301"></script>
 </body>
 </html>

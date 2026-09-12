@@ -373,7 +373,7 @@ document.getElementById("waSendBtn")?.addEventListener("click", function () {
             project_2: selected[1]?.name || ''
         });
         const quickMsg = `Hi MY Property Comparison 👋\n\nI'm interested in:\n1. *${selected[0]?.name || ''}*\n2. *${selected[1]?.name || ''}*\n\nPlease send me the e-Brochure. Thank you!`;
-        if (typeof waLog === 'function') waLog({ source: 'MPC-COMPARE (no details given)', project: (selected[0]?.name || '') + (selected[1] ? ' + ' + selected[1].name : '') });
+        if (typeof waLog === 'function') waLog({ source: 'MPC-402 (no details given)', project: (selected[0]?.name || '') + (selected[1] ? ' + ' + selected[1].name : '') });
         window.open("https://wa.me/60175240726?text=" + encodeURIComponent(quickMsg), "_blank");
         return;
     }
@@ -455,6 +455,6 @@ Please send me the e-Brochure. Thank you!`;
         <div class="footer-copy">&copy; 2026 MYPropertyComparison. All rights reserved. &middot; <a href="privacy-policy.html" style="color:#888;">Privacy Policy</a></div>
     </footer>
 
-<script src="../assets/wa-track.js?v=1" data-ref="MPC-COMPARE"></script>
+<script src="../assets/wa-track.js?v=1" data-ref="MPC-402"></script>
 </body>
 </html>
