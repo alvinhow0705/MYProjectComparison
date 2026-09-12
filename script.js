@@ -431,7 +431,7 @@ function renderProjects() {
         const tile = document.createElement('div');
         tile.className = 'ebook-tile' + (variant ? ' ' + variant : '');
         tile.innerHTML = `
-            <img class="et-cover" src="assets/images/ebook-cover.jpg" alt="Property eBook">
+            <img loading="lazy" decoding="async" class="et-cover" src="assets/images/ebook-cover.jpg" alt="Property eBook">
             <div class="et-body">
                 <span class="et-badge">FREE &middot; WORTH RM500</span>
                 <h3>Every New Launch in Malaysia, in One Guide</h3>
@@ -476,7 +476,7 @@ function renderProjects() {
         const hasMultiple = images.length > 1;
 
         const carouselImgs = images.map((src, i) => `
-            <img src="${src}" alt="${project.name} ${i+1}"
+            <img loading="lazy" decoding="async" src="${src}" alt="${project.name} ${i+1}"
                 onload="this.closest('.card-img-wrap').classList.add('loaded')"
                 onerror="this.style.display='none'">`
         ).join('');
@@ -856,7 +856,7 @@ function showFinderResults(results, container) {
         const hasMultiple = images.length > 1;
 
         const carouselImgs = images.map((src, i) => `
-            <img src="${imagePrefix}${src}" alt="${project.name} ${i+1}"
+            <img loading="lazy" decoding="async" src="${imagePrefix}${src}" alt="${project.name} ${i+1}"
                 onload="this.closest('.card-img-wrap').classList.add('loaded')"
                 onerror="this.style.display='none'">`
         ).join('');
