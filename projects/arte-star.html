@@ -400,7 +400,11 @@ footer.photo{overflow:hidden}
 .step-n{font-family:var(--serif);font-size:.95rem;color:var(--em)}
 .step h3{font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:350;margin-top:.4rem}
 .step p{color:var(--mute);margin-top:.6rem}
-.story-end{padding-top:4vh}
+.story-steps{padding-bottom:18vh}
+.story-cta{max-width:520px;padding:2.4rem 2.6rem;border-radius:28px;background:rgba(248,244,229,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 24px 60px rgba(0,14,40,.35)}
+.story-cta h3{font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:350}
+.story-cta p{color:var(--mute);margin-top:.6rem}
+.story-cta-btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
 @media (max-width:760px){
   .step{margin-bottom:55vh;padding:1.8rem}
   .story-shade{background:linear-gradient(0deg,rgba(0,14,40,.5),rgba(0,14,40,.1))}
@@ -676,7 +680,14 @@ footer.photo{overflow:hidden}
         <span class="step-n">7 / 7</span>
         <h3>Two price points</h3><p>The Regal suits first buyers; Milano goes up to RM948,000 for larger units.</p>
       </article>
-    <div class="story-end"><a href="#register" class="btn" data-cta="story_register">Get the price list</a></div>
+    <div class="story-cta t-cream">
+      <h3>Want the full price list?</h3>
+      <p>Get current prices, available layouts and a show unit slot for The Regal and Milano.</p>
+      <div class="story-cta-btns">
+        <a href="#register" class="btn" data-cta="story_register">Get the price list</a>
+        <a href="#" class="btn ghost js-wa" data-cta="story_whatsapp">WhatsApp an agent</a>
+      </div>
+    </div>
   </div>
 </section>
 
