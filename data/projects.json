@@ -1051,5 +1051,33 @@
     "tag": "BEST MRT ACCESS",
     "slug": "the-shang-residence",
     "hasPage": true
+  },
+  {
+    "id": 48,
+    "name": "M Aurora",
+    "location": "Old Klang Road",
+    "developer": "Mah Sing",
+    "completion Year": "2030",
+    "title": "Freehold",
+    "type": "Commercial Under HDA",
+    "total unit": "1,544",
+    "unit size": "556-1,019 sqft",
+    "price": "From RM339,000",
+    "psf": "TBA",
+    "image": "assets/images/m-aurora.jpg",
+    "images": [
+      "assets/images/m-aurora.jpg",
+      "assets/images/m-aurora-1.jpg",
+      "assets/images/m-aurora-2.jpg",
+      "assets/images/m-aurora-3.jpg",
+      "assets/images/m-aurora-4.jpg",
+      "assets/images/m-aurora-5.jpg",
+      "assets/images/m-aurora-6.jpg",
+      "assets/images/m-aurora-7.jpg",
+      "assets/images/m-aurora-8.jpg"
+    ],
+    "tag": "FREEHOLD OLD KLANG ROAD",
+    "slug": "m-aurora",
+    "hasPage": true
   }
 ]
