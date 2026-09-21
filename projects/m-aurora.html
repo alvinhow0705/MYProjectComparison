@@ -82,7 +82,11 @@ nav.top.hide{transform:translateY(-100%)}
 nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
 .logo{font-family:var(--serif);font-size:1.6rem;text-decoration:none;letter-spacing:.01em}
 .logo span{font-style:italic;background:var(--aur);-webkit-background-clip:text;background-clip:text;color:transparent}
-.logo img{height:40px;width:auto}
+.logo img{height:60px;width:auto;display:block;filter:drop-shadow(0 0 10px rgba(94,242,176,.25))}
+footer .logo img{height:90px}
+#loader img{height:110px;width:auto;margin:0 auto;filter:drop-shadow(0 0 18px rgba(94,242,176,.45));animation:fadeIn 1s ease both}
+@keyframes fadeIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@media (max-width:760px){.logo img{height:42px}}
 nav.top ul{display:flex;gap:2rem;list-style:none}
 nav.top ul a{font-size:.88rem;text-decoration:none;opacity:.75;transition:opacity .2s}
 nav.top ul a:hover{opacity:1}
@@ -392,11 +396,11 @@ html{scroll-padding-top:116px}
 <body>
 <div id="prog"></div>
 <div class="ticker" aria-hidden="true"><div class="track" id="mq"></div></div>
-<div id="loader" aria-hidden="true"><div style="text-align:center"><div class="mark">M Aurora</div><div class="bar"></div></div></div>
+<div id="loader" aria-hidden="true"><div style="text-align:center"><img src="../assets/images/m-aurora-logo.png" alt=""><div class="bar"></div></div></div>
 
 <nav class="top" id="nav">
   <div class="wrap">
-    <a href="#top" class="logo" id="navLogo">M <span>Aurora</span></a>
+    <a href="#top" class="logo" id="navLogo"><img src="../assets/images/m-aurora-logo.png" alt="M Aurora" width="45" height="60"></a>
     <ul>
       <li><a href="#layouts">Layouts</a></li>
       <li><a href="#about">Overview</a></li>
@@ -640,7 +644,7 @@ html{scroll-padding-top:116px}
 
 <footer>
   <div class="wrap">
-    <span class="logo">M <span>Aurora</span></span>
+    <span class="logo"><img src="../assets/images/m-aurora-logo.png" alt="M Aurora" width="67" height="90"></span>
     <p class="agent">This page is published by MYPropertyComparison, an independent property marketing site. It is not the official website of Mah Sing Group Berhad or Major Land Development Sdn Bhd. Details are taken from the developer's approved advertising particulars and published materials and may change; confirm all information with the developer before purchase. Images are artist's impressions.</p>
     <h4>Advertising particulars</h4>
     <p>Developer: Major Land Development Sdn Bhd 201101022598 (950737-K), a wholly-owned subsidiary of Mah Sing Group Berhad, Wisma Mah Sing, Penthouse Suite 1, No. 163 Jalan Sungai Besi, 57100 Kuala Lumpur. Tel: +603 9221 8888. Developer Licence No: 13262/01-2028/0471(A), validity 17/1/2023 – 16/1/2028. Advertising &amp; Sales Permit No: 13262-2/03-2029/0221(N)-(S), validity 19/3/2026 – 18/3/2029. Building Plan Reference No: DBKL.JKB.BP S1 OSC 2026 0503(7). Expected date of completion: Sep 2030. Total units: 1,544. Tower A: 747 units, min price RM495,360, max price RM856,560. Tower B: 797 units, min price RM492,960, max price RM768,960. Built-up: 556 sf, 737 sf, 858 sf, 916 sf and 1,019 sf. Type of property: Suite Apartment. Land encumbrance: United Overseas Bank (M) Bhd. Car parks per unit: 1 to 3. Approving authority: DBKL. Land tenure: Freehold. Restrictions: Nil. This advertisement has been approved by the National Housing Department. Approved development and advertisement information can be reviewed on the TEDUH portal at teduh.kpkt.gov.my.</p>
@@ -672,10 +676,6 @@ html{scroll-padding-top:116px}
 
   var hero = document.querySelector('.hero'), towersEl = document.getElementById('towers');
 
-  /* Logo artwork, if supplied, replaces the text wordmark */
-  ifImage(IMG + 'm-aurora-logo.png', function(src){
-    document.getElementById('navLogo').innerHTML = '<img src="' + src + '" alt="M Aurora">';
-  });
   ifImage(IMG + 'm-aurora.jpg', function(src){
     var ph = document.createElement('img'); ph.className = 'hero-photo'; ph.src = src; ph.alt = ''; ph.setAttribute('aria-hidden','true');
     hero.insertBefore(ph, document.getElementById('towers')); hero.classList.add('has-photo'); towersEl = ph;
