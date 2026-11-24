@@ -152,9 +152,7 @@ document.getElementById("ebSendBtn").addEventListener("click", function () {
     var msg = "Hi MY Property Comparison 👋\n\nMy name is *" + name + "*\n\nPlease send me the FREE 100 Projects eBook. Thank you!";
 
     if (typeof gtag === 'function') gtag('event', 'ebook_lead', {
-        source: 'eBook Page',
-        lead_name: name,
-        lead_phone: phone
+        source: 'eBook Page'
     });
     if (typeof gtag === 'function') gtag('event', 'conversion', {
         'send_to': 'AW-18344712116/Cs7QCPikrdUcELSvuKtE',

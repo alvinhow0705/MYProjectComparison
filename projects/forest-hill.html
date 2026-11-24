@@ -362,7 +362,7 @@ document.getElementById("waSendBtn").addEventListener("click",function(){
   sendToSheet({name:n,phone:pSheet,email:"",purpose:pu,status:"",project1:PROJECT,project2:"",source:"Project Page",budget:fd.budget||"Direct",location:fd.location||"Direct",device:mob?"Mobile":"Desktop",pageurl:window.location.href,utm:utm,journey:getJourneySummary()});
   trackJourney("Sent WhatsApp", PROJECT); clearJourney();
   if(typeof gtag==='function'){
-    gtag('event','whatsapp_lead',{source:'Project Page',lead_name:n,lead_phone:pSheet,purpose:pu,project_1:PROJECT});
+    gtag('event','whatsapp_lead',{source:'Project Page',purpose:pu,project_1:PROJECT});
     gtag('event','conversion',{'send_to':'AW-18344712116/Cs7QCPikrdUcELSvuKtE','value':1.0,'currency':'MYR'});
   }
   waOpen("Hi MY Property Comparison \ud83d\udc4b\n\nMy name is *"+n+"*\n\nI'm interested in *"+PROJECT+"*\n\nPlease send me the e-Brochure. Thank you!\n\nRef: MPC-024");

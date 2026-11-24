@@ -194,6 +194,7 @@
         @media (max-width:420px){ .pay-sheet { padding:20px 18px 18px; } .qr-frame { width:168px; height:168px; } }
 
         /* ---------- claim counter ---------- */
+        .claim-pill[hidden] { display:none; }
         .claim-pill { display:inline-flex; align-items:center; gap:8px; margin-top:18px; background:rgba(46,224,111,.1); border:1px solid rgba(46,224,111,.28); color:#9fe8bb; font-size:13px; font-weight:500; padding:8px 18px; border-radius:30px; }
         .claim-pill b { color:#3dfc6e; font-family:'Space Grotesk',sans-serif; font-variant-numeric:tabular-nums; }
         .claim-pill .dot { width:7px; height:7px; border-radius:50%; background:#3dfc6e; animation:liveDot 1.6s ease-in-out infinite; }
@@ -335,7 +336,7 @@
         <h1>Every New Launch in Malaysia.<br><span class="grad">One Powerful Guide.</span></h1>
         <p class="sub">Prices, PSF, developers and tenure — months of research, distilled into one eBook.</p>
         <p class="worth">Real value: <s>RM500.00</s> &nbsp;&middot;&nbsp; Today you decide what you pay.</p>
-        <div class="claim-pill"><span class="dot"></span><b id="claimCount">2,148</b>&nbsp;claimed this month</div>
+        <div class="claim-pill" id="dataStat" hidden><span class="dot"></span><span id="dataStatText"></span></div>
     </div>
 
     <!-- PRICING -->
@@ -563,61 +564,14 @@ var SocialProof = (function(){
     function schedule(){ setTimeout(showSeed, 16000+Math.random()*20000); }
     setTimeout(showSeed, 6000+Math.random()*4000);
 
-    /* ---------- claim counter ----------
-       Counts THIS MONTH only (hence the "claimed this month" label), so it
-       resets naturally on the 1st instead of climbing forever — no awkward
-       moment where a running total suddenly drops.
-
-       Derived purely from the clock, so it is IDENTICAL on every device at any
-       given moment. Nothing is stored per-browser. It rises faster during
-       waking hours, slower overnight, and never goes backwards within a month.
-       MONTH_BASE + PER_DAY across a 31-day month lands just under 10,000.    */
-    var el         = document.getElementById('claimCount');
-    var MONTH_BASE = 800;                 /* figure on the 1st of the month */
-    var PER_DAY    = 295;                 /* ≈ 1 every 5 min */
-
-    /* claims allotted to a given hour-of-day in Malaysia — quiet at night,
-       busiest in the evening. Scaled so the day totals PER_DAY.             */
-    var SHAPE = [2,1,1,1,1,2,4,7,9,10,11,11,12,12,11,11,12,14,16,17,16,12,8,5];
-    var SHAPE_SUM = SHAPE.reduce(function(a,b){ return a+b; }, 0);
-
-    function claimsInHour(hourOfDay){ return PER_DAY * SHAPE[hourOfDay] / SHAPE_SUM; }
-
-    function countAt(ts){
-        var d = new Date(ts);
-        var total = MONTH_BASE + (d.getDate() - 1) * PER_DAY;   /* whole days so far */
-        for (var h = 0; h < d.getHours(); h++) total += claimsInHour(h);
-        total += claimsInHour(d.getHours()) * ((d.getMinutes() * 60 + d.getSeconds()) / 3600);
-        return Math.floor(total);
-    }
-
-    var shown = countAt(Date.now());
-    var liveCount = null;          /* set once the Sheet answers */
-    function renderCount(pulse){
-        el.textContent = shown.toLocaleString('en-MY');
-        if(pulse){ el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
-    }
-    renderCount(false);
-
-    /* Tick towards the target: the real Sheet figure when we have it, otherwise
-       the clock-based one. Rising one at a time keeps the pulse animation. */
-    setInterval(function(){
-        if (document.visibilityState !== 'visible') return;
-        var target = (liveCount !== null) ? liveCount : countAt(Date.now());
-        if (target > shown){ shown++; renderCount(true); }
-        else if (liveCount !== null && target < shown){ shown = target; renderCount(false); }
-    }, 4000);
-
     /* fed by the live poll below */
     function applyLive(data){
-        if (typeof data.count === 'number') liveCount = data.count;
         if (data.recent && data.recent.length){
             liveRecent = data.recent;
             liveIdx = 0;
         }
     }
 
-    function bumpCounter(){}
 
     /* called when THIS visitor submits — their own masked name pops up instantly */
     function announce(fullName){
@@ -625,9 +579,6 @@ var SocialProof = (function(){
         var masked=(clean.substring(0,3)||'You')+'**';
         masked=masked.charAt(0).toUpperCase()+masked.slice(1).toLowerCase().replace('**','')+'**';
         render(masked, 'just now');
-        /* optimistic: show their own claim immediately, the next poll confirms it */
-        if (liveCount !== null) liveCount++;
-        shown++; renderCount(true);
         setTimeout(pollStats, 2500);
     }
     return { announce: announce, applyLive: applyLive };
@@ -762,5 +713,31 @@ document.getElementById("ebSendBtn").addEventListener("click", function () {
     </footer>
 
 <script src="../assets/wa-track.js?v=1" data-ref="MPC-301"></script>
+<script>
+/* Data-stat pill: project count + update month come from data/projects.json (nothing hard-coded).
+   Count = KL & Selangor projects only (non-KL/Selangor locations listed below are excluded).
+   Month = the file's Last-Modified date; if the server sends none, the month part is left out. */
+(function(){
+    var NOT_KL_SELANGOR = ['Johor Bahru','Kota Kinabalu'];
+    fetch('../data/projects.json', { cache: 'no-cache' })
+        .then(function(r){
+            var lm = r.headers.get('Last-Modified');
+            return r.json().then(function(list){ return { list: list, lm: lm }; });
+        })
+        .then(function(o){
+            var n = o.list.filter(function(p){
+                var loc = p.location || '';
+                return !NOT_KL_SELANGOR.some(function(x){ return loc.indexOf(x) !== -1; });
+            }).length;
+            if (!n) return;
+            var txt = '<b>' + n + '</b> 个 KL & Selangor 新盘';
+            var d = o.lm ? new Date(o.lm) : null;
+            if (d && !isNaN(d)) txt += ' · ' + d.getFullYear() + ' 年 ' + (d.getMonth() + 1) + ' 月更新';
+            document.getElementById('dataStatText').innerHTML = txt;
+            document.getElementById('dataStat').hidden = false;
+        })
+        .catch(function(){ /* leave the pill hidden */ });
+})();
+</script>
 </body>
 </html>
