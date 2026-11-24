@@ -747,7 +747,7 @@ document.getElementById("ebSendBtn").addEventListener("click", function () {
     /* pop their own masked name in the social-proof toast: "Lou** claimed FREE copy · 0 min ago" */
     if (typeof SocialProof !== 'undefined') SocialProof.announce(name);
     var msg = "Hi MY Property Comparison 👋\n\nMy name is *" + name + "*\n\nPlease send me the FREE 100 Projects eBook. Thank you!";
-    if (typeof gtag === 'function') gtag('event', 'ebook_lead', { source: 'eBook Page', lead_name: name, lead_phone: phone });
+    if (typeof gtag === 'function') gtag('event', 'ebook_lead', { source: 'eBook Page' });
     if (typeof gtag === 'function') gtag('event', 'conversion', { 'send_to': 'AW-18344712116/Cs7QCPikrdUcELSvuKtE', 'value': 1.0, 'currency': 'MYR' });
     window.open("https://wa.me/60175240726?text=" + encodeURIComponent(msg), "_blank");
 });
