@@ -96,6 +96,7 @@ footer .fb{color:var(--silver);font-size:16px;font-weight:600;margin-bottom:10px
     <p class="sub">New serviced residences rising directly across from Merdeka 118, the tallest tower in Malaysia. 118 Mall, Merdeka Stadium and the MRT all within footsteps.</p>
     <div class="from">Indicative pricing from <b>RM720,000</b>*</div>
     <div class="ctas">
+      <a class="btn btn-gold mpc-cta" href="#" data-mpc-cta data-project="MABA Suitez by EXSIM" data-ref="MPC-044" data-msg="你好，我想了解 *MABA Suitez by EXSIM*，请发给我价格表和平面图。谢谢！">WhatsApp 领取 MABA Suitez by EXSIM 价格表和平面图<small class="en">Get the price list &amp; floor plans on WhatsApp</small></a>
       <a class="btn btn-gold" href="https://maba-suitez-by-exsim.com/" target="_blank" rel="noopener" id="mainCta">View the Full Project Site</a>
       <a class="btn btn-ghost" href="#" data-wa="Hi MY Property Comparison, I'm interested in *MABA Suitez by EXSIM* (opposite Merdeka 118). Please send me the details.">WhatsApp Us</a>
     </div>
@@ -178,6 +179,32 @@ document.querySelectorAll('[data-wa]').forEach(function(el){
     if(typeof gtag==='function')gtag('event','outbound_project_site',{project_1:PROJECT,cta_location:id});
   });
 });
+</script>
+<style>
+.mpc-cta{display:inline-block;max-width:100%;white-space:normal;text-align:center;line-height:1.4;letter-spacing:.04em;text-transform:none}
+.en{display:block;font-size:.62em;font-weight:400;opacity:.78;letter-spacing:.03em;text-transform:none;margin-top:3px;line-height:1.3}
+</style>
+<script>
+/* Project WhatsApp CTA: prefilled message with the project name; GA event carries project name only (no personal data) */
+(function(){
+  document.querySelectorAll('[data-mpc-cta]').forEach(function(el){
+    el.addEventListener('click',function(ev){
+      ev.preventDefault();
+      var name=el.getAttribute('data-project'), ref=el.getAttribute('data-ref');
+      var msg=el.getAttribute('data-msg')+"\n\nRef: "+ref;
+      try{
+        if(typeof trackJourney==='function')trackJourney('Clicked WhatsApp CTA',name);
+        if(typeof sendToSheet==='function'){
+          var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent), utm="Direct";
+          try{utm=localStorage.getItem("utm_source")||"Direct";}catch(e){}
+          sendToSheet({name:"",phone:"",email:"",purpose:"",status:"Direct WhatsApp",project1:name,project2:"",source:"WhatsApp Click - "+ref,budget:"Direct",location:"Direct",device:mob?"Mobile":"Desktop",pageurl:window.location.href,utm:utm,journey:(typeof getJourneySummary==='function'?getJourneySummary():"")});
+        }
+        if(typeof gtag==='function')gtag('event','project_cta_click',{source:ref,project_1:name});
+      }catch(e){}
+      window.open("https://wa.me/60175240726?text="+encodeURIComponent(msg),"_blank");
+    });
+  });
+})();
 </script>
 </body>
 </html>

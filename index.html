@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" sizes="192x192" href="favicon-192.png">
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -34,10 +34,10 @@
         <nav>
             <a class="nav-brand" href="index.html"><img src="logo-nav.png" alt="MYPropertyComparison logo" style="height:28px;width:28px;vertical-align:middle;margin-right:8px;border-radius:7px;"><span class="brand-text">MYPropertyComparison</span></a>
             <div class="nav-links">
-                <a href="index.html" class="active">Projects</a>
-                <a href="pages/find.html">Smart Finder</a>
-                <a href="pages/calculator.html">Calculator</a>
-                <a href="https://wa.me/60175240726?text=Hi%20MY%20Property%20Comparison%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20speak%20to%20a%20property%20advisor.%20Can%20you%20help%20me%20with%20my%20property%20search%3F" target="_blank" onclick="if(typeof gtag==='function')gtag('event','nav_advisor_click',{});">Advisor</a>
+                <a href="index.html" class="active">项目</a>
+                <a href="pages/find.html">智能筛选</a>
+                <a href="pages/calculator.html">计算器</a>
+                <a href="https://wa.me/60175240726?text=Hi%20MY%20Property%20Comparison%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20speak%20to%20a%20property%20advisor.%20Can%20you%20help%20me%20with%20my%20property%20search%3F" target="_blank" onclick="if(typeof gtag==='function')gtag('event','nav_advisor_click',{});">顾问</a>
             </div>
         </nav>
 
@@ -55,33 +55,33 @@
         <!-- FILTER + SORT BAR -->
         <div class="filter-bar">
             <div class="filter-bar-inner">
-                <input type="text" id="searchBox" class="search-box" placeholder="🔍 Search by name, area or developer…">
+                <input type="text" id="searchBox" class="search-box" placeholder="🔍 搜索名称、地区或发展商 Search…">
                 <div class="filter-pills">
-                    <span class="filter-label">FILTER</span>
-                    <button class="filter-btn active" data-filter="All">All</button>
-                    <button class="filter-btn" data-filter="Freehold">Freehold</button>
-                    <button class="filter-btn" data-filter="Leasehold">Leasehold</button>
+                    <span class="filter-label">筛选</span>
+                    <button class="filter-btn active" data-filter="All">全部</button>
+                    <button class="filter-btn" data-filter="Freehold">永久地契</button>
+                    <button class="filter-btn" data-filter="Leasehold">租赁地契</button>
                 </div>
                 <div class="sort-group">
                     <select id="filterPrice" class="sort-select">
-                        <option value="All">Any Price</option>
-                        <option value="0-500000">Under RM500k</option>
+                        <option value="All">不限价格</option>
+                        <option value="0-500000">RM500k 以下</option>
                         <option value="500000-800000">RM500k – 800k</option>
                         <option value="800000-1200000">RM800k – 1.2M</option>
-                        <option value="1200000-9999999999">Above RM1.2M</option>
+                        <option value="1200000-9999999999">RM1.2M 以上</option>
                     </select>
                     <select id="filterType" class="sort-select">
-                        <option value="All">All Types</option>
-                        <option value="Residential">Residential</option>
-                        <option value="Commercial">Commercial</option>
+                        <option value="All">全部类型</option>
+                        <option value="Residential">住宅</option>
+                        <option value="Commercial">商业</option>
                     </select>
                     <select id="sortBy" class="sort-select">
-                        <option value="default">Sort By</option>
-                        <option value="price-asc">Price: Low → High</option>
-                        <option value="price-desc">Price: High → Low</option>
-                        <option value="psf-asc">PSF: Low → High</option>
-                        <option value="completion">Completion: Earliest</option>
-                        <option value="units-asc">Units: Low → High</option>
+                        <option value="default">排序</option>
+                        <option value="price-asc">价格：低 → 高</option>
+                        <option value="price-desc">价格：高 → 低</option>
+                        <option value="psf-asc">PSF：低 → 高</option>
+                        <option value="completion">完工：最早</option>
+                        <option value="units-asc">单位数：少 → 多</option>
                     </select>
                     <span class="project-count" id="projectCount"></span>
                 </div>
@@ -91,8 +91,8 @@
 
     <!-- HERO -->
     <header class="hero">
-        <h1>Compare Property Projects in Malaysia</h1>
-        <p>New launch projects in KL & Selangor — select 1 to view details, or 2 to compare side-by-side</p>
+        <h1>比较 KL &amp; Selangor 新盘<small class="en">Compare Property Projects in Malaysia</small></h1>
+        <p>选 1 个项目看详情，选 2 个项目直接比较<small class="en">New launch projects in KL & Selangor — select 1 to view details, or 2 to compare side-by-side</small></p>
     </header>
 
     <!-- PROJECT LIST -->
@@ -105,15 +105,15 @@
 
     <!-- STICKY BOTTOM BAR -->
     <div class="bottom-bar">
-        <p id="hint">Tip: Select 1 project to view details or 2 to compare</p>
+        <p id="hint">提示：选 1 个项目看详情，选 2 个项目直接比较</p>
         <div>
             <span style="color:#888; font-size:14px; margin-right:14px;">
-                Selected: <strong id="count">0</strong> / 2
+                已选：<strong id="count">0</strong> / 2
             </span>
-            <button id="compareBtn" disabled>Select a Project</button>
+            <button id="compareBtn" disabled>请选择项目</button>
             <a class="btn-ebook" href="pages/ebook.html" onclick="if(typeof gtag==='function')gtag('event','ebook_cta_click',{page:'index.html'});if(typeof trackJourney==='function')trackJourney('Clicked Free eBook CTA');">
                 <img src="assets/images/free-ebook-badge.png" alt="Free eBook">
-                100 Projects eBook
+                免费电子书
             </a>
         </div>
     </div>
@@ -126,7 +126,7 @@
         <div class="footer-copy">&copy; 2026 MYPropertyComparison. All rights reserved. &middot; <a href="pages/privacy-policy.html" style="color:#888;">Privacy Policy</a></div>
     </footer>
 
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
 <script src="assets/wa-track.js?v=1" data-ref="MPC-201"></script>
 </body>
 </html>

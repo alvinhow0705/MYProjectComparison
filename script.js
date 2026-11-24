@@ -289,7 +289,7 @@ function renderAreaFilter() {
     const multiCount = areaKeys.length >= 10 ? "10+" : areaKeys.length;
 
     let html = `<button class="area-btn active" data-area="All">
-        <span>🏠</span> All Areas (${multiCount} Areas)
+        <span>🏠</span> 全部地区（${multiCount} 个地区）
         <span class="area-count">${total}</span>
     </button>`;
 
@@ -410,15 +410,15 @@ function renderProjects() {
 
     // Update project count
     const countEl = document.getElementById('projectCount');
-    if (countEl) countEl.textContent = `Showing ${filtered.length} project${filtered.length !== 1 ? 's' : ''}`;
+    if (countEl) countEl.textContent = `显示 ${filtered.length} 个项目`;
 
     // Empty state
     if (filtered.length === 0) {
         container.innerHTML = `
             <div class="empty-state" style="grid-column:1/-1; text-align:center; padding:60px 20px; color:#888;">
                 <p style="font-size:40px; margin-bottom:8px;">🔍</p>
-                <p style="font-size:16px; color:#555;">No projects match your filters.</p>
-                <p style="font-size:13px; margin-top:6px;">Try widening your price range, clearing the search, or picking another area.</p>
+                <p style="font-size:16px; color:#555;">没有符合筛选条件的项目。</p>
+                <p style="font-size:13px; margin-top:6px;">可放宽价格范围、清除搜索或选择其他地区。</p>
             </div>
         `;
         return;
@@ -431,12 +431,12 @@ function renderProjects() {
         const tile = document.createElement('div');
         tile.className = 'ebook-tile' + (variant ? ' ' + variant : '');
         tile.innerHTML = `
-            <img loading="lazy" decoding="async" class="et-cover" src="assets/images/ebook-cover.jpg" alt="Property eBook">
+            <img loading="lazy" decoding="async" class="et-cover" src="assets/images/ebook-cover.jpg" alt="免费电子书">
             <div class="et-body">
-                <span class="et-badge">FREE &middot; WORTH RM500</span>
-                <h3>Every New Launch in Malaysia, in One Guide</h3>
-                <p>Prices, PSF, developers &amp; tenure — sent straight to your WhatsApp.</p>
-                <span class="et-btn">Get My Free Copy &rarr;</span>
+                <span class="et-badge">免费 &middot; 价值 RM500</span>
+                <h3>KL &amp; Selangor 新盘比较电子书<small class="en">Every New Launch in Malaysia, in One Guide</small></h3>
+                <p>价格、PSF、发展商与地契，直接发送到你的 WhatsApp。<small class="en">Prices, PSF, developers &amp; tenure — sent straight to your WhatsApp.</small></p>
+                <span class="et-btn">免费领取 &rarr;<small class="en">Get My Free Copy</small></span>
             </div>`;
         tile.addEventListener('click', () => {
             if (typeof gtag === 'function') gtag('event', 'ebook_cta_click', { page: 'index.html', placement: 'feed_tile' });
@@ -500,13 +500,13 @@ function renderProjects() {
                         <circle cx="8.5" cy="8.5" r="1.5"/>
                         <path d="M21 15l-5-5L5 21"/>
                     </svg>
-                    <span>Loading image…</span>
+                    <span>图片加载中…</span>
                 </div>
                 <div class="card-carousel">${carouselImgs}</div>
                 ${imageTag}
                 ${dotsHtml}
                 ${navHtml}
-                <span class="card-img-tag-selected">✓ Selected</span>
+                <span class="card-img-tag-selected">✓ 已选</span>
             </div>
             <div class="card-body">
                 <div class="card-top-row">
@@ -522,20 +522,20 @@ function renderProjects() {
                 </div>
                 <div class="card-stats">
                     <div class="card-stat">
-                        <div class="card-stat-label">Units</div>
+                        <div class="card-stat-label">单位数</div>
                         <div class="card-stat-value">${project["total unit"] || "—"}</div>
                     </div>
                     <div class="card-stat">
-                        <div class="card-stat-label">Size (sqft)</div>
+                        <div class="card-stat-label">面积 (sqft)</div>
                         <div class="card-stat-value">${(project["unit size"] || "—").replace(/\s*sqft/i, "")}</div>
                     </div>
                     <div class="card-stat">
-                        <div class="card-stat-label">Completion</div>
+                        <div class="card-stat-label">完工</div>
                         <div class="card-stat-value">${project["completion Year"] || "—"}</div>
                     </div>
                 </div>
-                <button class="select-btn">Select</button>
-                ${project.hasPage && project.slug ? `<a class="view-page-link" href="/projects/${project.slug}.html">View Full Page →</a>` : ""}
+                <button class="select-btn">选择</button>
+                ${project.hasPage && project.slug ? `<a class="view-page-link" href="/projects/${project.slug}.html">查看完整页面 →</a>` : ""}
             </div>
         `;
 
@@ -599,7 +599,7 @@ function toggleSelect(project, card, btn) {
     if (exists) {
         selected = selected.filter(p => p.id !== project.id);
         card.classList.remove('selected');
-        btn.innerText = "Select";
+        btn.innerText = "选择";
         trackJourney("Deselected", project.name);
         if (typeof gtag === 'function') gtag('event', 'project_deselected', { project_name: project.name, project_location: project.location });
     } else {
@@ -609,7 +609,7 @@ function toggleSelect(project, card, btn) {
         }
         selected.push(project);
         card.classList.add('selected');
-        btn.innerText = "Deselect";
+        btn.innerText = "取消选择";
         trackJourney("Selected", project.name);
         if (typeof gtag === 'function') gtag('event', 'project_selected', { project_name: project.name, project_location: project.location, project_price: project.price });
     }
@@ -629,21 +629,21 @@ function updateUI() {
 
     if (btn) {
         if (selected.length === 0) {
-            btn.innerText = "Select a Project";
+            btn.innerText = "请选择项目";
             btn.disabled = true;
         } else if (selected.length === 1) {
-            btn.innerText = "View Project Details →";
+            btn.innerText = "查看项目详情 →";
             btn.disabled = false;
         } else {
-            btn.innerText = "Compare Projects →";
+            btn.innerText = "比较项目 →";
             btn.disabled = false;
         }
     }
 
     if (hint) {
-        if (selected.length === 0) hint.innerText = "Tip: Select 1 project to view details or 2 to compare";
-        if (selected.length === 1) hint.innerText = "1 project selected — click to view full details";
-        if (selected.length === 2) hint.innerText = "2 projects selected — ready to compare!";
+        if (selected.length === 0) hint.innerText = "提示：选 1 个项目看详情，选 2 个项目直接比较";
+        if (selected.length === 1) hint.innerText = "已选 1 个项目，点击查看完整详情";
+        if (selected.length === 2) hint.innerText = "已选 2 个项目，可以开始比较！";
     }
 
     // Mobile: only pop the bottom bar into view once something's actually selected

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,6 +195,8 @@
 
         /* ---------- claim counter ---------- */
         .claim-pill[hidden] { display:none; }
+        small.en { display:block; font-size:.62em; font-weight:400; opacity:.72; letter-spacing:.02em; text-transform:none; margin-top:4px; line-height:1.35; }
+        .en-i { font-size:.8em; opacity:.65; letter-spacing:.06em; }
         .claim-pill { display:inline-flex; align-items:center; gap:8px; margin-top:18px; background:rgba(46,224,111,.1); border:1px solid rgba(46,224,111,.28); color:#9fe8bb; font-size:13px; font-weight:500; padding:8px 18px; border-radius:30px; }
         .claim-pill b { color:#3dfc6e; font-family:'Space Grotesk',sans-serif; font-variant-numeric:tabular-nums; }
         .claim-pill .dot { width:7px; height:7px; border-radius:50%; background:#3dfc6e; animation:liveDot 1.6s ease-in-out infinite; }
@@ -239,10 +241,10 @@
             <div class="rib" id="stickerRib">WITH YOUR CONTACT</div>
         </div>
         <div class="promo-mid">
-            <div class="l1" id="promoL1">The <b>RM500</b> property eBook — yours FREE with your contact</div>
-            <div class="l2" id="promoL2">Prefer not to share? You can buy it below for RM500.</div>
+            <div class="l1" id="promoL1"><b>RM500</b> 房产电子书，留下联系方式即可免费领取<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">The RM500 property eBook — yours FREE with your contact</span></div>
+            <div class="l2" id="promoL2">不想留联系方式？也可以在下方以 RM500 购买。<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">Prefer not to share? You can buy it below for RM500.</span></div>
         </div>
-        <a class="promo-btn" id="promoBtn" href="#freeCard">Claim Free &nbsp;&rsaquo;</a>
+        <a class="promo-btn" id="promoBtn" href="#freeCard">免费领取 &nbsp;&rsaquo;</a>
         <button class="promo-x" id="promoX" aria-label="Dismiss">&times;</button>
     </div>
 
@@ -333,9 +335,9 @@
     <div class="hero">
         <img class="float-book" id="floatBook" src="../assets/images/free-ebook-badge.png" alt="Free eBook">
         <div class="glow-ring"></div>
-        <h1>Every New Launch in Malaysia.<br><span class="grad">One Powerful Guide.</span></h1>
-        <p class="sub">Prices, PSF, developers and tenure — months of research, distilled into one eBook.</p>
-        <p class="worth">Real value: <s>RM500.00</s> &nbsp;&middot;&nbsp; Today you decide what you pay.</p>
+        <h1>KL &amp; Selangor 新盘比较<br><span class="grad">一本指南，一次看清</span><small class="en">Every New Launch in Malaysia. One Powerful Guide.</small></h1>
+        <p class="sub">价格、PSF、发展商与地契，浓缩成一本电子书。<small class="en">Prices, PSF, developers and tenure — months of research, distilled into one eBook.</small></p>
+        <p class="worth">价值：<s>RM500.00</s> &nbsp;&middot;&nbsp; 今天由你决定支付多少<small class="en">Real value: RM500.00 &middot; Today you decide what you pay.</small></p>
         <div class="claim-pill" id="dataStat" hidden><span class="dot"></span><span id="dataStatText"></span></div>
     </div>
 
@@ -343,27 +345,27 @@
     <div class="pricing">
         <!-- PAY (anchor) -->
         <div class="pcard">
-            <h3>Buy the eBook</h3>
-            <div class="plabel">One-time purchase</div>
+            <h3>购买电子书<small class="en">Buy the eBook</small></h3>
+            <div class="plabel" style="text-transform:none;letter-spacing:.02em">一次性购买<small class="en">One-time purchase</small></div>
             <div class="price-row"><span class="price-was" id="wasPrice" style="display:none;">RM500</span><span class="price-now" id="nowPrice">RM500</span></div>
-            <p class="price-note" id="payNote">Full research access. No contact details needed.</p>
+            <p class="price-note" id="payNote">完整研究资料，无需留下联系方式。<small class="en">Full research access. No contact details needed.</small></p>
             <div class="spacer"></div>
-            <button class="pay-btn" id="payBtn">Buy Now &rarr;</button>
+            <button class="pay-btn" id="payBtn">立即购买 &rarr;<small class="en">Buy Now</small></button>
         </div>
 
         <!-- FREE (goal) -->
         <div class="free-wrap" id="freeCard">
             <div class="pcard free">
-                <div class="badge-top">&#127873; 100% Free Today</div>
-                <h3>Claim It Free</h3>
-                <div class="plabel">Just tell us where to send it</div>
+                <div class="badge-top">&#127873; 今天 100% 免费 &middot; 100% Free Today</div>
+                <h3>免费领取<small class="en">Claim It Free</small></h3>
+                <div class="plabel" style="text-transform:none;letter-spacing:.02em">告诉我们发到哪里就行<small class="en">Just tell us where to send it</small></div>
                 <div class="price-row"><span class="price-was">RM500</span><span class="price-now">RM0</span></div>
-                <p class="price-note">Sent instantly to your WhatsApp. No payment. No card.</p>
-                <div class="fgroup"><label>YOUR NAME</label><input id="ebName" placeholder="Your Name"></div>
-                <div class="fgroup"><label>PHONE NUMBER</label><input id="ebPhone" placeholder="e.g. 012-345 6789" type="tel"></div>
+                <p class="price-note">即时发送到你的 WhatsApp，无需付款，无需信用卡。<small class="en">Sent instantly to your WhatsApp. No payment. No card.</small></p>
+                <div class="fgroup"><label>你的姓名 <span class="en-i">YOUR NAME</span></label><input id="ebName" placeholder="姓名 Your Name"></div>
+                <div class="fgroup"><label>电话号码 <span class="en-i">PHONE NUMBER</span></label><input id="ebPhone" placeholder="例如 012-345 6789" type="tel"></div>
                 <div class="spacer"></div>
-                <button class="free-btn" id="ebSendBtn">SEND ME THE FREE EBOOK &rarr;</button>
-                <p class="trust">We'll only use this to send your eBook and occasional project updates. No spam.</p>
+                <button class="free-btn" id="ebSendBtn">发送免费电子书给我 &rarr;<small class="en">SEND ME THE FREE EBOOK</small></button>
+                <p class="trust">我们只会用来发送电子书和偶尔的项目更新，不会骚扰你。<small class="en">We'll only use this to send your eBook and occasional project updates. No spam.</small></p>
             </div>
         </div>
     </div>
@@ -377,7 +379,7 @@
 
     <p class="proof">Join the buyers &amp; investors who've claimed their copy this week.</p>
 
-    <div class="back"><a href="../index.html">&larr; Back to Projects</a></div>
+    <div class="back"><a href="../index.html">&larr; 返回项目列表 Back to Projects</a></div>
 </div>
 
 <!-- SOCIAL PROOF TOAST -->
@@ -421,8 +423,8 @@ var OFFER = (function(){
 
     function applyStage2UI(){
         stOff.textContent='96% OFF'; stRib.textContent='LAST CHANCE';
-        l2.innerHTML='Offer ends in <span class="timer-pill" id="timerPill">10m 00s</span>';
-        l1.innerHTML='Wait — last chance: <b>RM500 &rarr; RM19.90</b> (or still FREE below)';
+        l2.innerHTML='优惠倒计时 <span class="timer-pill" id="timerPill">10m 00s</span><span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">Offer ends in</span>';
+        l1.innerHTML='最后机会：<b>RM500 &rarr; RM19.90</b>（下方仍可免费领取）<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">Wait — last chance: RM500 → RM19.90 (or still FREE below)</span>';
         was.style.display=''; now.textContent='RM19.90';
         note.textContent='One-time downsell — locked in only while the timer runs.';
         tick();
@@ -431,8 +433,8 @@ var OFFER = (function(){
     function expireUI(){
         bar.classList.add('expired'); bar.classList.remove('urgent');
         document.getElementById('sticker').style.display='none';
-        l1.innerHTML='The RM19.90 offer has ended';
-        l2.innerHTML='Good news — you can still claim the eBook <b style="color:#3dfc6e">FREE</b> below.';
+        l1.innerHTML='RM19.90 优惠已结束<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">The RM19.90 offer has ended</span>';
+        l2.innerHTML='好消息：你仍可在下方<b style="color:#3dfc6e">免费</b>领取电子书。<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">Good news — you can still claim the eBook FREE below.</span>';
         was.style.display='none'; now.textContent='RM500';
         note.textContent='Standard price. Tip: the free option is still available.';
     }
@@ -501,7 +503,7 @@ document.getElementById('dsFree').addEventListener('click', function(){
 });
 document.getElementById('dsBuy').addEventListener('click', function(){
     document.getElementById('dsOverlay').style.display='none';
-    if (typeof gtag==='function') gtag('event','ebook_buy_click',{ price:'RM19.90', method:'duitnow' });
+    if (typeof gtag==='function') gtag('event','ebook_buy_click',{ price:'RM19.90', method:'whatsapp' });
     trackJourney('Clicked Buy eBook','RM19.90 downsell');
     PAY.open('RM19.90');
 });
@@ -635,15 +637,14 @@ var PAY = (function(){
         if (img.complete && img.naturalWidth===0) fail();
     })();
 
+    /* DuitNow QR image is missing, so Buy Now opens WhatsApp instead of the QR sheet.
+       (The QR modal markup is left in place, unused, so it can be switched back on.) */
     function open(price){
         currentAmt=price;
-        amtEl.textContent=price;
-        amt2El.textContent=price;
-        totalEl.textContent=(price.indexOf('.')>-1 ? price : price+'.00');
-        wasEl.style.display = (price==='RM500') ? 'none' : 'block';
-        overlay.classList.add('open');
-        if (typeof gtag==='function') gtag('event','ebook_pay_modal_shown',{ price: price });
-        trackJourney('Opened Payment QR', price);
+        trackJourney('Buy Now via WhatsApp', price);
+        var msg = '我想购买电子书\n\nRef: MPC-302';
+        if (typeof waLog === 'function') waLog({ source: 'MPC-302 buy now', project: 'eBook ' + price });
+        window.open('https://wa.me/60175240726?text=' + encodeURIComponent(msg), '_blank');
     }
     function close(){ overlay.classList.remove('open'); }
     document.getElementById('payClose').addEventListener('click', close);
@@ -672,7 +673,7 @@ document.getElementById('payBtn').addEventListener('click', function(){
     /* If they're about to pay full RM500, reward them with the downsell instead */
     if (!OFFER.isStage2()){ OFFER.goStage2(true); return; }
     var price = OFFER.currentPrice();
-    if (typeof gtag === 'function') gtag('event', 'ebook_buy_click', { price: price, method: 'duitnow' });
+    if (typeof gtag === 'function') gtag('event', 'ebook_buy_click', { price: price, method: 'whatsapp' });
     trackJourney('Clicked Buy eBook', price);
     PAY.open(price);
 });
@@ -681,7 +682,7 @@ document.getElementById('payBtn').addEventListener('click', function(){
 document.getElementById("ebSendBtn").addEventListener("click", function () {
     var name = document.getElementById("ebName").value.trim();
     var phone = document.getElementById("ebPhone").value.trim();
-    if (!name || !phone) { alert("Please fill in your name and phone number so we can send your eBook."); return; }
+    if (!name || !phone) { alert("请填写姓名和电话号码，我们才能发送电子书。Please fill in your name and phone number so we can send your eBook."); return; }
     if (/^0/.test(phone)) phone = "6" + phone;
     var finderData = JSON.parse(localStorage.getItem("finderData") || "{}");
     var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);

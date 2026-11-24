@@ -483,6 +483,7 @@ footer.photo{overflow:hidden}
       <div><strong>RM422,000</strong>Milano, from</div>
     </div>
     <div class="ctas">
+      <a class="btn mpc-cta" href="#" data-mpc-cta data-project="Arte Star" data-ref="" data-bare data-msg="你好，我想了解 *Arte Star*，请发给我价格表和平面图。谢谢！">WhatsApp 领取 Arte Star 价格表和平面图<small class="en">Get the price list &amp; floor plans on WhatsApp</small></a>
       <a href="#register" class="btn" data-cta="hero_register">Book a show unit visit</a>
       <a href="#" class="btn ghost js-wa" data-cta="hero_whatsapp">WhatsApp an agent</a>
     </div>
@@ -1038,6 +1039,32 @@ footer.photo{overflow:hidden}
     var msg = 'Hi, I would like to visit the ' + PROJECT + ' show unit.\nName: ' + name + '\nPhone: ' + phone + '\nInterested in: ' + f.tower.value + '\nPurpose: ' + f.purpose.value;
     track('whatsapp_lead', {source: 'form', project_1: PROJECT, tower: f.tower.value, purpose: f.purpose.value});
     window.open(waLink(msg), '_blank', 'noopener');
+  });
+})();
+</script>
+<style>
+.mpc-cta{display:inline-block;max-width:100%;white-space:normal;text-align:center;line-height:1.4;letter-spacing:.04em;text-transform:none}
+.en{display:block;font-size:.62em;font-weight:400;opacity:.78;letter-spacing:.03em;text-transform:none;margin-top:3px;line-height:1.3}
+</style>
+<script>
+/* Project WhatsApp CTA: prefilled message with the project name; GA event carries project name only (no personal data) */
+(function(){
+  document.querySelectorAll('[data-mpc-cta]').forEach(function(el){
+    el.addEventListener('click',function(ev){
+      ev.preventDefault();
+      var name=el.getAttribute('data-project'), ref=el.getAttribute('data-ref');
+      var msg=el.getAttribute('data-msg')+(ref?"\n\nRef: "+ref:"");
+      try{
+        if(!el.hasAttribute('data-bare')&&typeof trackJourney==='function')trackJourney('Clicked WhatsApp CTA',name);
+        if(!el.hasAttribute('data-bare')&&typeof sendToSheet==='function'){
+          var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent), utm="Direct";
+          try{utm=localStorage.getItem("utm_source")||"Direct";}catch(e){}
+          sendToSheet({name:"",phone:"",email:"",purpose:"",status:"Direct WhatsApp",project1:name,project2:"",source:"WhatsApp Click - "+ref,budget:"Direct",location:"Direct",device:mob?"Mobile":"Desktop",pageurl:window.location.href,utm:utm,journey:(typeof getJourneySummary==='function'?getJourneySummary():"")});
+        }
+        if(typeof gtag==='function')gtag('event','project_cta_click',{source:ref,project_1:name});
+      }catch(e){}
+      window.open("https://wa.me/60175240726?text="+encodeURIComponent(msg),"_blank");
+    });
   });
 })();
 </script>
