@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -165,6 +165,7 @@ footer a{color:#8f9ab0}
   body{padding-bottom:50px}
 }
 </style>
+<script src="../assets/i18n.js?v=1"></script>
 </head>
 <body>
 
@@ -173,11 +174,11 @@ footer a{color:#8f9ab0}
 <nav id="nav">
   <a class="brand" href="../index.html"><img src="../logo-nav.png" alt="MYPropertyComparison logo">MYPropertyComparison</a>
   <div class="nav-links">
-    <a href="#about">简介</a>
-    <a href="#highlights">亮点</a>
-    <a href="#gallery">图库</a>
-    <a href="#location">位置</a>
-    <a class="nav-cta" href="#enquiry">索取电子册</a>
+    <a href="#about" data-i18n="p.about">About</a>
+    <a href="#highlights" data-i18n="p.highlights">Highlights</a>
+    <a href="#gallery" data-i18n="p.gallery">Gallery</a>
+    <a href="#location" data-i18n="p.location">Location</a>
+    <a class="nav-cta" href="#enquiry" data-i18n="p.brochure_nav">Get e-Brochure</a>
   </div>
 </nav>
 
@@ -187,11 +188,11 @@ footer a{color:#8f9ab0}
     <div class="h-eyebrow">Ara Damansara &middot; Puncakdana</div>
     <h1>ARRA Residence</h1>
     <p class="sub">Commercial Under HDA in Ara Damansara, by Puncakdana.</p>
-    <div class="from">起价 <b>RM554,000</b>&nbsp;&nbsp;&middot;&nbsp;&nbsp;起 769 psf</div>
+    <div class="from"><span data-i18n="p.from">From</span> <b>RM554,000</b>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<span data-i18n="p.from_psf">From</span> 769 psf</div>
     <div class="h-cta">
-      <a class="btn btn-gold mpc-cta" href="#" data-mpc-cta data-project="ARRA Residence" data-ref="MPC-029" data-msg="你好，我想了解 *ARRA Residence*，请发给我价格表和平面图。谢谢！">WhatsApp 领取 ARRA Residence 价格表和平面图<small class="en">Get the price list &amp; floor plans on WhatsApp</small></a>
-      <a class="btn btn-ghost" href="#enquiry">索取电子册<small class="en">Get the e-Brochure</small></a>
-      <a class="btn btn-ghost" href="#" data-wa="Hi MY Property Comparison, I'm interested in *ARRA Residence* (Ara Damansara). Please send me the price list and floor plans.">WhatsApp 咨询<small class="en">WhatsApp Us</small></a>
+      <a class="btn btn-gold mpc-cta" href="#" data-mpc-cta data-project="ARRA Residence" data-ref="MPC-029" data-i18n="cta.project" data-i18n-vars="{&quot;name&quot;:&quot;ARRA Residence&quot;}">Get ARRA Residence price list &amp; floor plans on WhatsApp</a>
+      <a class="btn btn-ghost" href="#enquiry" data-i18n="p.brochure">Get the e-Brochure</a>
+      <a class="btn btn-ghost" href="#" data-wa="Hi MY Property Comparison, I'm interested in *ARRA Residence* (Ara Damansara). Please send me the price list and floor plans." data-i18n="p.wa_us">WhatsApp Us</a>
     </div>
   </div>
   <div class="scroll-cue"></div>
@@ -202,24 +203,24 @@ footer a{color:#8f9ab0}
 <section class="blk" id="about">
   <div class="wrap two">
     <div class="reveal">
-      <div class="tag">项目简介<small class="en">The Development</small></div>
-      <h2>数据一览<small class="en">A closer look at the numbers.</small></h2>
+      <div class="tag" data-i18n="p.development">The Development</div>
+      <h2 data-i18n="p.numbers">A closer look at the numbers.</h2>
       <p class="lede">ARRA Residence is a commercial under hda freehold development by Puncakdana, in Ara Damansara. Layouts run 721-1,285 sqft across 1,275 units. Indicative pricing is From RM554,000 (From 769 psf). Register below for the full price list, floor plans and current promotions.</p>
-      <div style="margin-top:26px"><a class="btn btn-ghost" href="#" data-wa="Hi, could you tell me more about *ARRA Residence* in Ara Damansara?">咨询此项目<small class="en">Ask About This Project</small></a></div>
+      <div style="margin-top:26px"><a class="btn btn-ghost" href="#" data-wa="Hi, could you tell me more about *ARRA Residence* in Ara Damansara?" data-i18n="p.ask">Ask About This Project</a></div>
     </div>
     <div class="shot reveal"><img src="../assets/images/arra-1.webp" alt="ARRA Residence, Ara Damansara" loading="lazy"></div>
   </div>
 </section>
 
 <section class="stats">
-  <div class="wrap"><div class="stats-grid"><div class="stat"><div class="v" data-count="554000" data-pre="RM">RM554,000</div><div class="k">起价<small class="en">Price From</small></div></div><div class="stat"><div class="v">From 769 psf</div><div class="k">每平方尺价格<small class="en">Price per sq.ft.</small></div></div><div class="stat"><div class="v">721-1,285 sqft</div><div class="k">面积<small class="en">Unit Size</small></div></div><div class="stat"><div class="v" data-count="1275">1,275</div><div class="k">总单位数<small class="en">Total Units</small></div></div><div class="stat"><div class="v">Freehold</div><div class="k">地契<small class="en">Tenure</small></div></div><div class="stat"><div class="v">2030</div><div class="k">完工<small class="en">Completion</small></div></div></div></div>
+  <div class="wrap"><div class="stats-grid"><div class="stat"><div class="v" data-count="554000" data-pre="RM">RM554,000</div><div class="k" data-i18n="p.pricefrom">Price From</div></div><div class="stat"><div class="v">From 769 psf</div><div class="k" data-i18n="p.psf">Price per sq.ft.</div></div><div class="stat"><div class="v">721-1,285 sqft</div><div class="k" data-i18n="p.unitsize">Unit Size</div></div><div class="stat"><div class="v" data-count="1275">1,275</div><div class="k" data-i18n="p.units">Total Units</div></div><div class="stat"><div class="v">Freehold</div><div class="k" data-i18n="p.tenure">Tenure</div></div><div class="stat"><div class="v">2030</div><div class="k" data-i18n="p.completion">Completion</div></div></div></div>
 </section>
 
 <section class="blk" id="highlights">
   <div class="wrap">
     <div class="reveal">
       <div class="tag">Why ARRA Residence</div>
-      <h2>重点一览<small class="en">The essentials, at a glance.</small></h2>
+      <h2 data-i18n="p.essentials">The essentials, at a glance.</h2>
     </div>
     <div class="hl-grid reveal"><div class="hl"><span class="m">&#10022;</span><p>Freehold</p></div><div class="hl"><span class="m">&#10022;</span><p>Freehold tenure</p></div><div class="hl"><span class="m">&#10022;</span><p>Located in Ara Damansara</p></div><div class="hl"><span class="m">&#10022;</span><p>Developed by Puncakdana</p></div><div class="hl"><span class="m">&#10022;</span><p>Layouts from 721-1,285 sqft</p></div><div class="hl"><span class="m">&#10022;</span><p>1,275 units in total</p></div><div class="hl"><span class="m">&#10022;</span><p>Expected completion in 2030</p></div><div class="hl"><span class="m">&#10022;</span><p>Commercial Under HDA</p></div></div>
   </div>
@@ -228,8 +229,8 @@ footer a{color:#8f9ab0}
 <section class="blk" id="gallery" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="reveal">
-      <div class="tag">图库<small class="en">Gallery</small></div>
-      <h2>图库细看<small class="en">A closer look.</small></h2>
+      <div class="tag" data-i18n="p.gallery">Gallery</div>
+      <h2 data-i18n="p.closer">A closer look.</h2>
       <p class="lede">All images are artist's impressions for illustration purposes only. Actual product may vary.</p>
     </div>
     <div class="gal reveal" id="gal"><div class="g"><img src="../assets/images/arra-1.webp" alt="ARRA Residence image" loading="lazy"></div><div class="g"><img src="../assets/images/arra-2.webp" alt="ARRA Residence image" loading="lazy"></div><div class="g"><img src="../assets/images/arra-3.webp" alt="ARRA Residence image" loading="lazy"></div><div class="g"><img src="../assets/images/arra-4.webp" alt="ARRA Residence image" loading="lazy"></div><div class="g"><img src="../assets/images/arra-5.webp" alt="ARRA Residence image" loading="lazy"></div><div class="g"><img src="../assets/images/arra-6.webp" alt="ARRA Residence image" loading="lazy"></div></div>
@@ -239,34 +240,34 @@ footer a{color:#8f9ab0}
 <section class="blk" id="location">
   <div class="wrap">
     <div class="reveal">
-      <div class="tag">位置<small class="en">Location</small></div>
+      <div class="tag" data-i18n="p.location">Location</div>
       <h2>Ara Damansara.</h2>
       <p class="lede">ARRA Residence is located in Ara Damansara. Exact address, connectivity and surrounding amenities are shared on request &mdash; message us for the full location details.</p>
     </div>
     <div id="mapSlot" class="reveal"></div>
-    <div style="margin-top:28px" class="reveal"><a class="btn btn-gold" href="#" data-wa="Hi, could you send me the exact location and connectivity details for *ARRA Residence*?">WhatsApp 获取位置详情<small class="en">WhatsApp for Location Details</small></a></div>
+    <div style="margin-top:28px" class="reveal"><a class="btn btn-gold" href="#" data-wa="Hi, could you send me the exact location and connectivity details for *ARRA Residence*?" data-i18n="p.wa_loc">WhatsApp for Location Details</a></div>
   </div>
 </section>
 
 <section class="blk" id="videoSec" style="display:none">
   <div class="wrap">
-    <div class="reveal"><div class="tag">影片<small class="en">Film</small></div><h2>动态一览<small class="en">See it in motion.</small></h2></div>
+    <div class="reveal"><div class="tag" data-i18n="p.film">Film</div><h2 data-i18n="p.motion">See it in motion.</h2></div>
     <div class="media ratio" id="videoBox"></div>
   </div>
 </section>
 
 <section class="blk" id="planSec" style="display:none;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
-    <div class="reveal"><div class="tag">户型<small class="en">Layouts</small></div><h2>平面图<small class="en">Floor plans.</small></h2>
-    <p class="lede">点击图片可全屏查看<small class="en">Tap the artwork to view it full screen.</small></p></div>
+    <div class="reveal"><div class="tag" data-i18n="p.layouts">Layouts</div><h2 data-i18n="p.plans">Floor plans.</h2>
+    <p class="lede" data-i18n="p.tap">Tap the artwork to view it full screen.</p></div>
     <div class="shot reveal" style="margin-top:34px;cursor:zoom-in" id="planBox"></div>
-    <div style="margin-top:28px" class="reveal"><a class="btn btn-gold" href="#" data-wa="Hi, please send me the full floor plans and unit layouts for *ARRA Residence*.">索取全部平面图<small class="en">Request All Floor Plans</small></a></div>
+    <div style="margin-top:28px" class="reveal"><a class="btn btn-gold" href="#" data-wa="Hi, please send me the full floor plans and unit layouts for *ARRA Residence*." data-i18n="p.req_plans">Request All Floor Plans</a></div>
   </div>
 </section>
 
 <section class="blk" id="tourSec" style="display:none">
   <div class="wrap">
-    <div class="reveal"><div class="tag">虚拟导览<small class="en">Virtual Tour</small></div><h2>360° 全景漫游<small class="en">Walk through in 360&deg;.</small></h2></div>
+    <div class="reveal"><div class="tag" data-i18n="p.tour">Virtual Tour</div><h2 data-i18n="p.walk360">Walk through in 360&deg;.</h2></div>
     <div class="media ratio" id="tourBox"></div>
   </div>
 </section>
@@ -274,13 +275,13 @@ footer a{color:#8f9ab0}
 <section class="blk enq" id="enquiry">
   <div class="wrap">
     <div class="enq-card reveal">
-      <div class="tag" style="text-indent:0">登记兴趣<small class="en">Register Your Interest</small></div>
-      <h2 style="max-width:none;margin:0 auto 14px">索取电子册<small class="en">Get the e-Brochure</small></h2>
+      <div class="tag" style="text-indent:0" data-i18n="p.register">Register Your Interest</div>
+      <h2 style="max-width:none;margin:0 auto 14px" data-i18n="p.brochure">Get the e-Brochure</h2>
       <p class="lede" style="margin:0 auto 30px">Floor plans, full price list and current promotions &mdash; sent to you directly via WhatsApp.</p>
-      <div class="field"><input id="waName" placeholder="姓名 Your Name" autocomplete="name"></div>
-      <div class="field"><input id="waPhone" placeholder="电话号码 Phone Number" type="tel" autocomplete="tel"></div>
-      <div class="field"><select id="waPurpose"><option value="Investment">投资</option><option value="Own Stay">自住</option><option value="Both">自住 + 投资</option></select></div>
-      <button class="btn btn-gold" id="waSendBtn">WhatsApp 免费索取资料<small class="en">Get Free Info via WhatsApp</small></button>
+      <div class="field"><input id="waName" placeholder="Your Name" data-i18n-ph="p.ph_name" autocomplete="name"></div>
+      <div class="field"><input id="waPhone" placeholder="Phone Number" data-i18n-ph="p.ph_phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><select id="waPurpose"><option value="Investment" data-i18n="p.invest">Investment</option><option value="Own Stay" data-i18n="p.own">Own Stay</option><option value="Both" data-i18n="p.both">Own Stay + Investment</option></select></div>
+      <button class="btn btn-gold" id="waSendBtn" data-i18n="p.getinfo">Get Free Info via WhatsApp</button>
     </div>
   </div>
 </section>
@@ -298,8 +299,8 @@ footer a{color:#8f9ab0}
 </a>
 
 <div class="floatbar">
-  <a href="#enquiry">索取电子册</a>
-  <a href="#" data-wa="Hi, I'd like to know more about *ARRA Residence* in Ara Damansara.">WhatsApp 咨询</a>
+  <a href="#enquiry" data-i18n="p.brochure_nav">Get e-Brochure</a>
+  <a href="#" data-wa="Hi, I'd like to know more about *ARRA Residence* in Ara Damansara." data-i18n="p.wa_short">WhatsApp</a>
 </div>
 
 <script>
@@ -355,7 +356,7 @@ document.getElementById("waSendBtn").addEventListener("click",function(){
   var n=document.getElementById("waName").value.trim(),
       p=document.getElementById("waPhone").value.trim(),
       pu=document.getElementById("waPurpose").value;
-  if(!n||!p){alert("请填写姓名和电话号码。Please fill in your name and phone number.");return;}
+  if(!n||!p){alert(window.i18n?window.i18n.t('form.fill','Please fill in your name and phone number.'):'Please fill in your name and phone number.');return;}
   var pSheet=/^0/.test(p)?"6"+p:p;   /* Sheets strips a leading 0 from a number */
   var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
   var utm="Direct"; try{utm=localStorage.getItem("utm_source")||"Direct";}catch(e){}
@@ -445,24 +446,25 @@ window.addEventListener('scroll',function(){y=window.scrollY;if(!t){t=true;reque
 </script>
 <style>
 .mpc-cta{display:inline-block;max-width:100%;white-space:normal;text-align:center;line-height:1.4;letter-spacing:.04em;text-transform:none}
-.en{display:block;font-size:.62em;font-weight:400;opacity:.78;letter-spacing:.03em;text-transform:none;margin-top:3px;line-height:1.3}
+.btn-outline{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.7)!important}
 </style>
 <script>
-/* Project WhatsApp CTA: prefilled message with the project name; GA event carries project name only (no personal data) */
+/* Project WhatsApp CTA: prefilled message with the project name; GA event carries the project name only (no personal data) */
 (function(){
+  function T(k,en,v){return window.i18n?window.i18n.t(k,en,v):en.replace(/\{(\w+)\}/g,function(m,x){return v&&v[x]!=null?v[x]:m;});}
   document.querySelectorAll('[data-mpc-cta]').forEach(function(el){
     el.addEventListener('click',function(ev){
       ev.preventDefault();
-      var name=el.getAttribute('data-project'), ref=el.getAttribute('data-ref');
-      var msg=el.getAttribute('data-msg')+"\n\nRef: "+ref;
+      var name=el.getAttribute('data-project'), ref=el.getAttribute('data-ref'), bare=el.hasAttribute('data-bare');
+      var msg=T('cta.msg',"Hi, I'd like the price list and floor plans for *{name}*. Thank you!",{name:name})+(ref?"\n\nRef: "+ref:"");
       try{
-        if(typeof trackJourney==='function')trackJourney('Clicked WhatsApp CTA',name);
-        if(typeof sendToSheet==='function'){
+        if(!bare&&typeof trackJourney==='function')trackJourney('Clicked WhatsApp CTA',name);
+        if(!bare&&typeof sendToSheet==='function'){
           var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent), utm="Direct";
           try{utm=localStorage.getItem("utm_source")||"Direct";}catch(e){}
           sendToSheet({name:"",phone:"",email:"",purpose:"",status:"Direct WhatsApp",project1:name,project2:"",source:"WhatsApp Click - "+ref,budget:"Direct",location:"Direct",device:mob?"Mobile":"Desktop",pageurl:window.location.href,utm:utm,journey:(typeof getJourneySummary==='function'?getJourneySummary():"")});
         }
-        if(typeof gtag==='function')gtag('event','project_cta_click',{source:ref,project_1:name});
+        if(typeof gtag==='function')gtag('event','project_cta_click',{source:ref||'project_page',project_1:name});
       }catch(e){}
       window.open("https://wa.me/60175240726?text="+encodeURIComponent(msg),"_blank");
     });

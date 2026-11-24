@@ -21,18 +21,19 @@
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
     <link rel="apple-touch-icon" sizes="192x192" href="../favicon-192.png">
-    <link rel="stylesheet" href="../style.css?v=7">
+    <link rel="stylesheet" href="../style.css?v=6">
+<script src="../assets/i18n.js?v=1"></script>
 </head>
-<body>
+<body data-i18n-reload>
 
     <!-- NAV -->
     <nav>
         <a class="nav-brand" href="../index.html"><img src="../logo-nav.png" alt="MYPropertyComparison logo" style="height:28px;width:28px;vertical-align:middle;margin-right:8px;border-radius:7px;"><span class="brand-text">MYPropertyComparison</span></a>
         <div class="nav-links">
-            <a href="../index.html">Projects</a>
-            <a href="find.html" class="active">Smart Finder</a>
-            <a href="calculator.html">Calculator</a>
-            <a href="https://wa.me/60175240726?text=Hi%20MY%20Property%20Comparison%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20speak%20to%20a%20property%20advisor.%20Can%20you%20help%20me%20with%20my%20property%20search%3F" target="_blank" onclick="if(typeof gtag==='function')gtag('event','nav_advisor_click',{});">Advisor</a>
+            <a href="../index.html" data-i18n="nav.projects">Projects</a>
+            <a href="find.html" class="active" data-i18n="nav.finder">Smart Finder</a>
+            <a href="calculator.html" data-i18n="nav.calculator">Calculator</a>
+            <a href="https://wa.me/60175240726?text=Hi%20MY%20Property%20Comparison%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20speak%20to%20a%20property%20advisor.%20Can%20you%20help%20me%20with%20my%20property%20search%3F" target="_blank" onclick="if(typeof gtag==='function')gtag('event','nav_advisor_click',{});" data-i18n="nav.advisor">Advisor</a>
         </div>
     </nav>
 

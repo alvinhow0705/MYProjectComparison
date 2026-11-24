@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alvin | MYPropertyComparison</title>
-    <meta name="description" content="KL & Selangor 新盘比较。免费电子书、项目比较工具，或直接 WhatsApp 我。">
+    <meta name="description" content="Compare new launches in KL & Selangor. Free eBook, project comparison tool, or WhatsApp me directly.">
     <link rel="canonical" href="https://mypropertycomparison.com/go/">
     <meta property="og:title" content="Alvin | MYPropertyComparison">
-    <meta property="og:description" content="KL & Selangor 新盘比较。免费电子书、项目比较工具，或直接 WhatsApp 我。">
+    <meta property="og:description" content="Compare new launches in KL & Selangor. Free eBook, project comparison tool, or WhatsApp me directly.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mypropertycomparison.com/go/">
     <!-- Google tag (gtag.js) -->
@@ -19,6 +19,7 @@
       gtag('config', 'G-EDVF9QYQPZ');
       gtag('config', 'AW-18344712116');
     </script>
+    <script src="../assets/i18n.js?v=1"></script>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
     <link rel="apple-touch-icon" sizes="192x192" href="../favicon-192.png">
@@ -32,13 +33,10 @@
         .avatar img { width:100%; height:100%; object-fit:cover; display:block; }
         h1 { font-size:24px; font-weight:700; letter-spacing:.01em; }
         .line { text-wrap:balance; margin:10px auto 0; max-width:340px; font-size:15.5px; line-height:1.6; color:#d3d9e8; }
-        .en { display:block; font-size:12.5px; line-height:1.4; color:var(--mut); margin-top:5px; font-weight:400; }
         .links { margin-top:28px; display:flex; flex-direction:column; gap:14px; }
         .btn { text-wrap:balance; display:block; text-decoration:none; color:var(--txt); background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; font-size:17px; font-weight:600; line-height:1.4; transition:transform .15s, border-color .15s; }
         .btn:hover, .btn:focus-visible { transform:translateY(-1px); border-color:rgba(255,255,255,.35); outline:none; }
-        .btn small { display:block; font-size:12.5px; font-weight:400; color:var(--mut); margin-top:4px; }
         .btn.primary { background:linear-gradient(90deg,#2ee06f,#17b354); color:#04240f; border-color:transparent; }
-        .btn.primary small { color:#0b4a22; }
         .btn.wa { border-color:rgba(37,211,102,.55); }
         .foot { margin-top:34px; font-size:12px; color:#6f7a93; }
         .foot a { color:#8b95ab; }
@@ -51,20 +49,17 @@
         <img src="../assets/images/alvin.jpg" alt="Alvin" width="112" height="112" id="avatarImg">
     </div>
     <h1>Alvin</h1>
-    <p class="line">帮你比较 KL &amp; Selangor 新盘的价格和资料。<span class="en">I help you compare new launch projects in KL &amp; Selangor.</span></p>
+    <p class="line" data-i18n="go.line">I help you compare new launch projects in KL &amp; Selangor.</p>
 
     <div class="links">
         <a class="btn primary" id="goEbook" href="../pages/ebook.html" data-go="ebook">
-            <span id="goEbookText">免费电子书（KL &amp; Selangor 新盘比较）</span>
-            <small>Free eBook &middot; new launch comparison</small>
+            <span id="goEbookText" >Free eBook (KL &amp; Selangor new launches)</span>
         </a>
         <a class="btn" id="goTools" href="../index.html" data-go="compare_tool">
-            项目比较工具
-            <small>Project comparison tool</small>
+            <span data-i18n="go.tool">Project comparison tool</span>
         </a>
-        <a class="btn wa" id="goWa" href="https://wa.me/60175240726?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%96%B0%E7%9B%98%E8%B5%84%E6%96%99%E3%80%82" data-go="whatsapp" target="_blank" rel="noopener">
-            WhatsApp 我
-            <small>Message me on WhatsApp</small>
+        <a class="btn wa" id="goWa" href="https://wa.me/60175240726?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20new%20launch%20projects." data-go="whatsapp" target="_blank" rel="noopener">
+            <span data-i18n="go.wa">WhatsApp me</span>
         </a>
     </div>
 
@@ -91,16 +86,29 @@ document.querySelectorAll('[data-go]').forEach(function (a) {
    KL & Selangor only, so the non-KL/Selangor locations below are left out) */
 (function () {
     var NOT_KL_SELANGOR = ['Johor Bahru', 'Kota Kinabalu'];
+    var count = 0;
+    function T(k, en, v) { return window.i18n ? window.i18n.t(k, en, v) : en.replace('{n}', v && v.n); }
+    function render() {
+        document.getElementById('goEbookText').textContent = count
+            ? T('go.ebook', 'Free eBook ({n} KL & Selangor new launches)', { n: count })
+            : T('go.ebook_plain', 'Free eBook (KL & Selangor new launches)');
+    }
+    document.addEventListener('i18nchange', render);
+    document.addEventListener('DOMContentLoaded', render);
     fetch('../data/projects.json', { cache: 'no-cache' })
         .then(function (r) { return r.json(); })
         .then(function (list) {
-            var n = list.filter(function (p) {
+            count = list.filter(function (p) {
                 var loc = p.location || '';
                 return !NOT_KL_SELANGOR.some(function (x) { return loc.indexOf(x) !== -1; });
             }).length;
-            if (n) document.getElementById('goEbookText').textContent = '免费电子书（' + n + ' 个 KL & Selangor 新盘比较）';
+            render();
         })
         .catch(function () { /* keep the label without a number */ });
+    /* WhatsApp message follows the chosen language */
+    document.getElementById('goWa').addEventListener('click', function () {
+        this.href = 'https://wa.me/60175240726?text=' + encodeURIComponent(T('go.wa_msg', "Hi, I'd like to know more about new launch projects."));
+    });
 })();
 </script>
 <script src="../assets/wa-track.js?v=1" data-ref="MPC-209"></script>

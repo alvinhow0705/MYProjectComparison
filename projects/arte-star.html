@@ -413,6 +413,7 @@ footer.photo{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.sbg{transition:none;transform:none}.step{opacity:1;transform:none}}
 </style>
 
+<script src="../assets/i18n.js?v=1"></script>
 </head>
 <body>
 <div id="prog"></div>
@@ -426,13 +427,13 @@ footer.photo{overflow:hidden}
   <div class="wrap">
     <a href="#top" class="logo"><img src="../assets/images/arte-star-logo.png" alt="Arte Star" width="112" height="50"></a>
     <ul>
-      <li><a href="#about">About</a></li>
+      <li><a href="#about" data-i18n="p.about">About</a></li>
       <li><a href="#editions">Towers</a></li>
-      <li><a href="#location">Location</a></li>
+      <li><a href="#location" data-i18n="p.location">Location</a></li>
       <li><a href="#facilities">Facilities</a></li>
       <li><a href="#tours">360 Tour</a></li>
     </ul>
-    <a href="#register" class="btn" data-cta="nav">Register interest</a>
+    <a href="#register" class="btn" data-cta="nav" data-i18n="p.register_int">Register interest</a>
   </div>
 </nav>
 
@@ -483,9 +484,9 @@ footer.photo{overflow:hidden}
       <div><strong>RM422,000</strong>Milano, from</div>
     </div>
     <div class="ctas">
-      <a class="btn mpc-cta" href="#" data-mpc-cta data-project="Arte Star" data-ref="" data-bare data-msg="你好，我想了解 *Arte Star*，请发给我价格表和平面图。谢谢！">WhatsApp 领取 Arte Star 价格表和平面图<small class="en">Get the price list &amp; floor plans on WhatsApp</small></a>
-      <a href="#register" class="btn" data-cta="hero_register">Book a show unit visit</a>
-      <a href="#" class="btn ghost js-wa" data-cta="hero_whatsapp">WhatsApp an agent</a>
+      <a class="btn mpc-cta" href="#" data-mpc-cta data-project="Arte Star" data-ref="" data-bare data-i18n="cta.project" data-i18n-vars="{&quot;name&quot;:&quot;Arte Star&quot;}">Get Arte Star price list &amp; floor plans on WhatsApp</a>
+      <a href="#register" class="btn ghost" data-cta="hero_register" data-i18n="p.book_visit">Book a show unit visit</a>
+      <a href="#" class="btn ghost js-wa" data-cta="hero_whatsapp" data-i18n="p.wa_agent">WhatsApp an agent</a>
     </div>
   </div>
   <a href="#about" class="cue">SCROLL<i></i></a>
@@ -534,7 +535,7 @@ footer.photo{overflow:hidden}
       <svg class="tw" viewBox="0 0 200 500" aria-hidden="true"><rect x="30" y="110" width="140" height="390" fill="#dfe5f1" fill-opacity=".35" stroke="#f8f4e5" stroke-opacity=".7"/><rect x="48" y="85" width="104" height="26" fill="#dfe5f1" fill-opacity=".35"/><rect x="72" y="62" width="56" height="24" fill="#dfe5f1" fill-opacity=".35"/><line x1="100" y1="62" x2="100" y2="10" stroke="#f8f4e5" stroke-width="1.5"/><g class="tw-win" data-x="40" data-y="125" data-w="120" data-h="370"></g></svg>
       <div class="info">
         <h3>The Regal</h3>
-        <div class="from">From RM396,000</div>
+        <div class="from"><span data-i18n="p.from">From</span> RM396,000</div>
         <div class="tapnote">Tap to see details</div>
         <div class="more">
           <div><b>846</b>Units</div>
@@ -686,7 +687,7 @@ footer.photo{overflow:hidden}
       <p>Get current prices, available layouts and a show unit slot for The Regal and Milano.</p>
       <div class="story-cta-btns">
         <a href="#register" class="btn" data-cta="story_register">Get the price list</a>
-        <a href="#" class="btn ghost js-wa" data-cta="story_whatsapp">WhatsApp an agent</a>
+        <a href="#" class="btn ghost js-wa" data-cta="story_whatsapp" data-i18n="p.wa_agent">WhatsApp an agent</a>
       </div>
     </div>
   </div>
@@ -753,7 +754,7 @@ footer.photo{overflow:hidden}
         <div><label for="fTower">Interested in</label>
           <select id="fTower" name="tower"><option>Both towers</option><option>The Regal</option><option>Milano</option></select></div>
         <div><label for="fPurpose">Purpose</label>
-          <select id="fPurpose" name="purpose"><option>Own stay</option><option>Investment</option><option>Both</option></select></div>
+          <select id="fPurpose" name="purpose"><option>Own stay</option><option data-i18n="p.invest">Investment</option><option>Both</option></select></div>
       </div>
       <p class="err" id="fErr" role="alert"></p>
       <div class="submit"><button type="submit" class="btn">Send via WhatsApp</button></div>
@@ -783,7 +784,7 @@ footer.photo{overflow:hidden}
 </a>
 <div class="mbar t-cream">
   <a href="#register" class="btn ghost" data-cta="mbar_register">Register</a>
-  <a href="#" class="btn wa js-wa" data-cta="mbar_whatsapp">WhatsApp</a>
+  <a href="#" class="btn wa js-wa" data-cta="mbar_whatsapp" data-i18n="p.wa_short">WhatsApp</a>
 </div>
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Image preview"><img alt=""></div>
@@ -1044,24 +1045,25 @@ footer.photo{overflow:hidden}
 </script>
 <style>
 .mpc-cta{display:inline-block;max-width:100%;white-space:normal;text-align:center;line-height:1.4;letter-spacing:.04em;text-transform:none}
-.en{display:block;font-size:.62em;font-weight:400;opacity:.78;letter-spacing:.03em;text-transform:none;margin-top:3px;line-height:1.3}
+.btn-outline{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.7)!important}
 </style>
 <script>
-/* Project WhatsApp CTA: prefilled message with the project name; GA event carries project name only (no personal data) */
+/* Project WhatsApp CTA: prefilled message with the project name; GA event carries the project name only (no personal data) */
 (function(){
+  function T(k,en,v){return window.i18n?window.i18n.t(k,en,v):en.replace(/\{(\w+)\}/g,function(m,x){return v&&v[x]!=null?v[x]:m;});}
   document.querySelectorAll('[data-mpc-cta]').forEach(function(el){
     el.addEventListener('click',function(ev){
       ev.preventDefault();
-      var name=el.getAttribute('data-project'), ref=el.getAttribute('data-ref');
-      var msg=el.getAttribute('data-msg')+(ref?"\n\nRef: "+ref:"");
+      var name=el.getAttribute('data-project'), ref=el.getAttribute('data-ref'), bare=el.hasAttribute('data-bare');
+      var msg=T('cta.msg',"Hi, I'd like the price list and floor plans for *{name}*. Thank you!",{name:name})+(ref?"\n\nRef: "+ref:"");
       try{
-        if(!el.hasAttribute('data-bare')&&typeof trackJourney==='function')trackJourney('Clicked WhatsApp CTA',name);
-        if(!el.hasAttribute('data-bare')&&typeof sendToSheet==='function'){
+        if(!bare&&typeof trackJourney==='function')trackJourney('Clicked WhatsApp CTA',name);
+        if(!bare&&typeof sendToSheet==='function'){
           var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent), utm="Direct";
           try{utm=localStorage.getItem("utm_source")||"Direct";}catch(e){}
           sendToSheet({name:"",phone:"",email:"",purpose:"",status:"Direct WhatsApp",project1:name,project2:"",source:"WhatsApp Click - "+ref,budget:"Direct",location:"Direct",device:mob?"Mobile":"Desktop",pageurl:window.location.href,utm:utm,journey:(typeof getJourneySummary==='function'?getJourneySummary():"")});
         }
-        if(typeof gtag==='function')gtag('event','project_cta_click',{source:ref,project_1:name});
+        if(typeof gtag==='function')gtag('event','project_cta_click',{source:ref||'project_page',project_1:name});
       }catch(e){}
       window.open("https://wa.me/60175240726?text="+encodeURIComponent(msg),"_blank");
     });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,8 +195,6 @@
 
         /* ---------- claim counter ---------- */
         .claim-pill[hidden] { display:none; }
-        small.en { display:block; font-size:.62em; font-weight:400; opacity:.72; letter-spacing:.02em; text-transform:none; margin-top:4px; line-height:1.35; }
-        .en-i { font-size:.8em; opacity:.65; letter-spacing:.06em; }
         .claim-pill { display:inline-flex; align-items:center; gap:8px; margin-top:18px; background:rgba(46,224,111,.1); border:1px solid rgba(46,224,111,.28); color:#9fe8bb; font-size:13px; font-weight:500; padding:8px 18px; border-radius:30px; }
         .claim-pill b { color:#3dfc6e; font-family:'Space Grotesk',sans-serif; font-variant-numeric:tabular-nums; }
         .claim-pill .dot { width:7px; height:7px; border-radius:50%; background:#3dfc6e; animation:liveDot 1.6s ease-in-out infinite; }
@@ -225,8 +223,9 @@
         footer .fcopy { color:#6e6e73; margin-top:12px; border-top:1px solid rgba(255,255,255,.1); padding-top:12px; max-width:600px; margin-left:auto; margin-right:auto; }
         footer a { color:#8b95ab; text-decoration:underline; }
     </style>
+<script src="../assets/i18n.js?v=1"></script>
 </head>
-<body>
+<body data-i18n-reload>
 <script>(function(){try{var p=new URLSearchParams(window.location.search);var u=p.get('utm_source');if(u)localStorage.setItem('utm_source',u);}catch(e){}})();</script>
 
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -241,10 +240,10 @@
             <div class="rib" id="stickerRib">WITH YOUR CONTACT</div>
         </div>
         <div class="promo-mid">
-            <div class="l1" id="promoL1"><b>RM500</b> 房产电子书，留下联系方式即可免费领取<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">The RM500 property eBook — yours FREE with your contact</span></div>
-            <div class="l2" id="promoL2">不想留联系方式？也可以在下方以 RM500 购买。<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">Prefer not to share? You can buy it below for RM500.</span></div>
+            <div class="l1" id="promoL1">The <b>RM500</b> property eBook — yours FREE with your contact</div>
+            <div class="l2" id="promoL2">Prefer not to share? You can buy it below for RM500.</div>
         </div>
-        <a class="promo-btn" id="promoBtn" href="#freeCard">免费领取 &nbsp;&rsaquo;</a>
+        <a class="promo-btn" id="promoBtn" href="#freeCard" data-i18n="e.promo_btn">Claim Free &nbsp;&rsaquo;</a>
         <button class="promo-x" id="promoX" aria-label="Dismiss">&times;</button>
     </div>
 
@@ -335,9 +334,9 @@
     <div class="hero">
         <img class="float-book" id="floatBook" src="../assets/images/free-ebook-badge.png" alt="Free eBook">
         <div class="glow-ring"></div>
-        <h1>KL &amp; Selangor 新盘比较<br><span class="grad">一本指南，一次看清</span><small class="en">Every New Launch in Malaysia. One Powerful Guide.</small></h1>
-        <p class="sub">价格、PSF、发展商与地契，浓缩成一本电子书。<small class="en">Prices, PSF, developers and tenure — months of research, distilled into one eBook.</small></p>
-        <p class="worth">价值：<s>RM500.00</s> &nbsp;&middot;&nbsp; 今天由你决定支付多少<small class="en">Real value: RM500.00 &middot; Today you decide what you pay.</small></p>
+        <h1><span data-i18n="e.h1a">Every New Launch in KL &amp; Selangor,</span><br><span class="grad" data-i18n="e.h1b">in One Guide.</span></h1>
+        <p class="sub" data-i18n="e.sub">Prices, PSF, developers and tenure — months of research, distilled into one eBook.</p>
+        <p class="worth"><span data-i18n="e.worth1">Real value:</span> <s>RM500.00</s> &nbsp;&middot;&nbsp; <span data-i18n="e.worth2">Today you decide what you pay.</span></p>
         <div class="claim-pill" id="dataStat" hidden><span class="dot"></span><span id="dataStatText"></span></div>
     </div>
 
@@ -345,27 +344,27 @@
     <div class="pricing">
         <!-- PAY (anchor) -->
         <div class="pcard">
-            <h3>购买电子书<small class="en">Buy the eBook</small></h3>
-            <div class="plabel" style="text-transform:none;letter-spacing:.02em">一次性购买<small class="en">One-time purchase</small></div>
+            <h3 data-i18n="e.buy_h">Buy the eBook</h3>
+            <div class="plabel" data-i18n="e.once">One-time purchase</div>
             <div class="price-row"><span class="price-was" id="wasPrice" style="display:none;">RM500</span><span class="price-now" id="nowPrice">RM500</span></div>
-            <p class="price-note" id="payNote">完整研究资料，无需留下联系方式。<small class="en">Full research access. No contact details needed.</small></p>
+            <p class="price-note" id="payNote">Full research access. No contact details needed.</p>
             <div class="spacer"></div>
-            <button class="pay-btn" id="payBtn">立即购买 &rarr;<small class="en">Buy Now</small></button>
+            <button class="pay-btn" id="payBtn" data-i18n="e.buy_btn">Buy Now &rarr;</button>
         </div>
 
         <!-- FREE (goal) -->
         <div class="free-wrap" id="freeCard">
             <div class="pcard free">
-                <div class="badge-top">&#127873; 今天 100% 免费 &middot; 100% Free Today</div>
-                <h3>免费领取<small class="en">Claim It Free</small></h3>
-                <div class="plabel" style="text-transform:none;letter-spacing:.02em">告诉我们发到哪里就行<small class="en">Just tell us where to send it</small></div>
+                <div class="badge-top" data-i18n="e.free_badge">&#127873; 100% Free Today</div>
+                <h3 data-i18n="e.free_h">Claim It Free</h3>
+                <div class="plabel" data-i18n="e.free_sub">Just tell us where to send it</div>
                 <div class="price-row"><span class="price-was">RM500</span><span class="price-now">RM0</span></div>
-                <p class="price-note">即时发送到你的 WhatsApp，无需付款，无需信用卡。<small class="en">Sent instantly to your WhatsApp. No payment. No card.</small></p>
-                <div class="fgroup"><label>你的姓名 <span class="en-i">YOUR NAME</span></label><input id="ebName" placeholder="姓名 Your Name"></div>
-                <div class="fgroup"><label>电话号码 <span class="en-i">PHONE NUMBER</span></label><input id="ebPhone" placeholder="例如 012-345 6789" type="tel"></div>
+                <p class="price-note" data-i18n="e.free_note">Sent instantly to your WhatsApp. No payment. No card.</p>
+                <div class="fgroup"><label data-i18n="e.lbl_name">YOUR NAME</label><input id="ebName" placeholder="Your Name" data-i18n-ph="e.ph_name"></div>
+                <div class="fgroup"><label data-i18n="e.lbl_phone">PHONE NUMBER</label><input id="ebPhone" placeholder="e.g. 012-345 6789" data-i18n-ph="e.ph_phone" type="tel"></div>
                 <div class="spacer"></div>
-                <button class="free-btn" id="ebSendBtn">发送免费电子书给我 &rarr;<small class="en">SEND ME THE FREE EBOOK</small></button>
-                <p class="trust">我们只会用来发送电子书和偶尔的项目更新，不会骚扰你。<small class="en">We'll only use this to send your eBook and occasional project updates. No spam.</small></p>
+                <button class="free-btn" id="ebSendBtn" data-i18n="e.free_btn">SEND ME THE FREE EBOOK &rarr;</button>
+                <p class="trust" data-i18n="e.trust">We'll only use this to send your eBook and occasional project updates. No spam.</p>
             </div>
         </div>
     </div>
@@ -379,7 +378,7 @@
 
     <p class="proof">Join the buyers &amp; investors who've claimed their copy this week.</p>
 
-    <div class="back"><a href="../index.html">&larr; 返回项目列表 Back to Projects</a></div>
+    <div class="back"><a href="../index.html" data-i18n="e.back">&larr; Back to Projects</a></div>
 </div>
 
 <!-- SOCIAL PROOF TOAST -->
@@ -396,6 +395,7 @@ function trackJourney(a,d){try{var j=JSON.parse(localStorage.getItem("userJourne
 function getJourneySummary(){try{var j=JSON.parse(localStorage.getItem("userJourney")||"[]");if(j.length===0)return "No journey data";return j.map(function(x){return "["+x.time+"] "+x.action+(x.details?": "+x.details:"");}).join(" | ");}catch(e){return "";}}
 function clearJourney(){localStorage.removeItem("userJourney");}
 trackJourney("Visited eBook Page");
+function _t(k,en,v){return window.i18n?window.i18n.t(k,en,v):en.replace(/\{(\w+)\}/g,function(m,x){return v&&v[x]!=null?v[x]:m;});}
 
 var SHEET_URL = "https://script.google.com/macros/s/AKfycbzSWt_8ceLD172O_RX2PXrqrZpbB0GGtLN7KGX0HbybfOlL6PCztv_zYCQPU0cCH682bg/exec";
 function sendToSheet(data){var f=document.getElementById("sheetFrame");if(!f){f=document.createElement("iframe");f.id="sheetFrame";f.name="sheetFrame";f.style.display="none";document.body.appendChild(f);}var form=document.createElement("form");form.method="POST";form.action=SHEET_URL;form.target="sheetFrame";for(var k in data){var i=document.createElement("input");i.type="hidden";i.name=k;i.value=data[k];form.appendChild(i);}document.body.appendChild(form);form.submit();form.remove();}
@@ -423,20 +423,20 @@ var OFFER = (function(){
 
     function applyStage2UI(){
         stOff.textContent='96% OFF'; stRib.textContent='LAST CHANCE';
-        l2.innerHTML='优惠倒计时 <span class="timer-pill" id="timerPill">10m 00s</span><span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">Offer ends in</span>';
-        l1.innerHTML='最后机会：<b>RM500 &rarr; RM19.90</b>（下方仍可免费领取）<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">Wait — last chance: RM500 → RM19.90 (or still FREE below)</span>';
+        l2.innerHTML=_t('banner.s2_l2','Offer ends in <span class="timer-pill" id="timerPill">10m 00s</span>');
+        l1.innerHTML=_t('banner.s2_l1','Wait — last chance: <b>RM500 &rarr; RM19.90</b> (or still FREE below)');
         was.style.display=''; now.textContent='RM19.90';
-        note.textContent='One-time downsell — locked in only while the timer runs.';
+        note.textContent=_t('e.note_s2','One-time downsell — locked in only while the timer runs.');
         tick();
     }
 
     function expireUI(){
         bar.classList.add('expired'); bar.classList.remove('urgent');
         document.getElementById('sticker').style.display='none';
-        l1.innerHTML='RM19.90 优惠已结束<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">The RM19.90 offer has ended</span>';
-        l2.innerHTML='好消息：你仍可在下方<b style="color:#3dfc6e">免费</b>领取电子书。<span style="display:block;font-size:.7em;font-weight:400;opacity:.75;margin-top:2px">Good news — you can still claim the eBook FREE below.</span>';
+        l1.innerHTML=_t('banner.end_l1','The RM19.90 offer has ended');
+        l2.innerHTML=_t('banner.end_l2','Good news — you can still claim the eBook <b style="color:#3dfc6e">FREE</b> below.');
         was.style.display='none'; now.textContent='RM500';
-        note.textContent='Standard price. Tip: the free option is still available.';
+        note.textContent=_t('e.note_exp','Standard price. Tip: the free option is still available.');
     }
 
     function tick(){
@@ -465,6 +465,11 @@ var OFFER = (function(){
     }
 
     /* restore state on load */
+    if (stage!=='2'){
+        l1.innerHTML=_t('banner.s1_l1','The <b>RM500</b> property eBook — yours FREE with your contact');
+        l2.innerHTML=_t('banner.s1_l2','Prefer not to share? You can buy it below for RM500.');
+        note.textContent=_t('e.note_s1','Full research access. No contact details needed.');
+    }
     if (stage==='2'){
         if (end > Date.now()) applyStage2UI(); else expireUI();
     }
@@ -642,7 +647,7 @@ var PAY = (function(){
     function open(price){
         currentAmt=price;
         trackJourney('Buy Now via WhatsApp', price);
-        var msg = '我想购买电子书\n\nRef: MPC-302';
+        var msg = _t('e.buy_msg', "I'd like to buy the eBook.") + '\n\nRef: MPC-302';
         if (typeof waLog === 'function') waLog({ source: 'MPC-302 buy now', project: 'eBook ' + price });
         window.open('https://wa.me/60175240726?text=' + encodeURIComponent(msg), '_blank');
     }
@@ -682,7 +687,7 @@ document.getElementById('payBtn').addEventListener('click', function(){
 document.getElementById("ebSendBtn").addEventListener("click", function () {
     var name = document.getElementById("ebName").value.trim();
     var phone = document.getElementById("ebPhone").value.trim();
-    if (!name || !phone) { alert("请填写姓名和电话号码，我们才能发送电子书。Please fill in your name and phone number so we can send your eBook."); return; }
+    if (!name || !phone) { alert(_t('e.alert','Please fill in your name and phone number so we can send your eBook.')); return; }
     if (/^0/.test(phone)) phone = "6" + phone;
     var finderData = JSON.parse(localStorage.getItem("finderData") || "{}");
     var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
@@ -716,10 +721,11 @@ document.getElementById("ebSendBtn").addEventListener("click", function () {
 <script src="../assets/wa-track.js?v=1" data-ref="MPC-301"></script>
 <script>
 /* Data-stat pill: project count + update month come from data/projects.json (nothing hard-coded).
-   Count = KL & Selangor projects only (non-KL/Selangor locations listed below are excluded).
+   Count = KL & Selangor projects only (the non-KL/Selangor locations listed below are excluded).
    Month = the file's Last-Modified date; if the server sends none, the month part is left out. */
 (function(){
     var NOT_KL_SELANGOR = ['Johor Bahru','Kota Kinabalu'];
+    var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     fetch('../data/projects.json', { cache: 'no-cache' })
         .then(function(r){
             var lm = r.headers.get('Last-Modified');
@@ -731,9 +737,13 @@ document.getElementById("ebSendBtn").addEventListener("click", function () {
                 return !NOT_KL_SELANGOR.some(function(x){ return loc.indexOf(x) !== -1; });
             }).length;
             if (!n) return;
-            var txt = '<b>' + n + '</b> 个 KL & Selangor 新盘';
-            var d = o.lm ? new Date(o.lm) : null;
-            if (d && !isNaN(d)) txt += ' · ' + d.getFullYear() + ' 年 ' + (d.getMonth() + 1) + ' 月更新';
+            var d = o.lm ? new Date(o.lm) : null, vars = { n: '<b>' + n + '</b>' }, txt;
+            if (d && !isNaN(d)) {
+                vars.mon = MON[d.getMonth()]; vars.y = d.getFullYear(); vars.mnum = d.getMonth() + 1;
+                txt = _t('e.pill', '{n} KL & Selangor new launches · Updated {mon} {y}', vars);
+            } else {
+                txt = _t('e.pill_nodate', '{n} KL & Selangor new launches', vars);
+            }
             document.getElementById('dataStatText').innerHTML = txt;
             document.getElementById('dataStat').hidden = false;
         })

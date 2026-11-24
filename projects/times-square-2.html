@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,12 +102,13 @@ nav{padding:12px 16px}
 .grid{grid-template-columns:1fr 1fr;gap:10px}
 }
 </style>
+<script src="../assets/i18n.js?v=1"></script>
 </head>
 <body>
 <script>(function(){try{var p=new URLSearchParams(window.location.search);var u=p.get('utm_source');if(u)localStorage.setItem('utm_source',u);}catch(e){}})();</script>
 <nav>
   <a class="brand" href="../index.html"><img src="../logo-nav.png" alt="MYPropertyComparison logo">MYPropertyComparison</a>
-  <a class="nav-cta" href="#enquiry">索取电子册</a>
+  <a class="nav-cta" href="#enquiry" data-i18n="p.brochure_nav">Get e-Brochure</a>
 </nav>
 
 <header class="hero" style="background-image:url('../assets/images/timessquare2.webp')">
@@ -115,25 +116,25 @@ nav{padding:12px 16px}
     <div class="eyebrow">Kuala Lumpur</div>
     <h1>Times Square 2</h1>
     <div class="sub">Freehold living in the heart of Kuala Lumpur, walking distance to Pavilion.</div>
-    <div class="price">起价 <b>RM688,000</b>&nbsp;&nbsp;·&nbsp;&nbsp;From RM1,410 psf</div>
-    <div style="margin-bottom:12px"><a class="btn-gold mpc-cta" href="#" data-mpc-cta data-project="Times Square 2" data-ref="MPC-042" data-msg="你好，我想了解 *Times Square 2*，请发给我价格表和平面图。谢谢！">WhatsApp 领取 Times Square 2 价格表和平面图<small class="en">Get the price list &amp; floor plans on WhatsApp</small></a></div>
-    <div><a class="btn-gold" href="#enquiry">索取电子册<small class="en">Get the e-Brochure</small></a></div>
+    <div class="price"><span data-i18n="p.from">FROM</span> <b>RM688,000</b>&nbsp;&nbsp;·&nbsp;&nbsp;From RM1,410 psf</div>
+    <div style="margin-bottom:12px"><a class="btn-gold mpc-cta" href="#" data-mpc-cta data-project="Times Square 2" data-ref="MPC-042" data-i18n="cta.project" data-i18n-vars="{&quot;name&quot;:&quot;Times Square 2&quot;}">Get Times Square 2 price list &amp; floor plans on WhatsApp</a></div>
+    <div><a class="btn-gold btn-outline" href="#enquiry" data-i18n="p.brochure">Get the e-Brochure</a></div>
   </div>
 </header>
 
 <section class="intro wrap">
-  <div class="tag">项目位置<small class="en">The Address</small></div>
+  <div class="tag" data-i18n="p.address">The Address</div>
   <h2>Freehold living, steps from Pavilion Kuala Lumpur.</h2>
   <p>A freehold commercial development by Berjaya offering 488-1,038 sqft layouts across 629 units — set in the heart of Kuala Lumpur, within walking distance to Pavilion.</p>
 </section>
 
 <section class="facts"><div class="wrap facts-grid">
-  <div class="fact"><div class="k">起价<small class="en">Price From</small></div><div class="v">RM688,000</div></div>
-  <div class="fact"><div class="k">每平方尺价格<small class="en">Price / sqft</small></div><div class="v">From RM1,410 psf</div></div>
-  <div class="fact"><div class="k">面积<small class="en">Unit Size</small></div><div class="v">488-1,038 sqft</div></div>
-  <div class="fact"><div class="k">总单位数<small class="en">Total Units</small></div><div class="v">629</div></div>
-  <div class="fact"><div class="k">地契<small class="en">Tenure</small></div><div class="v">Freehold</div></div>
-  <div class="fact"><div class="k">完工<small class="en">Completion</small></div><div class="v">TBA</div></div>
+  <div class="fact"><div class="k" data-i18n="p.pricefrom">Price From</div><div class="v">RM688,000</div></div>
+  <div class="fact"><div class="k" data-i18n="p.psf2">Price / sqft</div><div class="v">From RM1,410 psf</div></div>
+  <div class="fact"><div class="k" data-i18n="p.unitsize">Unit Size</div><div class="v">488-1,038 sqft</div></div>
+  <div class="fact"><div class="k" data-i18n="p.units">Total Units</div><div class="v">629</div></div>
+  <div class="fact"><div class="k" data-i18n="p.tenure">Tenure</div><div class="v">Freehold</div></div>
+  <div class="fact"><div class="k" data-i18n="p.completion">Completion</div><div class="v">TBA</div></div>
 </div></section>
 
 <section class="feature" style="background-image:url('../assets/images/timessquare2-1.webp')">
@@ -141,12 +142,12 @@ nav{padding:12px 16px}
 </section>
 
 <section class="highlights wrap">
-  <div class="head"><div class="tag">Why Times Square 2</div><h2>亮点<small class="en">Highlights</small></h2></div>
+  <div class="head"><div class="tag">Why Times Square 2</div><h2 data-i18n="p.highlights">Highlights</h2></div>
   <div class="hl-grid"><div class="hl"><span class="mark">&#10022;</span><p>Freehold tenure — rare security for a project in the heart of KL city center</p></div><div class="hl"><span class="mark">&#10022;</span><p>Walking distance to Pavilion Kuala Lumpur, one of the city's premier shopping and lifestyle destinations</p></div><div class="hl"><span class="mark">&#10022;</span><p>Developed by Berjaya, an established Malaysian name with a long track record</p></div><div class="hl"><span class="mark">&#10022;</span><p>629 units with a wide range of layouts from 488 to 1,038 sqft to suit different budgets</p></div><div class="hl"><span class="mark">&#10022;</span><p>Prime Kuala Lumpur city-center address with strong connectivity</p></div><div class="hl"><span class="mark">&#10022;</span><p>Brand-new launch — early access to unit selection</p></div></div>
 </section>
 
 <section class="gallery wrap">
-  <div class="tag">图库<small class="en">Gallery</small></div><h2>A closer look</h2>
+  <div class="tag" data-i18n="p.gallery">Gallery</div><h2>A closer look</h2>
   <div class="grid"><a href="../assets/images/timessquare2-2.webp" target="_blank"><img src="../assets/images/timessquare2-2.webp" alt="Times Square 2 photo 1" loading="lazy"></a><a href="../assets/images/timessquare2-3.webp" target="_blank"><img src="../assets/images/timessquare2-3.webp" alt="Times Square 2 photo 2" loading="lazy"></a><a href="../assets/images/timessquare2-4.webp" target="_blank"><img src="../assets/images/timessquare2-4.webp" alt="Times Square 2 photo 3" loading="lazy"></a><a href="../assets/images/timessquare2-5.webp" target="_blank"><img src="../assets/images/timessquare2-5.webp" alt="Times Square 2 photo 4" loading="lazy"></a></div>
 </section>
 
@@ -165,13 +166,13 @@ nav{padding:12px 16px}
 </section>
 
 <section class="enquiry" id="enquiry"><div class="wrap box">
-  <div class="tag">登记兴趣<small class="en">Register Your Interest</small></div>
-  <h2>索取电子册<small class="en">Get the e-Brochure</small></h2>
+  <div class="tag" data-i18n="p.register">Register Your Interest</div>
+  <h2 data-i18n="p.brochure">Get the e-Brochure</h2>
   <p>Floor plans, full price list and current promotions — sent to you directly via WhatsApp.</p>
-  <div class="field"><input id="waName" placeholder="姓名 Your Name"></div>
-  <div class="field"><input id="waPhone" placeholder="电话号码 Phone Number" type="tel"></div>
-  <div class="field"><select id="waPurpose"><option value="Investment">投资</option><option value="Own Stay">自住</option><option value="Both">自住 + 投资</option></select></div>
-  <button class="btn-gold" id="waSendBtn">WhatsApp 免费索取资料<small class="en">Get Free Info via WhatsApp</small></button>
+  <div class="field"><input id="waName" placeholder="Your Name" data-i18n-ph="p.ph_name"></div>
+  <div class="field"><input id="waPhone" placeholder="Phone Number" data-i18n-ph="p.ph_phone" type="tel"></div>
+  <div class="field"><select id="waPurpose"><option value="Investment" data-i18n="p.invest">Investment</option><option value="Own Stay" data-i18n="p.own">Own Stay</option><option value="Both" data-i18n="p.both">Own Stay + Investment</option></select></div>
+  <button class="btn-gold" id="waSendBtn" data-i18n="p.getinfo">Get Free Info via WhatsApp</button>
 </div></section>
 
 <footer>
@@ -189,7 +190,7 @@ var SHEET_URL="https://script.google.com/macros/s/AKfycbzSWt_8ceLD172O_RX2PXrqrZ
 function sendToSheet(data){var f=document.getElementById("sheetFrame");if(!f){f=document.createElement("iframe");f.id="sheetFrame";f.name="sheetFrame";f.style.display="none";document.body.appendChild(f);}var form=document.createElement("form");form.method="POST";form.action=SHEET_URL;form.target="sheetFrame";for(var k in data){var i=document.createElement("input");i.type="hidden";i.name=k;i.value=data[k];form.appendChild(i);}document.body.appendChild(form);form.submit();form.remove();}
 document.getElementById("waSendBtn").addEventListener("click",function(){
   var n=document.getElementById("waName").value.trim(),p=document.getElementById("waPhone").value.trim(),pu=document.getElementById("waPurpose").value;
-  if(!n||!p){alert("请填写姓名和电话号码。Please fill in your name and phone number.");return;}
+  if(!n||!p){alert(window.i18n?window.i18n.t('form.fill','Please fill in your name and phone number.'):'Please fill in your name and phone number.');return;}
   if(/^0/.test(p))p="6"+p; // Sheets strips a leading 0 as a number, so store Malaysian numbers as 60...
   var fd=JSON.parse(localStorage.getItem("finderData")||"{}");var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);var utm=localStorage.getItem("utm_source")||"Direct";
   sendToSheet({name:n,phone:p,email:"",purpose:pu,status:"",project1:"Times Square 2",project2:"",source:"Project Page",budget:fd.budget||"Direct",location:fd.location||"Direct",device:mob?"Mobile":"Desktop",pageurl:window.location.href,utm:utm,journey:getJourneySummary()});
@@ -241,24 +242,25 @@ document.querySelectorAll('a[href="#enquiry"]').forEach(function(el){el.addEvent
 </script>
 <style>
 .mpc-cta{display:inline-block;max-width:100%;white-space:normal;text-align:center;line-height:1.4;letter-spacing:.04em;text-transform:none}
-.en{display:block;font-size:.62em;font-weight:400;opacity:.78;letter-spacing:.03em;text-transform:none;margin-top:3px;line-height:1.3}
+.btn-outline{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.7)!important}
 </style>
 <script>
-/* Project WhatsApp CTA: prefilled message with the project name; GA event carries project name only (no personal data) */
+/* Project WhatsApp CTA: prefilled message with the project name; GA event carries the project name only (no personal data) */
 (function(){
+  function T(k,en,v){return window.i18n?window.i18n.t(k,en,v):en.replace(/\{(\w+)\}/g,function(m,x){return v&&v[x]!=null?v[x]:m;});}
   document.querySelectorAll('[data-mpc-cta]').forEach(function(el){
     el.addEventListener('click',function(ev){
       ev.preventDefault();
-      var name=el.getAttribute('data-project'), ref=el.getAttribute('data-ref');
-      var msg=el.getAttribute('data-msg')+"\n\nRef: "+ref;
+      var name=el.getAttribute('data-project'), ref=el.getAttribute('data-ref'), bare=el.hasAttribute('data-bare');
+      var msg=T('cta.msg',"Hi, I'd like the price list and floor plans for *{name}*. Thank you!",{name:name})+(ref?"\n\nRef: "+ref:"");
       try{
-        if(typeof trackJourney==='function')trackJourney('Clicked WhatsApp CTA',name);
-        if(typeof sendToSheet==='function'){
+        if(!bare&&typeof trackJourney==='function')trackJourney('Clicked WhatsApp CTA',name);
+        if(!bare&&typeof sendToSheet==='function'){
           var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent), utm="Direct";
           try{utm=localStorage.getItem("utm_source")||"Direct";}catch(e){}
           sendToSheet({name:"",phone:"",email:"",purpose:"",status:"Direct WhatsApp",project1:name,project2:"",source:"WhatsApp Click - "+ref,budget:"Direct",location:"Direct",device:mob?"Mobile":"Desktop",pageurl:window.location.href,utm:utm,journey:(typeof getJourneySummary==='function'?getJourneySummary():"")});
         }
-        if(typeof gtag==='function')gtag('event','project_cta_click',{source:ref,project_1:name});
+        if(typeof gtag==='function')gtag('event','project_cta_click',{source:ref||'project_page',project_1:name});
       }catch(e){}
       window.open("https://wa.me/60175240726?text="+encodeURIComponent(msg),"_blank");
     });

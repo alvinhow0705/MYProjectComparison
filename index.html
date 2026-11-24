@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,9 +24,10 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" sizes="192x192" href="favicon-192.png">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=6">
+<script src="assets/i18n.js?v=1"></script>
 </head>
-<body>
+<body data-i18n-reload>
 
     <!-- STICKY HEADER GROUP (nav + area filter + search/filter bar stick together, not separately) -->
     <div class="sticky-header">
@@ -34,10 +35,10 @@
         <nav>
             <a class="nav-brand" href="index.html"><img src="logo-nav.png" alt="MYPropertyComparison logo" style="height:28px;width:28px;vertical-align:middle;margin-right:8px;border-radius:7px;"><span class="brand-text">MYPropertyComparison</span></a>
             <div class="nav-links">
-                <a href="index.html" class="active">项目</a>
-                <a href="pages/find.html">智能筛选</a>
-                <a href="pages/calculator.html">计算器</a>
-                <a href="https://wa.me/60175240726?text=Hi%20MY%20Property%20Comparison%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20speak%20to%20a%20property%20advisor.%20Can%20you%20help%20me%20with%20my%20property%20search%3F" target="_blank" onclick="if(typeof gtag==='function')gtag('event','nav_advisor_click',{});">顾问</a>
+                <a href="index.html" class="active" data-i18n="nav.projects">Projects</a>
+                <a href="pages/find.html" data-i18n="nav.finder">Smart Finder</a>
+                <a href="pages/calculator.html" data-i18n="nav.calculator">Calculator</a>
+                <a href="https://wa.me/60175240726?text=Hi%20MY%20Property%20Comparison%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20speak%20to%20a%20property%20advisor.%20Can%20you%20help%20me%20with%20my%20property%20search%3F" target="_blank" onclick="if(typeof gtag==='function')gtag('event','nav_advisor_click',{});" data-i18n="nav.advisor">Advisor</a>
             </div>
         </nav>
 
@@ -55,33 +56,33 @@
         <!-- FILTER + SORT BAR -->
         <div class="filter-bar">
             <div class="filter-bar-inner">
-                <input type="text" id="searchBox" class="search-box" placeholder="🔍 搜索名称、地区或发展商 Search…">
+                <input type="text" id="searchBox" class="search-box" placeholder="🔍 Search by name, area or developer…" data-i18n-ph="h.search_ph">
                 <div class="filter-pills">
-                    <span class="filter-label">筛选</span>
-                    <button class="filter-btn active" data-filter="All">全部</button>
-                    <button class="filter-btn" data-filter="Freehold">永久地契</button>
-                    <button class="filter-btn" data-filter="Leasehold">租赁地契</button>
+                    <span class="filter-label" data-i18n="h.filter">FILTER</span>
+                    <button class="filter-btn active" data-filter="All" data-i18n="h.all">All</button>
+                    <button class="filter-btn" data-filter="Freehold" data-i18n="h.freehold">Freehold</button>
+                    <button class="filter-btn" data-filter="Leasehold" data-i18n="h.leasehold">Leasehold</button>
                 </div>
                 <div class="sort-group">
                     <select id="filterPrice" class="sort-select">
-                        <option value="All">不限价格</option>
-                        <option value="0-500000">RM500k 以下</option>
+                        <option value="All" data-i18n="h.anyprice">Any Price</option>
+                        <option value="0-500000" data-i18n="h.under500">Under RM500k</option>
                         <option value="500000-800000">RM500k – 800k</option>
                         <option value="800000-1200000">RM800k – 1.2M</option>
-                        <option value="1200000-9999999999">RM1.2M 以上</option>
+                        <option value="1200000-9999999999" data-i18n="h.above12">Above RM1.2M</option>
                     </select>
                     <select id="filterType" class="sort-select">
-                        <option value="All">全部类型</option>
-                        <option value="Residential">住宅</option>
-                        <option value="Commercial">商业</option>
+                        <option value="All" data-i18n="h.alltypes">All Types</option>
+                        <option value="Residential" data-i18n="h.residential">Residential</option>
+                        <option value="Commercial" data-i18n="h.commercial">Commercial</option>
                     </select>
                     <select id="sortBy" class="sort-select">
-                        <option value="default">排序</option>
-                        <option value="price-asc">价格：低 → 高</option>
-                        <option value="price-desc">价格：高 → 低</option>
-                        <option value="psf-asc">PSF：低 → 高</option>
-                        <option value="completion">完工：最早</option>
-                        <option value="units-asc">单位数：少 → 多</option>
+                        <option value="default" data-i18n="h.sortby">Sort By</option>
+                        <option value="price-asc" data-i18n="h.price_lh">Price: Low → High</option>
+                        <option value="price-desc" data-i18n="h.price_hl">Price: High → Low</option>
+                        <option value="psf-asc" data-i18n="h.psf_lh">PSF: Low → High</option>
+                        <option value="completion" data-i18n="h.completion_e">Completion: Earliest</option>
+                        <option value="units-asc" data-i18n="h.units_lh">Units: Low → High</option>
                     </select>
                     <span class="project-count" id="projectCount"></span>
                 </div>
@@ -91,8 +92,8 @@
 
     <!-- HERO -->
     <header class="hero">
-        <h1>比较 KL &amp; Selangor 新盘<small class="en">Compare Property Projects in Malaysia</small></h1>
-        <p>选 1 个项目看详情，选 2 个项目直接比较<small class="en">New launch projects in KL & Selangor — select 1 to view details, or 2 to compare side-by-side</small></p>
+        <h1 data-i18n="h.hero_h1">Compare Property Projects in Malaysia</h1>
+        <p data-i18n="h.hero_p">New launch projects in KL & Selangor — select 1 to view details, or 2 to compare side-by-side</p>
     </header>
 
     <!-- PROJECT LIST -->
@@ -105,15 +106,15 @@
 
     <!-- STICKY BOTTOM BAR -->
     <div class="bottom-bar">
-        <p id="hint">提示：选 1 个项目看详情，选 2 个项目直接比较</p>
+        <p id="hint" data-i18n="h.hint0">Tip: Select 1 project to view details or 2 to compare</p>
         <div>
             <span style="color:#888; font-size:14px; margin-right:14px;">
-                已选：<strong id="count">0</strong> / 2
+                <span data-i18n="h.selected">Selected:</span> <strong id="count">0</strong> / 2
             </span>
-            <button id="compareBtn" disabled>请选择项目</button>
+            <button id="compareBtn" disabled data-i18n="h.pick">Select a Project</button>
             <a class="btn-ebook" href="pages/ebook.html" onclick="if(typeof gtag==='function')gtag('event','ebook_cta_click',{page:'index.html'});if(typeof trackJourney==='function')trackJourney('Clicked Free eBook CTA');">
                 <img src="assets/images/free-ebook-badge.png" alt="Free eBook">
-                免费电子书
+                <span data-i18n="h.ebook_btn">100 Projects eBook</span>
             </a>
         </div>
     </div>
